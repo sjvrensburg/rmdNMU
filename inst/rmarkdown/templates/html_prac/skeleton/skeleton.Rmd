@@ -16,6 +16,7 @@ output:
     theme: cosmo
     css: ../resources/nmu.css
     highlight: tango
+    standalone: true
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
