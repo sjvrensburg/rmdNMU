@@ -21,7 +21,6 @@ output:
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
 # Load useful libraries and set default knitr options.
-require(dplyr)
 require(ggplot2)
 
 knitr::opts_chunk$set(echo = TRUE)
