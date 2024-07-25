@@ -1,4 +1,5 @@
-name: html_prac
+name: "Practical"
 description: >
    An HTML template for practicals or lab assignments.
 create_dir: FALSE
+create_rproj: FALSE

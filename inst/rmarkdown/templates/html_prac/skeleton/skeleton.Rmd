@@ -1,18 +1,80 @@
 ---
-title: "Template Title"
-author: "Your Name"
-date: "The Date"
-output: output_format
+# Student to edit the student_number, name and surname.
+student_number: "123456789"
+name: "Name"
+surname: "Surname"
+# Leturer should set the module, type and number
+module: "STAT312"
+type: "Practical"
+number: 1
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+# Do not edit the following...
+title: "`r sprintf('%s: %s %02d', rmarkdown::metadata$module, rmarkdown::metadata$type, rmarkdown::metadata$number)`"
+author: "`r rmarkdown::metadata$surname`, `r rmarkdown::metadata$name` (`r rmarkdown::metadata$student_number`)"
+output: 
+  html_document:
+    theme: cosmo
+    css: ../resources/nmu.css
+    highlight: tango
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+# Load useful libraries and set default knitr options.
+require(dplyr)
+require(ggplot2)
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Adding an RMarkdown Template
+## `rmdNMU`'s `Practical` Template
 
-This file is what a user will see when they select your template. Make sure that you update the fields in the yaml header. In particular you will want to update the `output` field to whatever format your template requires.
+The `Practical` template in the `rmdNMU` package is intended for R practicals. Lecturers should complete the appropriate information in the `YAML` section at the top of the file and write questions/instructions for students in the body of the file. See the following short guide on using R Markdown. Alternatively, consult the resources on the [R Markdown website](https://rmarkdown.rstudio.com/docs/articles/rmarkdown.html).
 
-This is a good place to demonstrate special features that your template provides. Ideally it should knit out-of-the-box, or at least contain clear instructions as to what needs changing.
+## R Markdown: A Brief Overview
 
-Finally, be sure to remove this message!
+**R Markdown** is a powerful tool that allows you to create dynamic documents that seamlessly integrate code, its output (like graphs and tables), and explanatory text. This makes it ideal for data analysis, reporting, and sharing results.
+
+### Basic Markdown Syntax
+
+Markdown is a lightweight markup language, meaning you use simple symbols to format your text. Here are some common examples:
+
+- **Headers:**
+  - `# H1` for largest header
+  - `## H2` for smaller header
+  - `### H3` and so on
+- **Emphasis:**
+  - _italics_
+  - **bold**
+- **Lists:**
+  - Unordered: `* item`
+  - Ordered: `1. item`
+- **Links:**
+  - `[link text](link url)`
+- **Images:**
+  - `![alt text](image path)`
+
+### Embedding R Code
+
+To include R code in your R Markdown document, enclose your code with three backticks (```). These are known as _code chunks_. Here is an example of an unnamed code code chunk.
+```{r}
+# This code chunk will show both the code and result from executing code.
+the_answer <- 37 + sqrt(5^2)
+the_answer
+```
+When you "knit" your R Markdown document (convert it to another format like HTML, PDF, or Word), the R code within these chunks is executed, and the results are incorporated into the final document.
+
+Note that there are many options to control the output of code chunks, such as whether to include the code, the output, or both. It is also a code idea to always name your code chunks. For example
+```{r this_is_my_name, echo=FALSE, dev='png'}
+# This code chunk is named: "this_is_my_name"
+# It will not show your code since echo=FALSE.
+# It will output the result of the code.
+data("PlantGrowth") # Built-in dataset
+
+PlantGrowth |>
+  ggplot(aes(x = weight, y = group, fill = group)) +
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  ggtitle("Plant Growth", subtitle = "Under three different treatments")
+```
+
+It is also possible to include in line code. For example, remember that `the_answer` was `r the_answer`.

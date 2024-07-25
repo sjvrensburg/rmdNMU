@@ -1,10 +1,10 @@
 Package: rmdNMU
-Title: What the Package Does (One Line, Title Case)
+Title: Nelson Mandela University R Markdown Templates
 Version: 0.0.0.9000
 Authors@R: 
     person("Stéfan", "Janse van Rensburg", , "stefanj@mandala.ac.za", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0749-2277"))
-Description: What the package does (one paragraph).
+Description: R Markdown templates for Nelson Mandela University's Statistics Department
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
