@@ -11,12 +11,7 @@ date: "`r format(Sys.Date(), '%d %B %Y')`"
 # Do not edit the following...
 title: "`r sprintf('%s: %s %02d', rmarkdown::metadata$module, rmarkdown::metadata$type, rmarkdown::metadata$number)`"
 author: "`r rmarkdown::metadata$surname`, `r rmarkdown::metadata$name` (`r rmarkdown::metadata$student_number`)"
-output: 
-  html_document:
-    theme: cosmo
-    css: ../resources/nmu.css
-    highlight: tango
-    standalone: true
+output: rmdNMU::html_prac
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
