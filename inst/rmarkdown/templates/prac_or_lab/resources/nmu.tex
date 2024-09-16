@@ -3,6 +3,7 @@
 % Required packages
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{titlesec}
@@ -20,7 +21,7 @@
 \definecolor{codeBackground}{HTML}{e7e7e7}
 
 % Set page geometry
-\geometry{margin=1in}
+\geometry{margin=1.25in}
 
 % Set fonts (approximating Nunito Sans and JetBrains Mono)
 \usepackage{helvet}
@@ -70,6 +71,46 @@
 \newcommand{\highlight}[1]{\colorbox{highlight}{\textcolor{white}{#1}}}
 \newcommand{\highlightlight}[1]{\colorbox{highlightLight}{\textcolor{white}{#1}}}
 
+% Tightlist environment when using "-" for bullet points.
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Highlighting code chuncks
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\usepackage{setspace}
+\onehalfspacing
+
+% CSL referencing
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
 % Customize maketitle
 \makeatletter
 \renewcommand{\maketitle}{%
@@ -86,7 +127,7 @@
 
 % Title, author, date
 \title{$title$}
-\author{$author$)}
+\author{$author$}
 \date{$date$}
 
 % Document start
