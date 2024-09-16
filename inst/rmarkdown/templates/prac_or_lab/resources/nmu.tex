@@ -1,0 +1,99 @@
+\documentclass[11pt,a4paper]{article}
+
+% Required packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{listings}
+
+% Define colors
+\definecolor{primaryText}{HTML}{061C2C}
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{link}{HTML}{103A5C}
+\definecolor{linkHover}{HTML}{0B2D47}
+\definecolor{highlight}{HTML}{F9B42A}
+\definecolor{highlightLight}{HTML}{FABE45}
+\definecolor{codeBackground}{HTML}{e7e7e7}
+
+% Set page geometry
+\geometry{margin=1in}
+
+% Set fonts (approximating Nunito Sans and JetBrains Mono)
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{inconsolata}
+
+% Customize hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=link,
+    filecolor=link,
+    urlcolor=link,
+}
+
+% Customize titles
+\titleformat*{\section}{\Large\bfseries\color{primaryText}}
+\titleformat*{\subsection}{\large\bfseries\color{primaryText}}
+\titleformat*{\subsubsection}{\normalsize\bfseries\color{primaryText}}
+
+% Customize code listings
+\lstset{
+    backgroundcolor=\color{codeBackground},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{gray},
+    extendedchars=true,
+    frame=single,
+    keepspaces=true,
+    keywordstyle=\color{blue},
+    language=R,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    rulecolor=\color{black},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    stepnumber=1,
+    stringstyle=\color{orange},
+    tabsize=4,
+    title=\lstname
+}
+
+% Custom commands
+\newcommand{\highlight}[1]{\colorbox{highlight}{\textcolor{white}{#1}}}
+\newcommand{\highlightlight}[1]{\colorbox{highlightLight}{\textcolor{white}{#1}}}
+
+% Customize maketitle
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        {\huge\textbf{\color{primaryText}\@title}\par}
+        \vspace{0.5em}
+        {\large\color{primaryText}\@author\par}
+        \vspace{0.5em}
+        {\large\color{primaryText}\@date\par}
+    \end{center}
+    \vspace{1em}
+}
+\makeatother
+
+% Title, author, date
+\title{$title$}
+\author{$author$)}
+\date{$date$}
+
+% Document start
+\begin{document}
+
+\maketitle
+
+$body$
+
+\end{document}
