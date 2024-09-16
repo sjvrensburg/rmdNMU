@@ -1,0 +1,5 @@
+name: "Computer Lab or Practical Exercises"
+description: >
+   A template for practicals or lab assignments.
+create_dir: FALSE
+create_rproj: FALSE

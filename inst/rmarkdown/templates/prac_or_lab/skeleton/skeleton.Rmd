@@ -11,7 +11,7 @@ date: "`r format(Sys.Date(), '%d %B %Y')`"
 # Do not edit the following...
 title: "`r sprintf('%s: %s %02d', rmarkdown::metadata$module, rmarkdown::metadata$type, rmarkdown::metadata$number)`"
 author: "`r rmarkdown::metadata$surname`, `r rmarkdown::metadata$name` (`r rmarkdown::metadata$student_number`)"
-output: rmdNMU::html_prac
+output: rmdNMU::pdf_prac #rmdNMU::html_prac
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}

@@ -1,0 +1,140 @@
+\documentclass[11pt,a4paper]{article}
+
+% Required packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{listings}
+
+% Define colors
+\definecolor{primaryText}{HTML}{061C2C}
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{link}{HTML}{103A5C}
+\definecolor{linkHover}{HTML}{0B2D47}
+\definecolor{highlight}{HTML}{F9B42A}
+\definecolor{highlightLight}{HTML}{FABE45}
+\definecolor{codeBackground}{HTML}{e7e7e7}
+
+% Set page geometry
+\geometry{margin=1.25in}
+
+% Set fonts (approximating Nunito Sans and JetBrains Mono)
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{inconsolata}
+
+% Customize hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=link,
+    filecolor=link,
+    urlcolor=link,
+}
+
+% Customize titles
+\titleformat*{\section}{\Large\bfseries\color{primaryText}}
+\titleformat*{\subsection}{\large\bfseries\color{primaryText}}
+\titleformat*{\subsubsection}{\normalsize\bfseries\color{primaryText}}
+
+% Customize code listings
+\lstset{
+    backgroundcolor=\color{codeBackground},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{gray},
+    extendedchars=true,
+    frame=single,
+    keepspaces=true,
+    keywordstyle=\color{blue},
+    language=R,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    rulecolor=\color{black},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    stepnumber=1,
+    stringstyle=\color{orange},
+    tabsize=4,
+    title=\lstname
+}
+
+% Custom commands
+\newcommand{\highlight}[1]{\colorbox{highlight}{\textcolor{white}{#1}}}
+\newcommand{\highlightlight}[1]{\colorbox{highlightLight}{\textcolor{white}{#1}}}
+
+% Tightlist environment when using "-" for bullet points.
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Highlighting code chuncks
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\usepackage{setspace}
+\onehalfspacing
+
+% CSL referencing
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% Customize maketitle
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        {\huge\textbf{\color{primaryText}\@title}\par}
+        \vspace{0.5em}
+        {\large\color{primaryText}\@author\par}
+        \vspace{0.5em}
+        {\large\color{primaryText}\@date\par}
+    \end{center}
+    \vspace{1em}
+}
+\makeatother
+
+% Title, author, date
+\title{$title$}
+\author{$author$}
+\date{$date$}
+
+% Document start
+\begin{document}
+
+\maketitle
+
+$body$
+
+\end{document}
