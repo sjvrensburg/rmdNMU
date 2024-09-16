@@ -1,6 +1,6 @@
-#' Render HTML Document With NMU Complient Format
+#' Render HTML Document With NMU Format
 #'
-#' @param toc Loogical, include table of contents. Default is FALSE.
+#' @param toc Logical, include table of contents. Default is FALSE.
 #'
 #' @return R Markdown output format to pass to render.
 #' @export
