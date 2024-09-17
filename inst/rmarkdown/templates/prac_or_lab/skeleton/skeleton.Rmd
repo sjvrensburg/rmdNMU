@@ -58,8 +58,8 @@ the_answer
 ```
 When you "knit" your R Markdown document (convert it to another format like HTML, PDF, or Word), the R code within these chunks is executed, and the results are incorporated into the final document.
 
-Note that there are many options to control the output of code chunks, such as whether to include the code, the output, or both. It is also a code idea to always name your code chunks. For example
-```{r this_is_my_name, echo=FALSE, dev='png'}
+Note that there are many options to control the output of code chunks, such as whether to include the code, the output, or both. It is also a code idea to always name your code chunks. For example:
+```{r this_is_my_name, echo=FALSE, dev='png', fig.align='left'}
 # This code chunk is named: "this_is_my_name"
 # It will not show your code since echo=FALSE.
 # It will output the result of the code.
