@@ -42,7 +42,7 @@ pdf_prac <- function(..., keep_tex=FALSE) {
 
 # Call rmarkdown::pdf_document and mark the return value as inheriting pdf_document
 inherit_pdf_document <- function(...){
-  fmt <- rmarkdown::pdf_document(highlight = "monochrome", ...)
+  fmt <- rmarkdown::pdf_document(highlight = "tango", ...)
   fmt$inherits <- "pdf_document"
   return(fmt)
 }
