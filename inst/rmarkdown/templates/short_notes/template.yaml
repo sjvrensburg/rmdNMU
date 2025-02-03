@@ -3,4 +3,5 @@ description: >
    Creates an R Markdown document with NMU-styled box environments, including
    example boxes, warning boxes, important boxes, and other custom environments
    that integrate with LaTeX output. Uses the NMU brand colors and styling.
-create_dir: true
+create_dir: FALSE
+create_rproj: FALSE

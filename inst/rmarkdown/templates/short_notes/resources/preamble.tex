@@ -1,5 +1,19 @@
-% Font configuration
+% Basic setup
 \usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[most]{tcolorbox}
+\usepackage{emoji}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Font configuration
 \setmainfont{Nunito Sans 10pt}[
     UprightFont = *-Regular,
     BoldFont = *-Bold,
@@ -8,8 +22,6 @@
     Scale = MatchLowercase]
 
 % Color definitions
-\usepackage{xcolor}
-
 % Primary colors
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
 \definecolor{nmusecondaryblue}{HTML}{132E51}
@@ -28,33 +40,23 @@
 \definecolor{nmuocean}{HTML}{00AFAA}
 
 % Page setup
-\usepackage{geometry}
-\geometry{a4paper, margin=2.54cm}  % Standard margins
+\geometry{a4paper, margin=2.54cm}
 
-% Additional useful packages
-\usepackage{titlesec}  % For section formatting
-\usepackage{microtype} % For typography improvements
-\usepackage{parskip}   % For paragraph spacing
-\usepackage{graphicx}  % For images
-\usepackage{hyperref}  % For links
-
-% Section formatting with brand colors
-\titleformat*{\section}{\Large\bfseries\color{nmuprimaryblue}}
-\titleformat*{\subsection}{\large\bfseries\color{nmusecondaryblue}}
-\titleformat*{\subsubsection}{\normalsize\bfseries\color{nmusecondaryblue}}
-
-% Hyperref setup with brand colors
-\hypersetup{
-    colorlinks = true,
-    linkcolor = nmuprimaryblue,
-    urlcolor = nmuprimaryblue,
-    citecolor = nmuprimaryblue
-}
+% Section formatting with brand colors and numbering
+\titleformat{\section}
+  {\Large\bfseries\color{nmuprimaryblue}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\large\bfseries\color{nmusecondaryblue}}
+  {\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{nmusecondaryblue}}
+  {\thesubsubsection}{1em}{}
 
 % Set default text color
 \color{nmuprimaryblue}
 
-% Commands for easily switching between different font weights
+% Commands for font weights
 \newcommand{\nmulight}{\fontseries{l}\selectfont}
 \newcommand{\nmuregular}{\fontseries{m}\selectfont}
 \newcommand{\nmusemibold}{\fontseries{sb}\selectfont}
@@ -63,9 +65,6 @@
 \newcommand{\nmublack}{\fontseries{k}\selectfont}
 
 % Theorem environments setup
-\usepackage{amsthm}
-\usepackage{thmtools}
-
 % Setup common formatting for all theorem-like environments
 \declaretheoremstyle[
     headfont=\color{nmuprimaryblue}\nmusemibold,
@@ -75,11 +74,14 @@
     headpunct={.}
 ]{nmustyle}
 
+% Enable section numbering
+\setcounter{secnumdepth}{3}
+
 % Standard theorem environments
 \declaretheorem[
     style=nmustyle,
     name=Theorem,
-    numberwithin=section
+    within=section
 ]{theorem}
 
 \declaretheorem[
@@ -100,7 +102,7 @@
     sibling=theorem
 ]{corollary}
 
-% Definition-like environments (different style)
+% Definition-like environments
 \declaretheoremstyle[
     headfont=\color{nmusecondaryblue}\nmusemibold,
     bodyfont=\normalfont,
@@ -117,17 +119,11 @@
 
 \declaretheorem[
     style=nmudefinitionstyle,
-    name=Convention,
-    sibling=definition
-]{convention}
-
-\declaretheorem[
-    style=nmudefinitionstyle,
     name=Example,
     sibling=definition
 ]{example}
 
-% Remark-like environments (yet another style)
+% Remark-like environments
 \declaretheoremstyle[
     headfont=\color{nmugrey}\nmuregular\itshape,
     bodyfont=\normalfont,
@@ -148,19 +144,19 @@
     sibling=remark
 ]{note}
 
-\declaretheorem[
-    style=nmuremarkstyle,
-    name=Observation,
-    sibling=remark
-]{observation}
+% Proof-like environment
+\declaretheoremstyle[
+    headfont=\color{nmuprimaryblue}\nmusemibold,
+    bodyfont=\normalfont\itshape,
+    spaceabove=6pt,
+    spacebelow=6pt,
+    headpunct={.}
+]{nmuproofstyle}
 
-% For \ding command
-\usepackage{pifont}
-% For advanced box creation and emojis
-\usepackage[most]{tcolorbox}
-\usepackage{emoji}
+\renewenvironment{proof}{{\color{nmuprimaryblue}\nmusemibold Proof:} \normalfont}{\qed}
 
-% Define admonition boxes
+
+% Define custom box environments
 \newtcolorbox{warningbox}{
     enhanced,
     colback=red!5,
@@ -237,4 +233,37 @@
     right=5mm,
     top=5mm,
     bottom=5mm
+}
+
+% Cross-referencing setup (load hyperref near the end)
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+% Custom names for theorem-like environments in references
+\providecommand{\defautorefname}{Definition}
+\providecommand{\thmautorefname}{Theorem}
+\providecommand{\lemautorefname}{Lemma}
+\providecommand{\propautorefname}{Proposition}
+\providecommand{\corautorefname}{Corollary}
+\providecommand{\exautorefname}{Example}
+\providecommand{\remarkautorefname}{Remark}
+\providecommand{\noteautorefname}{Note}
+
+% Setup cleveref names
+\crefname{definition}{Definition}{Definitions}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{example}{Example}{Examples}
+\crefname{remark}{Remark}{Remarks}
+\crefname{note}{Note}{Notes}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=nmuprimaryblue,
+    filecolor=nmuprimaryblue,
+    urlcolor=nmuprimaryblue,
+    citecolor=nmuprimaryblue
 }
