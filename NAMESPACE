@@ -2,3 +2,4 @@
 
 export(html_prac)
 export(pdf_prac)
+export(short_notes)

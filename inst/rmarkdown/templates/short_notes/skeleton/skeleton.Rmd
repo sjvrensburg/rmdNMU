@@ -1,0 +1,24 @@
+---
+title: "NMU Styled Document"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: rmdNMU::short_notes
+---
+
+## Example Usage
+
+::: {.examplebox name="Sample Calculation"}
+Here's an example calculation:
+
+```{r}
+2 + 2
+```
+:::
+
+::: {.importantbox name="Key Concept"}
+Make sure to understand these fundamentals before proceeding.
+:::
+
+::: {.warningbox name="Common Mistakes"}
+Be careful to avoid these errors in your analysis.
+:::

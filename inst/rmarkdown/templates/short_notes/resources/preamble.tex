@@ -1,0 +1,240 @@
+% Font configuration
+\usepackage{fontspec}
+\setmainfont{Nunito Sans 10pt}[
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+    ItalicFont = *-Italic,
+    BoldItalicFont = *-BoldItalic,
+    Scale = MatchLowercase]
+
+% Color definitions
+\usepackage{xcolor}
+
+% Primary colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmugrey}{HTML}{999999}
+
+% Faculty colors
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+% Page setup
+\usepackage{geometry}
+\geometry{a4paper, margin=2.54cm}  % Standard margins
+
+% Additional useful packages
+\usepackage{titlesec}  % For section formatting
+\usepackage{microtype} % For typography improvements
+\usepackage{parskip}   % For paragraph spacing
+\usepackage{graphicx}  % For images
+\usepackage{hyperref}  % For links
+
+% Section formatting with brand colors
+\titleformat*{\section}{\Large\bfseries\color{nmuprimaryblue}}
+\titleformat*{\subsection}{\large\bfseries\color{nmusecondaryblue}}
+\titleformat*{\subsubsection}{\normalsize\bfseries\color{nmusecondaryblue}}
+
+% Hyperref setup with brand colors
+\hypersetup{
+    colorlinks = true,
+    linkcolor = nmuprimaryblue,
+    urlcolor = nmuprimaryblue,
+    citecolor = nmuprimaryblue
+}
+
+% Set default text color
+\color{nmuprimaryblue}
+
+% Commands for easily switching between different font weights
+\newcommand{\nmulight}{\fontseries{l}\selectfont}
+\newcommand{\nmuregular}{\fontseries{m}\selectfont}
+\newcommand{\nmusemibold}{\fontseries{sb}\selectfont}
+\newcommand{\nmubold}{\fontseries{b}\selectfont}
+\newcommand{\nmuextrabold}{\fontseries{eb}\selectfont}
+\newcommand{\nmublack}{\fontseries{k}\selectfont}
+
+% Theorem environments setup
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+% Setup common formatting for all theorem-like environments
+\declaretheoremstyle[
+    headfont=\color{nmuprimaryblue}\nmusemibold,
+    bodyfont=\normalfont,
+    spaceabove=6pt,
+    spacebelow=6pt,
+    headpunct={.}
+]{nmustyle}
+
+% Standard theorem environments
+\declaretheorem[
+    style=nmustyle,
+    name=Theorem,
+    numberwithin=section
+]{theorem}
+
+\declaretheorem[
+    style=nmustyle,
+    name=Lemma,
+    sibling=theorem
+]{lemma}
+
+\declaretheorem[
+    style=nmustyle,
+    name=Proposition,
+    sibling=theorem
+]{proposition}
+
+\declaretheorem[
+    style=nmustyle,
+    name=Corollary,
+    sibling=theorem
+]{corollary}
+
+% Definition-like environments (different style)
+\declaretheoremstyle[
+    headfont=\color{nmusecondaryblue}\nmusemibold,
+    bodyfont=\normalfont,
+    spaceabove=6pt,
+    spacebelow=6pt,
+    headpunct={.}
+]{nmudefinitionstyle}
+
+\declaretheorem[
+    style=nmudefinitionstyle,
+    name=Definition,
+    numberwithin=section
+]{definition}
+
+\declaretheorem[
+    style=nmudefinitionstyle,
+    name=Convention,
+    sibling=definition
+]{convention}
+
+\declaretheorem[
+    style=nmudefinitionstyle,
+    name=Example,
+    sibling=definition
+]{example}
+
+% Remark-like environments (yet another style)
+\declaretheoremstyle[
+    headfont=\color{nmugrey}\nmuregular\itshape,
+    bodyfont=\normalfont,
+    spaceabove=6pt,
+    spacebelow=6pt,
+    headpunct={.}
+]{nmuremarkstyle}
+
+\declaretheorem[
+    style=nmuremarkstyle,
+    name=Remark,
+    numberwithin=section
+]{remark}
+
+\declaretheorem[
+    style=nmuremarkstyle,
+    name=Note,
+    sibling=remark
+]{note}
+
+\declaretheorem[
+    style=nmuremarkstyle,
+    name=Observation,
+    sibling=remark
+]{observation}
+
+% For \ding command
+\usepackage{pifont}
+% For advanced box creation and emojis
+\usepackage[most]{tcolorbox}
+\usepackage{emoji}
+
+% Define admonition boxes
+\newtcolorbox{warningbox}{
+    enhanced,
+    colback=red!5,
+    colframe=red!80!black,
+    arc=0mm,
+    title={\large\emoji{warning} Warning},
+    fonttitle=\nmusemibold,
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm
+}
+
+\newtcolorbox{ideabox}{
+    enhanced,
+    colback=nmuprimaryyellow!10,
+    colframe=nmusecondaryyellow,
+    arc=0mm,
+    title={\large\emoji{light-bulb} Idea},
+    fonttitle=\nmusemibold,
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm
+}
+
+\newtcolorbox{notebox}{
+    enhanced,
+    colback=nmuprimaryblue!5,
+    colframe=nmuprimaryblue,
+    arc=0mm,
+    title={\large\emoji{memo} Note},
+    fonttitle=\nmusemibold,
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm
+}
+
+\newtcolorbox{tipbox}{
+    enhanced,
+    colback=nmuocean!10,
+    colframe=nmuocean,
+    arc=0mm,
+    title={\large\emoji{thought-balloon} Tip},
+    fonttitle=\nmusemibold,
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm
+}
+
+\newtcolorbox{importantbox}{
+    enhanced,
+    colback=nmusciences!10,
+    colframe=nmusciences,
+    arc=0mm,
+    title={\large\emoji{glowing-star} Important},
+    fonttitle=\nmusemibold,
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm
+}
+
+\newtcolorbox{examplebox}{
+    enhanced,
+    colback=nmuengineering!10,
+    colframe=nmuengineering,
+    arc=0mm,
+    title={\large\emoji{bar-chart} Example},
+    fonttitle=\nmusemibold,
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm
+}
