@@ -7,8 +7,11 @@
 #' @return R Markdown output format to pass to render.
 #' @export
 short_notes <- function(..., keep_tex=TRUE) {
-  # Get the paths to our resources
   template <- system.file(
+    "rmarkdown/templates/short_notes/resources/template.tex",
+    package = "rmdNMU")
+
+  preamble <- system.file(
     "rmarkdown/templates/short_notes/resources/preamble.tex",
     package = "rmdNMU")
 
@@ -20,22 +23,19 @@ short_notes <- function(..., keep_tex=TRUE) {
     "rmarkdown/templates/short_notes/resources/cross-references.lua",
     package = "rmdNMU")
 
-  # Base format
   fmt <- rmarkdown::pdf_document(
     ...,
-    template = "default",
+    template = template,
     latex_engine = "lualatex",
     keep_tex = keep_tex,
-    includes = list(in_header = template),
+    includes = list(in_header = preamble),
     pandoc_args = c(
       "--lua-filter", box_filter,
       "--lua-filter", crossref_filter,
       "--number-sections",
-      # These options help preserve our references
-      "--preserve-tabs"#,
-      #"--citeproc=false"
+      "--preserve-tabs",
+      "--citeproc"
     )
   )
-
-  return(fmt)
+  fmt
 }

@@ -1,0 +1,97 @@
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(papersize)$
+  $papersize$,
+$endif$
+$for(classoption)$
+  $classoption$,
+$endfor$
+]{$documentclass$}
+
+\usepackage{fontspec}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+\usepackage{microtype}
+\SetProtrusion
+  [ name     = microtype-default,
+    load     = microtype-default ]
+  { }
+  { }
+
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Nunito Sans 10pt}[
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic
+]
+% \setmainfont[]{Nunito Sans}
+
+% Basic formatting packages
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{bookmark}
+
+% Code highlighting
+$highlighting-macros$
+
+% List formatting
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+
+% URLs
+\usepackage{xurl}
+\urlstyle{same}
+
+% PDF metadata
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={$title-meta$},
+  pdfauthor={$author-meta$},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}
+}
+
+$header-includes$
+
+% Title formatting
+\title{$title$}
+\author{$author$}
+\date{$date$}
+
+$if(bibliography)$
+\usepackage[
+   backend=biber,
+   $if(biblatex-style)$
+   style=$biblatex-style$,
+   $endif$
+   $if(biblio-style)$
+   style=$biblio-style$,
+   $endif$
+   $if(csl)$
+   style=authoryear,
+   $endif$
+   sorting=none
+]{biblatex}
+$if(bibliography)$
+\addbibresource{$bibliography$}
+$endif$
+$endif$
+
+\begin{document}
+\maketitle
+$body$
+
+$if(bibliography)$
+\printbibliography
+$endif$
+
+\end{document}

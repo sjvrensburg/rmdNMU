@@ -41,27 +41,27 @@ local BOX_TYPES = {
   },
   -- Keep existing box types
   examplebox = {
-    begin = "\\begin{examplebox}{%s}\n",
+    begin = "\\begin{examplebox}[%s]\n",
     ending = "\\end{examplebox}"
   },
   warningbox = {
-    begin = "\\begin{warningbox}{%s}\n",
+    begin = "\\begin{warningbox}[%s]\n",
     ending = "\\end{warningbox}"
   },
   ideabox = {
-    begin = "\\begin{ideabox}{%s}\n",
+    begin = "\\begin{ideabox}[%s]\n",
     ending = "\\end{ideabox}"
   },
   notebox = {
-    begin = "\\begin{notebox}{%s}\n",
+    begin = "\\begin{notebox}[%s]\n",
     ending = "\\end{notebox}"
   },
   tipbox = {
-    begin = "\\begin{tipbox}{%s}\n",
+    begin = "\\begin{tipbox}[%s]\n",
     ending = "\\end{tipbox}"
   },
   importantbox = {
-    begin = "\\begin{importantbox}{%s}\n",
+    begin = "\\begin{importantbox}[%s]\n",
     ending = "\\end{importantbox}"
   }
 }

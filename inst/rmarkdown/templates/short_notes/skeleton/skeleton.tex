@@ -1,42 +1,34 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
-]{article}
-\usepackage{amsmath,amssymb}
-\usepackage{iftex}
-\ifPDFTeX
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math} % this also loads fontspec
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-\usepackage{lmodern}
-\ifPDFTeX\else
-  % xetex/luatex font selection
-\fi
-% Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
+  14pt,
+  a4paper,
+]{extarticle}
+
+\usepackage{fontspec}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+\usepackage{microtype}
+\SetProtrusion
+  [ name     = microtype-default,
+    load     = microtype-default ]
+  { }
+  { }
+
+\defaultfontfeatures{Ligatures=TeX}
+% \setmainfont{Nunito Sans 10pt}[
+%   UprightFont = *-Regular,
+%   BoldFont = *-Bold,
+%   ItalicFont = *-Italic,
+%   BoldItalicFont = *-BoldItalic
+% ]
+\setmainfont[]{Nunito Sans}
+
+% Basic formatting packages
+\usepackage{graphicx}
+\usepackage{fancyvrb}
 \usepackage{xcolor}
-\usepackage[margin=1in]{geometry}
+\usepackage{bookmark}
+
+% Code highlighting
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -77,55 +69,43 @@
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{graphicx}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+% List formatting
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Basic setup
-\usepackage{fontspec}
-\usepackage{geometry}
-\usepackage{microtype}
-\usepackage{xcolor}
-\usepackage{graphicx}
-\usepackage{titlesec}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
 \usepackage{parskip}
+
+% URLs
+\usepackage{xurl}
+\urlstyle{same}
+
+% PDF metadata
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Short Notes Test Document},
+  pdfauthor={Your Name},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}
+}
+
+\usepackage{geometry}
+\usepackage{titlesec}
 \usepackage{amsthm}
 \usepackage{thmtools}
 \usepackage[most]{tcolorbox}
 \usepackage{emoji}
-\usepackage{amsmath}
 \usepackage{amsfonts}
 
-% Font configuration
-\setmainfont{Nunito Sans 10pt}[
-    UprightFont = *-Regular,
-    BoldFont = *-Bold,
-    ItalicFont = *-Italic,
-    BoldItalicFont = *-BoldItalic,
-    Scale = MatchLowercase]
-
 % Color definitions
-% Primary colors
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
 \definecolor{nmusecondaryblue}{HTML}{132E51}
 \definecolor{nmuprimaryyellow}{HTML}{FFCC00}
 \definecolor{nmusecondaryyellow}{HTML}{F9B22A}
 \definecolor{nmugrey}{HTML}{999999}
-
-% Faculty colors
 \definecolor{nmuhumanities}{HTML}{FFB51B}
 \definecolor{nmueducation}{HTML}{F14F13}
 \definecolor{nmubusiness}{HTML}{6C284F}
@@ -138,21 +118,15 @@
 % Page setup
 \geometry{a4paper, margin=2.54cm}
 
-% Section formatting with brand colors and numbering
-\titleformat{\section}
-  {\Large\bfseries\color{nmuprimaryblue}}
-  {\thesection}{1em}{}
-\titleformat{\subsection}
-  {\large\bfseries\color{nmusecondaryblue}}
-  {\thesubsection}{1em}{}
-\titleformat{\subsubsection}
-  {\normalsize\bfseries\color{nmusecondaryblue}}
-  {\thesubsubsection}{1em}{}
+% Section formatting
+\titleformat{\section}{\Large\bfseries\color{nmuprimaryblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{nmusecondaryblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
 
-% Set default text color
+% Default text color
 \color{nmuprimaryblue}
 
-% Commands for font weights
+% Font weights
 \newcommand{\nmulight}{\fontseries{l}\selectfont}
 \newcommand{\nmuregular}{\fontseries{m}\selectfont}
 \newcommand{\nmusemibold}{\fontseries{sb}\selectfont}
@@ -160,192 +134,125 @@
 \newcommand{\nmuextrabold}{\fontseries{eb}\selectfont}
 \newcommand{\nmublack}{\fontseries{k}\selectfont}
 
-% Theorem environments setup
-% Setup common formatting for all theorem-like environments
+% Theorem styles
 \declaretheoremstyle[
-    headfont=\color{nmuprimaryblue}\nmusemibold,
-    bodyfont=\normalfont,
-    spaceabove=6pt,
-    spacebelow=6pt,
-    headpunct={.}
+   headfont=\color{nmuprimaryblue}\nmusemibold,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
 ]{nmustyle}
 
-% Enable section numbering
-\setcounter{secnumdepth}{3}
-
-% Standard theorem environments
-\declaretheorem[
-    style=nmustyle,
-    name=Theorem,
-    within=section
-]{theorem}
-
-\declaretheorem[
-    style=nmustyle,
-    name=Lemma,
-    sibling=theorem
-]{lemma}
-
-\declaretheorem[
-    style=nmustyle,
-    name=Proposition,
-    sibling=theorem
-]{proposition}
-
-\declaretheorem[
-    style=nmustyle,
-    name=Corollary,
-    sibling=theorem
-]{corollary}
-
-% Definition-like environments
 \declaretheoremstyle[
-    headfont=\color{nmusecondaryblue}\nmusemibold,
-    bodyfont=\normalfont,
-    spaceabove=6pt,
-    spacebelow=6pt,
-    headpunct={.}
+   headfont=\color{nmusecondaryblue}\nmusemibold,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
 ]{nmudefinitionstyle}
 
-\declaretheorem[
-    style=nmudefinitionstyle,
-    name=Definition,
-    numberwithin=section
-]{definition}
-
-\declaretheorem[
-    style=nmudefinitionstyle,
-    name=Example,
-    sibling=definition
-]{example}
-
-% Remark-like environments
 \declaretheoremstyle[
-    headfont=\color{nmugrey}\nmuregular\itshape,
-    bodyfont=\normalfont,
-    spaceabove=6pt,
-    spacebelow=6pt,
-    headpunct={.}
+   headfont=\color{nmugrey}\nmuregular\itshape,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
 ]{nmuremarkstyle}
 
-\declaretheorem[
-    style=nmuremarkstyle,
-    name=Remark,
-    numberwithin=section
-]{remark}
+% Section numbering
+\setcounter{secnumdepth}{3}
 
-\declaretheorem[
-    style=nmuremarkstyle,
-    name=Note,
-    sibling=remark
-]{note}
+% Theorem environments
+\declaretheorem[style=nmustyle,name=Theorem,within=section]{theorem}
+\declaretheorem[style=nmustyle,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=nmustyle,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=nmustyle,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=nmudefinitionstyle,name=Definition,numberwithin=section]{definition}
+\declaretheorem[style=nmudefinitionstyle,name=Example,sibling=definition]{example}
+\declaretheorem[style=nmuremarkstyle,name=Remark,numberwithin=section]{remark}
+\declaretheorem[style=nmuremarkstyle,name=Note,sibling=remark]{note}
 
-% Proof-like environment
-\declaretheoremstyle[
-    headfont=\color{nmuprimaryblue}\nmusemibold,
-    bodyfont=\normalfont\itshape,
-    spaceabove=6pt,
-    spacebelow=6pt,
-    headpunct={.}
-]{nmuproofstyle}
+% Proof environment
+\renewenvironment{proof}{%
+   \par\noindent{\color{nmuprimaryblue}\nmusemibold Proof:}\normalfont}{%
+   \hfill$\blacksquare$\par}
 
-\renewenvironment{proof}{{\color{nmuprimaryblue}\nmusemibold Proof:} \normalfont}{\qed}
+% Custom box titles
+\makeatletter
+\newcommand{\customboxtitle}[2][]{%
+   \ifx&#1&%
+       #2%
+   \else%
+       #2\ #1%
+   \fi%
+}
+\makeatother
 
-
-% Define custom box environments
-\newtcolorbox{warningbox}{
-    enhanced,
-    colback=red!5,
-    colframe=red!80!black,
-    arc=0mm,
-    title={\large\emoji{warning} Warning},
-    fonttitle=\nmusemibold,
-    left=5mm,
-    right=5mm,
-    top=5mm,
-    bottom=5mm
+% Custom boxes
+\newtcolorbox{warningbox}[1][]{
+   enhanced,
+   colback=red!5,
+   colframe=red!80!black,
+   arc=0mm,
+   title={\large\emoji{warning} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-\newtcolorbox{ideabox}{
-    enhanced,
-    colback=nmuprimaryyellow!10,
-    colframe=nmusecondaryyellow,
-    arc=0mm,
-    title={\large\emoji{light-bulb} Idea},
-    fonttitle=\nmusemibold,
-    left=5mm,
-    right=5mm,
-    top=5mm,
-    bottom=5mm
+\newtcolorbox{ideabox}[1][]{
+   enhanced,
+   colback=nmuprimaryyellow!10,
+   colframe=nmusecondaryyellow,
+   arc=0mm,
+   title={\large\emoji{light-bulb}  #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-\newtcolorbox{notebox}{
-    enhanced,
-    colback=nmuprimaryblue!5,
-    colframe=nmuprimaryblue,
-    arc=0mm,
-    title={\large\emoji{memo} Note},
-    fonttitle=\nmusemibold,
-    left=5mm,
-    right=5mm,
-    top=5mm,
-    bottom=5mm
+\newtcolorbox{notebox}[1][]{
+   enhanced,
+   colback=nmuprimaryblue!5,
+   colframe=nmuprimaryblue,
+   arc=0mm,
+   title={\large\emoji{memo}  #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-\newtcolorbox{tipbox}{
-    enhanced,
-    colback=nmuocean!10,
-    colframe=nmuocean,
-    arc=0mm,
-    title={\large\emoji{thought-balloon} Tip},
-    fonttitle=\nmusemibold,
-    left=5mm,
-    right=5mm,
-    top=5mm,
-    bottom=5mm
+\newtcolorbox{tipbox}[1][]{
+   enhanced,
+   colback=nmuocean!10,
+   colframe=nmuocean,
+   arc=0mm,
+   title={\large\emoji{thought-balloon} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-\newtcolorbox{importantbox}{
-    enhanced,
-    colback=nmusciences!10,
-    colframe=nmusciences,
-    arc=0mm,
-    title={\large\emoji{glowing-star} Important},
-    fonttitle=\nmusemibold,
-    left=5mm,
-    right=5mm,
-    top=5mm,
-    bottom=5mm
+\newtcolorbox{importantbox}[1][]{
+   enhanced,
+   colback=nmusciences!10,
+   colframe=nmusciences,
+   arc=0mm,
+   title={\large\emoji{glowing-star} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-\newtcolorbox{examplebox}{
-    enhanced,
-    colback=nmuengineering!10,
-    colframe=nmuengineering,
-    arc=0mm,
-    title={\large\emoji{bar-chart} Example},
-    fonttitle=\nmusemibold,
-    left=5mm,
-    right=5mm,
-    top=5mm,
-    bottom=5mm
+\newtcolorbox{examplebox}[1][]{
+   enhanced,
+   colback=nmuengineering!10,
+   colframe=nmuengineering,
+   arc=0mm,
+   title={\large\emoji{bar-chart} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-% Cross-referencing setup (load hyperref near the end)
+% Cross-referencing
 \usepackage{hyperref}
 \usepackage{cleveref}
 
-% Custom names for theorem-like environments in references
-\providecommand{\defautorefname}{Definition}
-\providecommand{\thmautorefname}{Theorem}
-\providecommand{\lemautorefname}{Lemma}
-\providecommand{\propautorefname}{Proposition}
-\providecommand{\corautorefname}{Corollary}
-\providecommand{\exautorefname}{Example}
-\providecommand{\remarkautorefname}{Remark}
-\providecommand{\noteautorefname}{Note}
-
-% Setup cleveref names
 \crefname{definition}{Definition}{Definitions}
 \crefname{theorem}{Theorem}{Theorems}
 \crefname{lemma}{Lemma}{Lemmas}
@@ -355,33 +262,22 @@
 \crefname{remark}{Remark}{Remarks}
 \crefname{note}{Note}{Notes}
 
-% Hyperlink setup
 \hypersetup{
-    colorlinks=true,
-    linkcolor=nmuprimaryblue,
-    filecolor=nmuprimaryblue,
-    urlcolor=nmuprimaryblue,
-    citecolor=nmuprimaryblue
+   colorlinks=true,
+   linkcolor=nmuprimaryblue,
+   filecolor=nmuprimaryblue,
+   urlcolor=nmuprimaryblue,
+   citecolor=nmuprimaryblue
 }
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-\usepackage{bookmark}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same}
-\hypersetup{
-  pdftitle={Short Notes Test Document},
-  pdfauthor={Your Name},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
 
+% Title formatting
 \title{Short Notes Test Document}
 \author{Your Name}
-\date{2025-02-03}
+\date{2025-02-04}
+
 
 \begin{document}
 \maketitle
-
 \section{Introduction}\label{introduction}
 
 This document tests all the custom features of the \textbf{Short Notes}
@@ -415,15 +311,12 @@ Let \(\mathbf{0}\) be the zero vector. Then, for any vector
 
 \end{theorem}
 
-\subsubsection{Proof}\label{proof}
-
 \begin{proof}
 
-By the definition of
-\textbackslash(\textbackslash mathbf\{0\}\textbackslash), adding it to
-any vector does not change the vector: \[
+By the definition of \(\mathbf{0}\), adding it to any vector does not
+change the vector: \[
 \mathbf{0} + \mathbf{v} = \mathbf{v}.
-\] \(\square\)
+\]
 
 \end{proof}
 
@@ -443,14 +336,14 @@ Consider the vector \(\mathbf{v} = (3,4)\). Then, \[
 \subsection{Important Notes and
 Warnings}\label{important-notes-and-warnings}
 
-\begin{importantbox}{Key Concept}
+\begin{importantbox}[Key Concept]
 
 Understanding the role of the zero vector is fundamental in linear
 algebra.
 
 \end{importantbox}
 
-\begin{warningbox}{Common Mistakes}
+\begin{warningbox}[Common Mistakes]
 
 Be careful to distinguish between scalar zero \(0\) and the zero vector
 \(\mathbf{0}\).
@@ -492,5 +385,6 @@ This document successfully tests:
 \item
   Mathematical notation
 \end{itemize}
+
 
 \end{document}
