@@ -1,0 +1,390 @@
+\documentclass[
+  14pt,
+  a4paper,
+]{extarticle}
+
+\usepackage{fontspec}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+\usepackage{microtype}
+\SetProtrusion
+  [ name     = microtype-default,
+    load     = microtype-default ]
+  { }
+  { }
+
+\defaultfontfeatures{Ligatures=TeX}
+% \setmainfont{Nunito Sans 10pt}[
+%   UprightFont = *-Regular,
+%   BoldFont = *-Bold,
+%   ItalicFont = *-Italic,
+%   BoldItalicFont = *-BoldItalic
+% ]
+\setmainfont[]{Nunito Sans}
+
+% Basic formatting packages
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{bookmark}
+
+% Code highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+
+% List formatting
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Page layout
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+
+% URLs
+\usepackage{xurl}
+\urlstyle{same}
+
+% PDF metadata
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Short Notes Test Document},
+  pdfauthor={Your Name},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}
+}
+
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[most]{tcolorbox}
+\usepackage{emoji}
+\usepackage{amsfonts}
+
+% Color definitions
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmugrey}{HTML}{999999}
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+% Page setup
+\geometry{a4paper, margin=2.54cm}
+
+% Section formatting
+\titleformat{\section}{\Large\bfseries\color{nmuprimaryblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{nmusecondaryblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
+
+% Default text color
+\color{nmuprimaryblue}
+
+% Font weights
+\newcommand{\nmulight}{\fontseries{l}\selectfont}
+\newcommand{\nmuregular}{\fontseries{m}\selectfont}
+\newcommand{\nmusemibold}{\fontseries{sb}\selectfont}
+\newcommand{\nmubold}{\fontseries{b}\selectfont}
+\newcommand{\nmuextrabold}{\fontseries{eb}\selectfont}
+\newcommand{\nmublack}{\fontseries{k}\selectfont}
+
+% Theorem styles
+\declaretheoremstyle[
+   headfont=\color{nmuprimaryblue}\nmusemibold,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
+]{nmustyle}
+
+\declaretheoremstyle[
+   headfont=\color{nmusecondaryblue}\nmusemibold,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
+]{nmudefinitionstyle}
+
+\declaretheoremstyle[
+   headfont=\color{nmugrey}\nmuregular\itshape,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
+]{nmuremarkstyle}
+
+% Section numbering
+\setcounter{secnumdepth}{3}
+
+% Theorem environments
+\declaretheorem[style=nmustyle,name=Theorem,within=section]{theorem}
+\declaretheorem[style=nmustyle,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=nmustyle,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=nmustyle,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=nmudefinitionstyle,name=Definition,numberwithin=section]{definition}
+\declaretheorem[style=nmudefinitionstyle,name=Example,sibling=definition]{example}
+\declaretheorem[style=nmuremarkstyle,name=Remark,numberwithin=section]{remark}
+\declaretheorem[style=nmuremarkstyle,name=Note,sibling=remark]{note}
+
+% Proof environment
+\renewenvironment{proof}{%
+   \par\noindent{\color{nmuprimaryblue}\nmusemibold Proof:}\normalfont}{%
+   \hfill$\blacksquare$\par}
+
+% Custom box titles
+\makeatletter
+\newcommand{\customboxtitle}[2][]{%
+   \ifx&#1&%
+       #2%
+   \else%
+       #2\ #1%
+   \fi%
+}
+\makeatother
+
+% Custom boxes
+\newtcolorbox{warningbox}[1][]{
+   enhanced,
+   colback=red!5,
+   colframe=red!80!black,
+   arc=0mm,
+   title={\large\emoji{warning} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{ideabox}[1][]{
+   enhanced,
+   colback=nmuprimaryyellow!10,
+   colframe=nmusecondaryyellow,
+   arc=0mm,
+   title={\large\emoji{light-bulb}  #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{notebox}[1][]{
+   enhanced,
+   colback=nmuprimaryblue!5,
+   colframe=nmuprimaryblue,
+   arc=0mm,
+   title={\large\emoji{memo}  #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{tipbox}[1][]{
+   enhanced,
+   colback=nmuocean!10,
+   colframe=nmuocean,
+   arc=0mm,
+   title={\large\emoji{thought-balloon} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{importantbox}[1][]{
+   enhanced,
+   colback=nmusciences!10,
+   colframe=nmusciences,
+   arc=0mm,
+   title={\large\emoji{glowing-star} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{examplebox}[1][]{
+   enhanced,
+   colback=nmuengineering!10,
+   colframe=nmuengineering,
+   arc=0mm,
+   title={\large\emoji{bar-chart} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+% Cross-referencing
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\crefname{definition}{Definition}{Definitions}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{example}{Example}{Examples}
+\crefname{remark}{Remark}{Remarks}
+\crefname{note}{Note}{Notes}
+
+\hypersetup{
+   colorlinks=true,
+   linkcolor=nmuprimaryblue,
+   filecolor=nmuprimaryblue,
+   urlcolor=nmuprimaryblue,
+   citecolor=nmuprimaryblue
+}
+
+% Title formatting
+\title{Short Notes Test Document}
+\author{Your Name}
+\date{2025-02-04}
+
+
+\begin{document}
+\maketitle
+\section{Introduction}\label{introduction}
+
+This document tests all the custom features of the \textbf{Short Notes}
+template.
+
+\subsection{Cross-referencing}\label{cross-referencing}
+
+We define a special vector below:
+
+\begin{definition}[Vectors of Zeros and Ones]\label{def:vec-zeros-ones}
+
+A vector of zeros, denoted \(\mathbf{0}\), is a vector where all
+components are zero. Similarly, a vector of ones, denoted
+\(\mathbf{1}\), is a vector where all components are one.
+
+\end{definition}
+
+As we saw in \autoref{def:vec-zeros-ones} these special vectors have
+important properties.
+
+\subsection{Theorems and Proofs}\label{theorems-and-proofs}
+
+\begin{theorem}[Vector Addition]\label{thm:vector-addition}
+
+Let \(\mathbf{0}\) be the zero vector. Then, for any vector
+\(\mathbf{v}\):
+
+\[
+\mathbf{0} + \mathbf{v} = \mathbf{v}.
+\]
+
+\end{theorem}
+
+\begin{proof}
+
+By the definition of \(\mathbf{0}\), adding it to any vector does not
+change the vector: \[
+\mathbf{0} + \mathbf{v} = \mathbf{v}.
+\]
+
+\end{proof}
+
+As shown in \autoref{thm:vector-addition} the zero vector behaves as
+expected.
+
+\subsection{Example Applications}\label{example-applications}
+
+\begin{example}[Vector Computation Example]\label{ex:vector-example}
+
+Consider the vector \(\mathbf{v} = (3,4)\). Then, \[
+\mathbf{0} + \mathbf{v} = (3,4).
+\]
+
+\end{example}
+
+\subsection{Important Notes and
+Warnings}\label{important-notes-and-warnings}
+
+\begin{importantbox}[Key Concept]
+
+Understanding the role of the zero vector is fundamental in linear
+algebra.
+
+\end{importantbox}
+
+\begin{warningbox}[Common Mistakes]
+
+Be careful to distinguish between scalar zero \(0\) and the zero vector
+\(\mathbf{0}\).
+
+\end{warningbox}
+
+\subsection{Code Examples}\label{code-examples}
+
+We can compute with vectors in R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{z }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{v }\SpecialCharTok{+}\NormalTok{ z  }\CommentTok{\# Should return (3,4)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4
+\end{verbatim}
+
+Inline calculation: The result of \(2+2\) is 4.
+
+\subsection{Conclusion}\label{conclusion}
+
+This document successfully tests:
+
+\begin{itemize}
+\tightlist
+\item
+  Theorem-like environments
+\item
+  Cross-referencing
+\item
+  Custom boxes (warnings, examples, important notes)
+\item
+  Code execution
+\item
+  Mathematical notation
+\end{itemize}
+
+
+\end{document}

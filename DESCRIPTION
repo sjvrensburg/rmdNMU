@@ -1,0 +1,15 @@
+Package: rmdNMU
+Title: Nelson Mandela University R Markdown Templates
+Version: 1.0.2.0000
+Authors@R: 
+    person("Stéfan", "Janse van Rensburg", , "stefanj@mandala.ac.za", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0749-2277"))
+Description: R Markdown templates for Nelson Mandela University's Statistics Department
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    rmarkdown,
+    knitr,
+    tinytex

@@ -1,0 +1,177 @@
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage[most]{tcolorbox}
+\usepackage{emoji}
+\usepackage{amsfonts}
+
+% Color definitions
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmugrey}{HTML}{999999}
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+% Page setup
+\geometry{a4paper, margin=2.54cm}
+
+% Section formatting
+\titleformat{\section}{\Large\bfseries\color{nmuprimaryblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{nmusecondaryblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
+
+% Default text color
+\color{nmuprimaryblue}
+
+% Font weights
+\newcommand{\nmulight}{\fontseries{l}\selectfont}
+\newcommand{\nmuregular}{\fontseries{m}\selectfont}
+\newcommand{\nmusemibold}{\fontseries{sb}\selectfont}
+\newcommand{\nmubold}{\fontseries{b}\selectfont}
+\newcommand{\nmuextrabold}{\fontseries{eb}\selectfont}
+\newcommand{\nmublack}{\fontseries{k}\selectfont}
+
+% Theorem styles
+\declaretheoremstyle[
+   headfont=\color{nmuprimaryblue}\nmusemibold,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
+]{nmustyle}
+
+\declaretheoremstyle[
+   headfont=\color{nmusecondaryblue}\nmusemibold,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
+]{nmudefinitionstyle}
+
+\declaretheoremstyle[
+   headfont=\color{nmugrey}\nmuregular\itshape,
+   bodyfont=\normalfont,
+   spaceabove=6pt,
+   spacebelow=6pt,
+   headpunct={.}
+]{nmuremarkstyle}
+
+% Section numbering
+\setcounter{secnumdepth}{3}
+
+% Theorem environments
+\declaretheorem[style=nmustyle,name=Theorem,within=section]{theorem}
+\declaretheorem[style=nmustyle,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=nmustyle,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=nmustyle,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=nmudefinitionstyle,name=Definition,numberwithin=section]{definition}
+\declaretheorem[style=nmudefinitionstyle,name=Example,sibling=definition]{example}
+\declaretheorem[style=nmuremarkstyle,name=Remark,numberwithin=section]{remark}
+\declaretheorem[style=nmuremarkstyle,name=Note,sibling=remark]{note}
+
+% Proof environment
+\renewenvironment{proof}{%
+   \par\noindent{\color{nmuprimaryblue}\nmusemibold Proof:}\normalfont}{%
+   \hfill$\blacksquare$\par}
+
+% Custom box titles
+\makeatletter
+\newcommand{\customboxtitle}[2][]{%
+   \ifx&#1&%
+       #2%
+   \else%
+       #2\ #1%
+   \fi%
+}
+\makeatother
+
+% Custom boxes
+\newtcolorbox{warningbox}[1][]{
+   enhanced,
+   colback=red!5,
+   colframe=red!80!black,
+   arc=0mm,
+   title={\large\emoji{warning} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{ideabox}[1][]{
+   enhanced,
+   colback=nmuprimaryyellow!10,
+   colframe=nmusecondaryyellow,
+   arc=0mm,
+   title={\large\emoji{light-bulb}  #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{notebox}[1][]{
+   enhanced,
+   colback=nmuprimaryblue!5,
+   colframe=nmuprimaryblue,
+   arc=0mm,
+   title={\large\emoji{memo}  #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{tipbox}[1][]{
+   enhanced,
+   colback=nmuocean!10,
+   colframe=nmuocean,
+   arc=0mm,
+   title={\large\emoji{thought-balloon} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{importantbox}[1][]{
+   enhanced,
+   colback=nmusciences!10,
+   colframe=nmusciences,
+   arc=0mm,
+   title={\large\emoji{glowing-star} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+\newtcolorbox{examplebox}[1][]{
+   enhanced,
+   colback=nmuengineering!10,
+   colframe=nmuengineering,
+   arc=0mm,
+   title={\large\emoji{bar-chart} #1},
+   fonttitle=\nmusemibold,
+   left=5mm,right=5mm,top=5mm,bottom=5mm
+}
+
+% Cross-referencing
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+\crefname{definition}{Definition}{Definitions}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{example}{Example}{Examples}
+\crefname{remark}{Remark}{Remarks}
+\crefname{note}{Note}{Notes}
+
+\hypersetup{
+   colorlinks=true,
+   linkcolor=nmuprimaryblue,
+   filecolor=nmuprimaryblue,
+   urlcolor=nmuprimaryblue,
+   citecolor=nmuprimaryblue
+}
