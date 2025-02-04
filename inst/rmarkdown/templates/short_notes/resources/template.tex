@@ -1,0 +1,122 @@
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(papersize)$
+  $papersize$,
+$endif$
+$for(classoption)$
+  $classoption$,
+$endfor$
+]{$documentclass$}
+
+% Load basic packages first
+\usepackage{fontspec}
+\usepackage{amssymb}
+\usepackage{unicode-math}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{bookmark}
+\usepackage{xurl}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+
+% Basic setup
+\SetProtrusion
+  [ name     = microtype-default,
+    load     = microtype-default ]
+  { }
+  { }
+
+% Font configuration
+\defaultfontfeatures{
+    Ligatures=TeX,
+    UprightFeatures={Weight=400},  % Regular weight for normal text
+    BoldFeatures={Weight=700},     % Bold weight
+    ItalicFeatures={Weight=400},   % Regular weight for italics
+    BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+}
+
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+    BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+    % Font Features section
+    UprightFeatures = {
+        Weight=450,  % Slightly heavier than regular for better readability
+        Scale=1.0
+    },
+    BoldFeatures = {
+        Weight=700  % Bold
+    },
+    ItalicFeatures = {
+        Weight=450  % Matching upright weight
+    },
+    BoldItalicFeatures = {
+        Weight=700  % Bold italic
+    }
+]
+
+% Code highlighting
+$highlighting-macros$
+
+% List formatting
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% URL styling
+\urlstyle{same}
+
+% Load the preamble with custom environments and styles
+$header-includes$
+
+% PDF metadata
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={$title-meta$},
+  pdfauthor={$author-meta$},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}
+}
+
+% Bibliography setup if needed
+$if(bibliography)$
+\usepackage[
+   backend=biber,
+   $if(biblatex-style)$
+   style=$biblatex-style$,
+   $endif$
+   $if(biblio-style)$
+   style=$biblio-style$,
+   $endif$
+   $if(csl)$
+   style=authoryear,
+   $endif$
+   sorting=none
+]{biblatex}
+$if(bibliography)$
+\addbibresource{$bibliography$}
+$endif$
+$endif$
+
+% Title information
+\title{$title$}
+\author{$author$}
+\date{$date$}
+
+\begin{document}
+\maketitle
+
+$body$
+
+$if(bibliography)$
+\printbibliography
+$endif$
+
+\end{document}

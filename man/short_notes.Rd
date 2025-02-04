@@ -4,13 +4,13 @@
 \alias{short_notes}
 \title{Render PDF Document With NMU Short Notes Format}
 \usage{
-short_notes(..., keep_tex = FALSE)
+short_notes(..., keep_tex = TRUE)
 }
 \arguments{
 \item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 
 \item{keep_tex}{A boolean toggle to select whether intermediate
-LaTeX files are to be kept, defaults to \code{FALSE}}
+LaTeX files are to be kept, defaults to \code{TRUE}}
 }
 \value{
 R Markdown output format to pass to render.

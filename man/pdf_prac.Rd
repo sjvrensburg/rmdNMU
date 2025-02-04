@@ -2,7 +2,7 @@
 % Please edit documentation in R/prac.R
 \name{pdf_prac}
 \alias{pdf_prac}
-\title{Render PDF Document With NMU-Like Format}
+\title{Render PDF Document With NMU Format}
 \usage{
 pdf_prac(..., keep_tex = FALSE)
 }
@@ -16,5 +16,5 @@ LaTeX files are to be kept, defaults to \code{FALSE}}
 R Markdown output format to pass to render.
 }
 \description{
-Render PDF Document With NMU-Like Format
+Render PDF Document With NMU Format
 }

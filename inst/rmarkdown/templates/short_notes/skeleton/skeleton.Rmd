@@ -1,24 +1,86 @@
 ---
-title: "NMU Styled Document"
+title: "Short Notes Test Document"
 author: "Your Name"
 date: "`r Sys.Date()`"
+documentclass: extarticle
+fontsize: 14pt
+papersize: a4paper
 output: rmdNMU::short_notes
 ---
 
-## Example Usage
+# Introduction
 
-::: {.examplebox name="Sample Calculation"}
-Here's an example calculation:
+This document tests all the custom features of the **Short Notes** template.
 
-```{r}
-2 + 2
-```
+## Cross-referencing
+
+We define a special vector below:
+
+::: {.definition #vec-zeros-ones name="Vectors of Zeros and Ones"}
+A vector of zeros, denoted \(\mathbf{0}\), is a vector where all components are zero.
+Similarly, a vector of ones, denoted \(\mathbf{1}\), is a vector where all components are one.
 :::
 
+As we saw in \@ref(def:vec-zeros-ones), these special vectors have important properties.
+
+## Theorems and Proofs
+
+::: {.theorem #vector-addition name="Vector Addition"}
+Let \(\mathbf{0}\) be the zero vector. Then, for any vector \(\mathbf{v}\):
+
+\[
+\mathbf{0} + \mathbf{v} = \mathbf{v}.
+\]
+:::
+
+::: {.proof}
+By the definition of \(\mathbf{0}\), adding it to any vector does not change the vector:
+\[
+\mathbf{0} + \mathbf{v} = \mathbf{v}.
+\]
+:::
+
+
+
+As shown in \@ref(thm:vector-addition), the zero vector behaves as expected.
+
+## Example Applications
+
+::: {.example #vector-example name="Vector Computation Example"}
+Consider the vector \(\mathbf{v} = (3,4)\). Then,
+\[
+\mathbf{0} + \mathbf{v} = (3,4).
+\]
+:::
+
+## Important Notes and Warnings
+
 ::: {.importantbox name="Key Concept"}
-Make sure to understand these fundamentals before proceeding.
+Understanding the role of the zero vector is fundamental in linear algebra.
 :::
 
 ::: {.warningbox name="Common Mistakes"}
-Be careful to avoid these errors in your analysis.
+Be careful to distinguish between scalar zero \(0\) and the zero vector \(\mathbf{0}\).
 :::
+
+## Code Examples
+
+We can compute with vectors in R:
+
+```{r vector-addition, echo=TRUE}
+v <- c(3, 4)
+z <- c(0, 0)
+v + z  # Should return (3,4)
+```
+
+Inline calculation: The result of \(2+2\) is `r 2+2`.
+
+## Conclusion
+
+This document successfully tests:
+
+- Theorem-like environments
+- Cross-referencing
+- Custom boxes (warnings, examples, important notes)
+- Code execution
+- Mathematical notation
