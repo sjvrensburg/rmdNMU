@@ -1,0 +1,144 @@
+\documentclass[addpoints, 12pt]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xifthen} % provides \isempty test
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{siunitx}
+\usepackage{soul}
+
+\sisetup{
+  group-separator = {\,},
+  group-minimum-digits = 4
+}
+
+% Tightlist environment when using "-" for bullet points.
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Highlighting code chuncks
+
+\usepackage{setspace}
+\onehalfspacing
+
+% CSL referencing
+
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{\large \textbf{}}
+{\large \textbf{\Large TEST X -- MODULE CODE}}
+{\large \textbf{}}
+%% Other pages
+\runningheader{\textbf{MODULE CODE}}
+{\textbf{}}
+{\textbf{Page \thepage~of \numpages~}}
+
+\firstpagefooter{\large \textbf{}}
+{\large \textbf{}}
+{\large \textbf{}}
+%% Other pages
+\runningfooter{\textbf{}}
+{\textbf{}}
+{\textbf{}}
+
+\def\tick{
+  \begin{tikzpicture}[scale=0.3]
+    \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+    \node[above, white] at (0.35, 0.1) {\tiny 1};
+    \node[below, white] at (0.7, 0.5) {\tiny 2};
+  \end{tikzpicture}
+}
+
+\def\doubletick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+        \draw[fill=black] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
+        \node[above, white] at (0.35, 0.1) {\tiny 1};
+        \node[below, white] at (1.2, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\def\halftick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
+        \node[above] at (0.35, 0.1) {\tiny 1};
+        \node[below] at (0.7, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\begin{document}
+
+\begin{center}
+
+\begin{tabularx}{\textwidth}{ XXXX }
+  \hline
+  \textbf{Subject:}  &  \multicolumn{3}{l}{MODULE NAME} \\
+  \textbf{Module Code:} & \multicolumn{3}{l}{MODULE CODE} \\
+  \textbf{Time Limit:} & \multicolumn{3}{l}{1 Hour} \\
+  \textbf{Marks:} & \multicolumn{3}{l}{\numpoints} \\
+  \textbf{Examiner:}  & \multicolumn{3}{l}{Dr SOMEONE} \\
+  \hline
+\end{tabularx}
+\vspace{1cm}
+\end{center}
+
+  \noindent\fbox{
+    \begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}
+      \textbf{Special Instructions:}
+      \begin{itemize}
+        \item Answer all questions.
+        \item Use of calculator is permitted.
+        \item Show your workings.
+        \item Round off final answers to four decimal places.
+        \item If you choose to write your answers in pencil you then forfeit the right to question the examiners marking.
+      \end{itemize}
+    \end{minipage}}
+
+  \vspace{1cm}
+  \begin{center}
+    \pointtable[h][questions]
+  \end{center}
+  \newpage
+
+\begin{questions}
+  \setlength{\rightpointsmargin}{1in}
+  \bracketedpoints
+  \marksnotpoints
+  \totalformat{\fbox{Question \thequestion: \totalpoints}}
+
+  \question[1]What is this?
+
+  \begin{solution}[2.2cm]
+  That is a question and this is the solution.
+  \end{solution}
+
+  \question
+
+  Suppose that we want to split a question into multiple parts.
+
+  \begin{parts}
+  \part[1]
+  Is this possible?
+  \begin{solution}[1cm]
+  Yes!
+  \end{solution}
+
+  \part[1]
+  Where do the solutions go?
+  \begin{solution}[1cm]
+  You just place the solution environment below the part.
+  \end{solution}
+
+  \end{parts}
+
+\end{questions}
+
+\end{document}

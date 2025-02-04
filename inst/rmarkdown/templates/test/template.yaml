@@ -1,0 +1,4 @@
+name: test
+description: >
+   Template for larger tests.
+create_dir: TRUE

@@ -1,0 +1,63 @@
+---
+params:
+  # ALWAYS USE DOUBLE QUOTES FOR YAML PARAMETERS.
+  subject: "MODULE NAME"
+  code: "MODULE CODE"
+  test: "TEST X"
+  examiner: "Dr SOMEONE"
+  timelimit: "1 Hour"
+  date: "`r format(Sys.Date(), '%d %B %Y')`"
+  solutions: false     # Is this the memo?
+  instructions: true  # Edit instructions.tex to customise
+  pointtable: true   # Code for point table in instructions.tex
+# HEADERS AND FOOTERS
+header:
+  front:
+    left:   ""
+    center: "\\Large `r params$test` -- `r params$code`"
+    right:  ""
+  running:
+    left:   "`r params$code`"
+    center: ""
+    right:  "Page \\thepage\\ of \\numpages\\ " # NB: SPACE AT THE
+footer:
+  front:
+    left:   ""
+    center: ""
+    right:  ""
+  running:
+    left:   ""
+    center: ""
+    right:  ""
+fontsize: 12pt
+output: RMDs4NMU::tests
+standalone: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\question[1]
+What is this?
+\begin{solution}[2.2cm]
+That is a question and this is the solution.
+\end{solution}
+
+\question
+Suppose that we want to split a question into multiple parts.
+
+\begin{parts}
+\part[1]
+Is this possible?
+\begin{solution}[1cm]
+Yes!
+\end{solution}
+
+\part[1]
+Where do the solutions go?
+\begin{solution}[1cm]
+You just place the solution environment below the part.
+\end{solution}
+
+\end{parts}
