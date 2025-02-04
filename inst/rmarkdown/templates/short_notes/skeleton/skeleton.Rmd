@@ -8,79 +8,114 @@ papersize: a4paper
 output: rmdNMU::short_notes
 ---
 
-# Introduction
+# \emoji{memo} **Introduction**  
 
-This document tests all the custom features of the **Short Notes** template.
+This is an example of a **Short Notes document** using the NMU template. It demonstrates key features such as structured sections, example boxes, mathematical notation, and inline code.  
 
-## Cross-referencing
+---
 
-We define a special vector below:
+# \emoji{pushpin} **Basic Formatting**  
 
-::: {.definition #vec-zeros-ones name="Vectors of Zeros and Ones"}
-A vector of zeros, denoted \(\mathbf{0}\), is a vector where all components are zero.
-Similarly, a vector of ones, denoted \(\mathbf{1}\), is a vector where all components are one.
-:::
+## \emoji{small-blue-diamond} **Lists**  
 
-As we saw in \@ref(def:vec-zeros-ones), these special vectors have important properties.
+- Bullet points are useful for key ideas.  
+- Numbered lists help organize steps:  
 
-## Theorems and Proofs
+1. First item  
+2. Second item  
+3. Third item  
 
-::: {.theorem #vector-addition name="Vector Addition"}
-Let \(\mathbf{0}\) be the zero vector. Then, for any vector \(\mathbf{v}\):
+## \emoji{small-blue-diamond} **Text Formatting**  
 
+- **Bold Text**  
+- *Italic Text*  
+- `Inline code` example  
+
+> \emoji{light-bulb} **Tip:** Use `#` for headings and `*` for italics.
+
+---
+
+# \emoji{open-book} **Mathematics & Equations**  
+
+Mathematical expressions can be **inline** like this:  
+"The equation of a line is \( y = mx + c \)."  
+
+Or **displayed** in a block:
 \[
-\mathbf{0} + \mathbf{v} = \mathbf{v}.
+E = mc^2
+\]
+
+> \emoji{hammer-and-wrench} **Try it!** Modify the equation to explore different formatting.
+
+---
+
+## \emoji{trophy} **Theorem & Proof Example** {-}
+
+::: {.theorem #pythagoras name="Pythagoras' Theorem"}
+In a right-angled triangle with sides \( a \) and \( b \), and hypotenuse \( c \):
+\[
+a^2 + b^2 = c^2
 \]
 :::
 
 ::: {.proof}
-By the definition of \(\mathbf{0}\), adding it to any vector does not change the vector:
+By applying the properties of similar triangles, we derive:
 \[
-\mathbf{0} + \mathbf{v} = \mathbf{v}.
+a^2 + b^2 = c^2
+\]
+Thus, the theorem holds.  
+:::
+
+---
+
+# \emoji{package} **Custom Boxes**  
+
+Different types of **callout boxes** highlight important information.  
+
+::: {.examplebox name="Example"}
+The Fibonacci sequence starts as follows:
+\[
+0, 1, 1, 2, 3, 5, 8, 13, \dots
 \]
 :::
 
-
-
-As shown in \@ref(thm:vector-addition), the zero vector behaves as expected.
-
-## Example Applications
-
-::: {.example #vector-example name="Vector Computation Example"}
-Consider the vector \(\mathbf{v} = (3,4)\). Then,
-\[
-\mathbf{0} + \mathbf{v} = (3,4).
-\]
+::: {.importantbox name="Important"}
+Understanding how to apply formulas is essential in problem-solving.
 :::
 
-## Important Notes and Warnings
-
-::: {.importantbox name="Key Concept"}
-Understanding the role of the zero vector is fundamental in linear algebra.
+::: {.warningbox name="Warning"}
+Be careful when applying formulas—always check your assumptions!
 :::
 
-::: {.warningbox name="Common Mistakes"}
-Be careful to distinguish between scalar zero \(0\) and the zero vector \(\mathbf{0}\).
-:::
+> \emoji{check-mark-button} **Test it!** Try adding your own **definitions** or **examples**.
 
-## Code Examples
+---
 
-We can compute with vectors in R:
+# \emoji{desktop-computer} **Code Blocks in R**  
 
-```{r vector-addition, echo=TRUE}
-v <- c(3, 4)
-z <- c(0, 0)
-v + z  # Should return (3,4)
+You can include **R code** like this:
+
+```{r fibonacci, echo=TRUE}
+fib <- function(n) {
+  if (n <= 1) return(n)
+  return(fib(n-1) + fib(n-2))
+}
+
+fib(10) # Compute the 10th Fibonacci number
 ```
 
-Inline calculation: The result of \(2+2\) is `r 2+2`.
+> \emoji{bullseye} **Tip:** Modify the function to calculate a different number.
 
-## Conclusion
+---
 
-This document successfully tests:
+# \emoji{bullseye} **Conclusion**  
 
-- Theorem-like environments
-- Cross-referencing
-- Custom boxes (warnings, examples, important notes)
-- Code execution
-- Mathematical notation
+This **Short Notes template** makes it easy to create well-structured, professional-looking documents for teaching, learning, and research. \emoji{rocket}
+
+> \emoji{mortar-board} **Now, try editing this document to make it your own!**  
+
+---
+
+# \emoji{pushpin} **Final Thoughts**
+
+This skeleton is **beginner-friendly** while still showcasing all key features of the **Short Notes** template. Let me know if you'd like any refinements! \emoji{rocket}

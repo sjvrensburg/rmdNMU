@@ -1,0 +1,61 @@
+---
+params:
+  subject: "Statistical Methods"
+  code: "STAT314"
+  test: "Test 1"
+  examiner: "Dr. Smith"
+  timelimit: "2 Hours"
+  date: "`r format(Sys.Date(), '%d %B %Y')`"
+  solutions: false
+  instructions: false
+  #instructions_file: "my_custom_instructions.tex"  # Optional: path to custom instructions
+  pointtable: false
+header:
+  front:
+    left: ""
+    center: "\\Large Test 1 -- STAT314"
+    right: ""
+  running:
+    left: "STAT314"
+    center: ""
+    right: "Page \\thepage\\ of \\numpages"
+footer:
+  front:
+    left: ""
+    center: ""
+    right: ""
+  running:
+    left: ""
+    center: ""
+    right: ""
+fontsize: 14pt  # Can be any size supported by extsizes
+output: rmdNMU::tests
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\question[1]
+What is this?
+\begin{solution}[2.2cm]
+That is a question and this is the solution.
+\end{solution}
+
+\question
+Suppose that we want to split a question into multiple parts.
+
+\begin{parts}
+\part[1]
+Is this possible?
+\begin{solution}[1cm]
+Yes!
+\end{solution}
+
+\part[1]
+Where do the solutions go?
+\begin{solution}[1cm]
+You just place the solution environment below the part.
+\end{solution}
+
+\end{parts}

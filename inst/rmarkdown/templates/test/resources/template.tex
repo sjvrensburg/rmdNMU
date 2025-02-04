@@ -1,0 +1,195 @@
+$if(params.solutions)$
+\documentclass[answers, addpoints]{exam}
+$else$
+\documentclass[addpoints]{exam}
+$endif$
+
+% Handle font size with extsizes
+\usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
+
+% Required packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xifthen}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\usepackage{soul}
+\usetikzlibrary{calc}
+
+% Try to use Nunito Sans if available (needs XeLaTeX or LuaLaTeX)
+\usepackage{ifxetex,ifluatex}
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+\ifxetexorluatex
+  \usepackage{fontspec}
+  % Font configuration
+  \defaultfontfeatures{
+      Ligatures=TeX,
+      UprightFeatures={Weight=400},  % Regular weight for normal text
+      BoldFeatures={Weight=700},     % Bold weight
+      ItalicFeatures={Weight=400},   % Regular weight for italics
+      BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+  }
+
+  \setmainfont{Nunito Sans}[
+      Extension = .ttf,
+      Path = $fontdir$/,
+      UprightFont = NunitoSans-Regular,
+      ItalicFont = NunitoSans-Italic,
+      BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+      BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+      % Font Features section
+      UprightFeatures = {
+          Weight=450,  % Slightly heavier than regular for better readability
+          Scale=1.0
+      },
+      BoldFeatures = {
+          Weight=700  % Bold
+      },
+      ItalicFeatures = {
+          Weight=450  % Matching upright weight
+      },
+      BoldItalicFeatures = {
+          Weight=700  % Bold italic
+      }
+  ]
+  \usepackage{unicode-math}
+  \usepackage{lete-sans-math}
+\fi
+
+% Define NMU colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+
+% Configure siunitx
+\sisetup{
+  group-separator = {\,},
+  group-minimum-digits = 4
+}
+
+% Tightlist environment
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Code highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% Spacing
+\usepackage{setspace}
+\onehalfspacing
+\marksnotpoints
+
+% Style exam pages
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader%
+{\color{nmuprimaryblue}\large \textbf{$header.front.left$}}%
+{\color{nmuprimaryblue}\large \textbf{$header.front.center$}}%
+{\color{nmuprimaryblue}\large \textbf{$header.front.right$}}
+
+\runningheader%
+{\color{nmusecondaryblue}\textbf{$header.running.left$}}%
+{\color{nmusecondaryblue}\textbf{$header.running.center$}}%
+{\color{nmusecondaryblue}\textbf{$header.running.right$}}
+
+\firstpagefooter%
+{\color{nmusecondaryblue}\textbf{$footer.front.left$}}%
+{\color{nmusecondaryblue}\textbf{$footer.front.center$}}%
+{\color{nmusecondaryblue}\textbf{$footer.front.right$}}
+
+\runningfooter%
+{\color{nmusecondaryblue}\textbf{$footer.running.left$}}%
+{\color{nmusecondaryblue}\textbf{$footer.running.center$}}%
+{\color{nmusecondaryblue}\textbf{$footer.running.right$}}
+
+\def\tick{
+  \begin{tikzpicture}[scale=0.3]
+    \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+    \node[above, white] at (0.35, 0.1) {\tiny 1};
+    \node[below, white] at (0.7, 0.5) {\tiny 2};
+  \end{tikzpicture}
+}
+
+\def\doubletick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+        \draw[fill=black] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
+        \node[above, white] at (0.35, 0.1) {\tiny 1};
+        \node[below, white] at (1.2, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\def\halftick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
+        \node[above] at (0.35, 0.1) {\tiny 1};
+        \node[below] at (0.7, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\renewcommand{\droptotalpoints}{
+  \hfill
+  \fbox{\textbf{Question \thequestion: \totalpoints}}
+}
+
+\begin{document}
+
+% Title section
+\begin{center}
+\begin{tabular}{@{} p{4cm} @{} p{10cm} @{}}
+  \toprule
+  \textbf{Subject:} & $params.subject$ \\[0.5em]
+  \textbf{Module Code:} & $params.code$ \\[0.5em]
+  \textbf{Time Limit:} & $params.timelimit$ \\[0.5em]
+  \textbf{Marks:} & \numpoints \\[0.5em]
+  \textbf{Examiner:} & $params.examiner$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{1cm}
+
+% Instructions
+$if(params.instructions)$
+  $if(params.instructions_file)$
+    \input{$params.instructions_file$}
+  $else$
+    \input{$instructions$}
+  $endif$
+$endif$
+
+% Points table
+$if(params.pointtable)$
+  \vspace{1cm}
+  \begin{center}
+    \gradetable[h][questions]
+  \end{center}
+  \newpage
+$endif$
+
+% Questions section
+\begin{questions}
+  $body$
+\end{questions}
+
+\end{document}
