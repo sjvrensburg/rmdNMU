@@ -9,7 +9,6 @@
 \usepackage{xifthen}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{enumitem}
@@ -18,6 +17,54 @@
 \usepackage{siunitx}
 \usepackage{soul}
 \usetikzlibrary{calc}
+
+% Try to use Nunito Sans if available (needs XeLaTeX or LuaLaTeX)
+\usepackage{ifxetex,ifluatex}
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+\ifxetexorluatex
+  \usepackage{fontspec}
+  % Font configuration
+  \defaultfontfeatures{
+      Ligatures=TeX,
+      UprightFeatures={Weight=400},  % Regular weight for normal text
+      BoldFeatures={Weight=700},     % Bold weight
+      ItalicFeatures={Weight=400},   % Regular weight for italics
+      BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+  }
+
+  \setmainfont{Nunito Sans}[
+      Extension = .ttf,
+      Path = /home/stefan/R/x86_64-pc-linux-gnu-library/4.3/rmdNMU/fonts/nunito-sans/,
+      UprightFont = NunitoSans-Regular,
+      ItalicFont = NunitoSans-Italic,
+      BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+      BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+      % Font Features section
+      UprightFeatures = {
+          Weight=450,  % Slightly heavier than regular for better readability
+          Scale=1.0
+      },
+      BoldFeatures = {
+          Weight=700  % Bold
+      },
+      ItalicFeatures = {
+          Weight=450  % Matching upright weight
+      },
+      BoldItalicFeatures = {
+          Weight=700  % Bold italic
+      }
+  ]
+\fi
 
 % Define NMU colors
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
@@ -41,87 +88,54 @@
 % Spacing
 \usepackage{setspace}
 \onehalfspacing
-
-% CSL referencing
+\marksnotpoints
 
 % Style exam pages
 \pagestyle{headandfoot}
 \runningheadrule
-\firstpageheader{\color{nmuprimaryblue}\large \textbf{}}
-{\color{nmuprimaryblue}\large \textbf{\Large Test 1 -- STAT314}}
+\firstpageheader%
+{\color{nmuprimaryblue}\large \textbf{}}%
+{\color{nmuprimaryblue}\large \textbf{\Large Test 1 -- STAT314}}%
 {\color{nmuprimaryblue}\large \textbf{}}
 
-\runningheader{\color{nmusecondaryblue}\textbf{STAT314}}
-{\color{nmusecondaryblue}\textbf{}}
+\runningheader%
+{\color{nmusecondaryblue}\textbf{STAT314}}%
+{\color{nmusecondaryblue}\textbf{}}%
 {\color{nmusecondaryblue}\textbf{Page \thepage~of \numpages}}
 
-\firstpagefooter{\color{nmusecondaryblue}\textbf{}}
-{\color{nmusecondaryblue}\textbf{}}
-{\color{nmusecondaryblue}\textbf{}}
-
-\runningfooter{\color{nmusecondaryblue}\textbf{}}
-{\color{nmusecondaryblue}\textbf{}}
+\firstpagefooter%
+{\color{nmusecondaryblue}\textbf{}}%
+{\color{nmusecondaryblue}\textbf{}}%
 {\color{nmusecondaryblue}\textbf{}}
 
-% Marking tick definitions
-\def\tick{
-  \begin{tikzpicture}[scale=0.3]
-    \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
-    \node[above, white] at (0.35, 0.1) {\tiny 1};
-    \node[below, white] at (0.7, 0.5) {\tiny 2};
-  \end{tikzpicture}
-}
-
-\def\doubletick{
-    \begin{tikzpicture}[scale=0.3]
-        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
-        \draw[fill=nmusecondaryblue] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
-        \node[above, white] at (0.35, 0.1) {\tiny 1};
-        \node[below, white] at (1.2, 0.5) {\tiny 2};
-    \end{tikzpicture}
-}
-
-\def\halftick{
-    \begin{tikzpicture}[scale=0.3]
-        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
-        \node[above, white] at (0.35, 0.1) {\tiny 1};
-        \node[below, white] at (0.7, 0.5) {\tiny 2};
-    \end{tikzpicture}
-}
+\runningfooter%
+{\color{nmusecondaryblue}\textbf{}}%
+{\color{nmusecondaryblue}\textbf{}}%
+{\color{nmusecondaryblue}\textbf{}}
 
 \begin{document}
 
-% Title information
+% Title section
 \begin{center}
-\begin{tabularx}{\textwidth}{ >{\color{nmuprimaryblue}\bfseries}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X }
-  \hline
-  Subject:  &  \multicolumn{3}{l}{Statistical Methods} \\
-  Module Code: & \multicolumn{3}{l}{STAT314} \\
-  Time Limit: & \multicolumn{3}{l}{2 Hours} \\
-  Marks: & \multicolumn{3}{l}{\numpoints} \\
-  Examiner:  & \multicolumn{3}{l}{Dr.~Smith} \\
-  \hline
-\end{tabularx}
-\vspace{1cm}
+\begin{tabular}{@{} p{4cm} @{} p{10cm} @{}}
+  \toprule
+  \textbf{Subject:} & Statistical Methods \\[0.5em]
+  \textbf{Module Code:} & STAT314 \\[0.5em]
+  \textbf{Time Limit:} & 2 Hours \\[0.5em]
+  \textbf{Marks:} & \numpoints \\[0.5em]
+  \textbf{Examiner:} & Dr.~Smith \\
+  \bottomrule
+\end{tabular}
 \end{center}
 
+\vspace{1cm}
+
 % Instructions
-      \input{/home/stefan/R/x86_64-pc-linux-gnu-library/4.3/rmdNMU/rmarkdown/templates/test/resources/instructions.tex}
-  
+
 % Points table
-  \vspace{1cm}
-  \begin{center}
-    \pointtable[h][questions]
-  \end{center}
-  \newpage
 
 % Questions section
 \begin{questions}
-  \setlength{\rightpointsmargin}{1in}
-  \bracketedpoints
-  \marksnotpoints
-  \totalformat{\fbox{\color{nmuprimaryblue}Question \thequestion: \totalpoints}}
-
   \question[1]What is this?
 
   \begin{solution}[2.2cm]
@@ -146,7 +160,6 @@
   \end{solution}
 
   \end{parts}
-
 \end{questions}
 
 \end{document}

@@ -7,9 +7,9 @@ params:
   timelimit: "2 Hours"
   date: "`r format(Sys.Date(), '%d %B %Y')`"
   solutions: false
-  instructions: true
+  instructions: false
   #instructions_file: "my_custom_instructions.tex"  # Optional: path to custom instructions
-  pointtable: true
+  pointtable: false
 header:
   front:
     left: ""

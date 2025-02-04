@@ -13,7 +13,6 @@ $endif$
 \usepackage{xifthen}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
-\usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{enumitem}
@@ -22,6 +21,54 @@ $endif$
 \usepackage{siunitx}
 \usepackage{soul}
 \usetikzlibrary{calc}
+
+% Try to use Nunito Sans if available (needs XeLaTeX or LuaLaTeX)
+\usepackage{ifxetex,ifluatex}
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+\ifxetexorluatex
+  \usepackage{fontspec}
+  % Font configuration
+  \defaultfontfeatures{
+      Ligatures=TeX,
+      UprightFeatures={Weight=400},  % Regular weight for normal text
+      BoldFeatures={Weight=700},     % Bold weight
+      ItalicFeatures={Weight=400},   % Regular weight for italics
+      BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+  }
+
+  \setmainfont{Nunito Sans}[
+      Extension = .ttf,
+      Path = $fontdir$/,
+      UprightFont = NunitoSans-Regular,
+      ItalicFont = NunitoSans-Italic,
+      BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+      BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+      % Font Features section
+      UprightFeatures = {
+          Weight=450,  % Slightly heavier than regular for better readability
+          Scale=1.0
+      },
+      BoldFeatures = {
+          Weight=700  % Bold
+      },
+      ItalicFeatures = {
+          Weight=450  % Matching upright weight
+      },
+      BoldItalicFeatures = {
+          Weight=700  % Bold italic
+      }
+  ]
+\fi
 
 % Define NMU colors
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
@@ -48,92 +95,47 @@ $endif$
 % Spacing
 \usepackage{setspace}
 \onehalfspacing
-
-% CSL referencing
-$if(csl-refs)$
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2]
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
-  \fi
-  % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-$endif$
+\marksnotpoints
 
 % Style exam pages
 \pagestyle{headandfoot}
 \runningheadrule
-\firstpageheader{\color{nmuprimaryblue}\large \textbf{$header.front.left$}}
-{\color{nmuprimaryblue}\large \textbf{$header.front.center$}}
+\firstpageheader%
+{\color{nmuprimaryblue}\large \textbf{$header.front.left$}}%
+{\color{nmuprimaryblue}\large \textbf{$header.front.center$}}%
 {\color{nmuprimaryblue}\large \textbf{$header.front.right$}}
 
-\runningheader{\color{nmusecondaryblue}\textbf{$header.running.left$}}
-{\color{nmusecondaryblue}\textbf{$header.running.center$}}
+\runningheader%
+{\color{nmusecondaryblue}\textbf{$header.running.left$}}%
+{\color{nmusecondaryblue}\textbf{$header.running.center$}}%
 {\color{nmusecondaryblue}\textbf{$header.running.right$}}
 
-\firstpagefooter{\color{nmusecondaryblue}\textbf{$footer.front.left$}}
-{\color{nmusecondaryblue}\textbf{$footer.front.center$}}
+\firstpagefooter%
+{\color{nmusecondaryblue}\textbf{$footer.front.left$}}%
+{\color{nmusecondaryblue}\textbf{$footer.front.center$}}%
 {\color{nmusecondaryblue}\textbf{$footer.front.right$}}
 
-\runningfooter{\color{nmusecondaryblue}\textbf{$footer.running.left$}}
-{\color{nmusecondaryblue}\textbf{$footer.running.center$}}
+\runningfooter%
+{\color{nmusecondaryblue}\textbf{$footer.running.left$}}%
+{\color{nmusecondaryblue}\textbf{$footer.running.center$}}%
 {\color{nmusecondaryblue}\textbf{$footer.running.right$}}
-
-% Marking tick definitions
-\def\tick{
-  \begin{tikzpicture}[scale=0.3]
-    \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
-    \node[above, white] at (0.35, 0.1) {\tiny 1};
-    \node[below, white] at (0.7, 0.5) {\tiny 2};
-  \end{tikzpicture}
-}
-
-\def\doubletick{
-    \begin{tikzpicture}[scale=0.3]
-        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
-        \draw[fill=nmusecondaryblue] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
-        \node[above, white] at (0.35, 0.1) {\tiny 1};
-        \node[below, white] at (1.2, 0.5) {\tiny 2};
-    \end{tikzpicture}
-}
-
-\def\halftick{
-    \begin{tikzpicture}[scale=0.3]
-        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
-        \node[above, white] at (0.35, 0.1) {\tiny 1};
-        \node[below, white] at (0.7, 0.5) {\tiny 2};
-    \end{tikzpicture}
-}
 
 \begin{document}
 
-% Title information
+% Title section
 \begin{center}
-\begin{tabularx}{\textwidth}{ >{\color{nmuprimaryblue}\bfseries}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X }
-  \hline
-  Subject:  &  \multicolumn{3}{l}{$params.subject$} \\
-  Module Code: & \multicolumn{3}{l}{$params.code$} \\
-  Time Limit: & \multicolumn{3}{l}{$params.timelimit$} \\
-  Marks: & \multicolumn{3}{l}{\numpoints} \\
-  Examiner:  & \multicolumn{3}{l}{$params.examiner$} \\
-  \hline
-\end{tabularx}
-\vspace{1cm}
+\begin{tabular}{@{} p{4cm} @{} p{10cm} @{}}
+  \toprule
+  \textbf{Subject:} & $params.subject$ \\[0.5em]
+  \textbf{Module Code:} & $params.code$ \\[0.5em]
+  \textbf{Time Limit:} & $params.timelimit$ \\[0.5em]
+  \textbf{Marks:} & \numpoints \\[0.5em]
+  \textbf{Examiner:} & $params.examiner$ \\
+  \bottomrule
+\end{tabular}
 \end{center}
+
+\vspace{1cm}
 
 % Instructions
 $if(params.instructions)$
@@ -148,20 +150,14 @@ $endif$
 $if(params.pointtable)$
   \vspace{1cm}
   \begin{center}
-    \pointtable[h][questions]
+    \gradetable[h][questions]
   \end{center}
   \newpage
 $endif$
 
 % Questions section
 \begin{questions}
-  \setlength{\rightpointsmargin}{1in}
-  \bracketedpoints
-  \marksnotpoints
-  \totalformat{\fbox{\color{nmuprimaryblue}Question \thequestion: \totalpoints}}
-
   $body$
-
 \end{questions}
 
 \end{document}
