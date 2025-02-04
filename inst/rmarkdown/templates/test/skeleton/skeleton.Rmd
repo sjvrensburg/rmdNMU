@@ -1,37 +1,35 @@
 ---
 params:
-  # ALWAYS USE DOUBLE QUOTES FOR YAML PARAMETERS.
-  subject: "MODULE NAME"
-  code: "MODULE CODE"
-  test: "TEST X"
-  examiner: "Dr SOMEONE"
-  timelimit: "1 Hour"
+  subject: "Statistical Methods"
+  code: "STAT314"
+  test: "Test 1"
+  examiner: "Dr. Smith"
+  timelimit: "2 Hours"
   date: "`r format(Sys.Date(), '%d %B %Y')`"
-  solutions: false     # Is this the memo?
-  instructions: true  # Edit instructions.tex to customise
-  pointtable: true   # Code for point table in instructions.tex
-# HEADERS AND FOOTERS
+  solutions: false
+  instructions: true
+  #instructions_file: "my_custom_instructions.tex"  # Optional: path to custom instructions
+  pointtable: true
 header:
   front:
-    left:   ""
-    center: "\\Large `r params$test` -- `r params$code`"
-    right:  ""
+    left: ""
+    center: "\\Large Test 1 -- STAT314"
+    right: ""
   running:
-    left:   "`r params$code`"
+    left: "STAT314"
     center: ""
-    right:  "Page \\thepage\\ of \\numpages\\ " # NB: SPACE AT THE
+    right: "Page \\thepage\\ of \\numpages"
 footer:
   front:
-    left:   ""
+    left: ""
     center: ""
-    right:  ""
+    right: ""
   running:
-    left:   ""
+    left: ""
     center: ""
-    right:  ""
-fontsize: 12pt
-output: RMDs4NMU::tests
-standalone: true
+    right: ""
+fontsize: 14pt  # Can be any size supported by extsizes
+output: rmdNMU::tests
 ---
 
 ```{r setup, include=FALSE}

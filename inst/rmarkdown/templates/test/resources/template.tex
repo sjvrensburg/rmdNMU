@@ -1,12 +1,16 @@
 $if(params.solutions)$
-\documentclass[answers, addpoints, $if(fontsize)$$fontsize$$else$12pt$endif$]{exam}
+\documentclass[answers, addpoints]{exam}
 $else$
-\documentclass[addpoints, $if(fontsize)$$fontsize$$else$12pt$endif$]{exam}
+\documentclass[addpoints]{exam}
 $endif$
 
+% Handle font size with extsizes
+\usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
+
+% Required packages
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{xifthen} % provides \isempty test
+\usepackage{xifthen}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
@@ -14,25 +18,34 @@ $endif$
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usepackage{xcolor}
 \usepackage{siunitx}
 \usepackage{soul}
+\usetikzlibrary{calc}
 
+% Define NMU colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+
+% Configure siunitx
 \sisetup{
   group-separator = {\,},
   group-minimum-digits = 4
 }
 
-% Tightlist environment when using "-" for bullet points.
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+% Tightlist environment
+\setlength{\emergencystretch}{3em}
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% Highlighting code chuncks
+% Code highlighting
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+% Spacing
 \usepackage{setspace}
 \onehalfspacing
 
@@ -42,9 +55,7 @@ $if(csl-refs)$
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+\newenvironment{CSLReferences}[2]
  {% don't indent paragraphs
   \setlength{\parindent}{0pt}
   % turn on hanging indent if param 1 is 1
@@ -63,27 +74,29 @@ $if(csl-refs)$
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
 
+% Style exam pages
 \pagestyle{headandfoot}
 \runningheadrule
-\firstpageheader{\large \textbf{$header.front.left$}}
-{\large \textbf{$header.front.center$}}
-{\large \textbf{$header.front.right$}}
-%% Other pages
-\runningheader{\textbf{$header.running.left$}}
-{\textbf{$header.running.center$}}
-{\textbf{$header.running.right$}}
+\firstpageheader{\color{nmuprimaryblue}\large \textbf{$header.front.left$}}
+{\color{nmuprimaryblue}\large \textbf{$header.front.center$}}
+{\color{nmuprimaryblue}\large \textbf{$header.front.right$}}
 
-\firstpagefooter{\large \textbf{$footer.front.left$}}
-{\large \textbf{$footer.front.center$}}
-{\large \textbf{$footer.front.right$}}
-%% Other pages
-\runningfooter{\textbf{$footer.running.left$}}
-{\textbf{$footer.running.center$}}
-{\textbf{$footer.running.right$}}
+\runningheader{\color{nmusecondaryblue}\textbf{$header.running.left$}}
+{\color{nmusecondaryblue}\textbf{$header.running.center$}}
+{\color{nmusecondaryblue}\textbf{$header.running.right$}}
 
+\firstpagefooter{\color{nmusecondaryblue}\textbf{$footer.front.left$}}
+{\color{nmusecondaryblue}\textbf{$footer.front.center$}}
+{\color{nmusecondaryblue}\textbf{$footer.front.right$}}
+
+\runningfooter{\color{nmusecondaryblue}\textbf{$footer.running.left$}}
+{\color{nmusecondaryblue}\textbf{$footer.running.center$}}
+{\color{nmusecondaryblue}\textbf{$footer.running.right$}}
+
+% Marking tick definitions
 \def\tick{
   \begin{tikzpicture}[scale=0.3]
-    \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+    \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
     \node[above, white] at (0.35, 0.1) {\tiny 1};
     \node[below, white] at (0.7, 0.5) {\tiny 2};
   \end{tikzpicture}
@@ -91,8 +104,8 @@ $endif$
 
 \def\doubletick{
     \begin{tikzpicture}[scale=0.3]
-        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
-        \draw[fill=black] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
+        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+        \draw[fill=nmusecondaryblue] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
         \node[above, white] at (0.35, 0.1) {\tiny 1};
         \node[below, white] at (1.2, 0.5) {\tiny 2};
     \end{tikzpicture}
@@ -100,42 +113,38 @@ $endif$
 
 \def\halftick{
     \begin{tikzpicture}[scale=0.3]
-        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
-        \node[above] at (0.35, 0.1) {\tiny 1};
-        \node[below] at (0.7, 0.5) {\tiny 2};
+        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
+        \node[above, white] at (0.35, 0.1) {\tiny 1};
+        \node[below, white] at (0.7, 0.5) {\tiny 2};
     \end{tikzpicture}
 }
 
 \begin{document}
 
+% Title information
 \begin{center}
-
-\begin{tabularx}{\textwidth}{ XXXX }
+\begin{tabularx}{\textwidth}{ >{\color{nmuprimaryblue}\bfseries}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X }
   \hline
-  \textbf{Subject:}  &  \multicolumn{3}{l}{$params.subject$} \\
-  \textbf{Module Code:} & \multicolumn{3}{l}{$params.code$} \\
-  \textbf{Time Limit:} & \multicolumn{3}{l}{$params.timelimit$} \\
-  \textbf{Marks:} & \multicolumn{3}{l}{\numpoints} \\
-  \textbf{Examiner:}  & \multicolumn{3}{l}{$params.examiner$} \\
+  Subject:  &  \multicolumn{3}{l}{$params.subject$} \\
+  Module Code: & \multicolumn{3}{l}{$params.code$} \\
+  Time Limit: & \multicolumn{3}{l}{$params.timelimit$} \\
+  Marks: & \multicolumn{3}{l}{\numpoints} \\
+  Examiner:  & \multicolumn{3}{l}{$params.examiner$} \\
   \hline
 \end{tabularx}
 \vspace{1cm}
 \end{center}
 
+% Instructions
 $if(params.instructions)$
-  \noindent\fbox{
-    \begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}
-      \textbf{Special Instructions:}
-      \begin{itemize}
-        \item Answer all questions.
-        \item Use of calculator is permitted.
-        \item Show your workings.
-        \item Round off final answers to four decimal places.
-        \item If you choose to write your answers in pencil you then forfeit the right to question the examiners marking.
-      \end{itemize}
-    \end{minipage}}
+  $if(params.instructions_file)$
+    \input{$params.instructions_file$}
+  $else$
+    \input{$instructions$}
+  $endif$
 $endif$
 
+% Points table
 $if(params.pointtable)$
   \vspace{1cm}
   \begin{center}
@@ -144,11 +153,12 @@ $if(params.pointtable)$
   \newpage
 $endif$
 
+% Questions section
 \begin{questions}
   \setlength{\rightpointsmargin}{1in}
   \bracketedpoints
   \marksnotpoints
-  \totalformat{\fbox{Question \thequestion: \totalpoints}}
+  \totalformat{\fbox{\color{nmuprimaryblue}Question \thequestion: \totalpoints}}
 
   $body$
 

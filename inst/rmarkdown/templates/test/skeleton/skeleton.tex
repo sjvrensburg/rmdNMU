@@ -1,8 +1,12 @@
-\documentclass[addpoints, 12pt]{exam}
+\documentclass[addpoints]{exam}
 
+% Handle font size with extsizes
+\usepackage[14pt]{extsizes}
+
+% Required packages
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{xifthen} % provides \isempty test
+\usepackage{xifthen}
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
@@ -10,48 +14,59 @@
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{tikz}
-\usetikzlibrary{calc}
+\usepackage{xcolor}
 \usepackage{siunitx}
 \usepackage{soul}
+\usetikzlibrary{calc}
 
+% Define NMU colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+
+% Configure siunitx
 \sisetup{
   group-separator = {\,},
   group-minimum-digits = 4
 }
 
-% Tightlist environment when using "-" for bullet points.
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+% Tightlist environment
+\setlength{\emergencystretch}{3em}
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% Highlighting code chuncks
+% Code highlighting
 
+% Spacing
 \usepackage{setspace}
 \onehalfspacing
 
 % CSL referencing
 
+% Style exam pages
 \pagestyle{headandfoot}
 \runningheadrule
-\firstpageheader{\large \textbf{}}
-{\large \textbf{\Large TEST X -- MODULE CODE}}
-{\large \textbf{}}
-%% Other pages
-\runningheader{\textbf{MODULE CODE}}
-{\textbf{}}
-{\textbf{Page \thepage~of \numpages~}}
+\firstpageheader{\color{nmuprimaryblue}\large \textbf{}}
+{\color{nmuprimaryblue}\large \textbf{\Large Test 1 -- STAT314}}
+{\color{nmuprimaryblue}\large \textbf{}}
 
-\firstpagefooter{\large \textbf{}}
-{\large \textbf{}}
-{\large \textbf{}}
-%% Other pages
-\runningfooter{\textbf{}}
-{\textbf{}}
-{\textbf{}}
+\runningheader{\color{nmusecondaryblue}\textbf{STAT314}}
+{\color{nmusecondaryblue}\textbf{}}
+{\color{nmusecondaryblue}\textbf{Page \thepage~of \numpages}}
 
+\firstpagefooter{\color{nmusecondaryblue}\textbf{}}
+{\color{nmusecondaryblue}\textbf{}}
+{\color{nmusecondaryblue}\textbf{}}
+
+\runningfooter{\color{nmusecondaryblue}\textbf{}}
+{\color{nmusecondaryblue}\textbf{}}
+{\color{nmusecondaryblue}\textbf{}}
+
+% Marking tick definitions
 \def\tick{
   \begin{tikzpicture}[scale=0.3]
-    \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+    \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
     \node[above, white] at (0.35, 0.1) {\tiny 1};
     \node[below, white] at (0.7, 0.5) {\tiny 2};
   \end{tikzpicture}
@@ -59,8 +74,8 @@
 
 \def\doubletick{
     \begin{tikzpicture}[scale=0.3]
-        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
-        \draw[fill=black] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
+        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+        \draw[fill=nmusecondaryblue] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
         \node[above, white] at (0.35, 0.1) {\tiny 1};
         \node[below, white] at (1.2, 0.5) {\tiny 2};
     \end{tikzpicture}
@@ -68,51 +83,44 @@
 
 \def\halftick{
     \begin{tikzpicture}[scale=0.3]
-        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
-        \node[above] at (0.35, 0.1) {\tiny 1};
-        \node[below] at (0.7, 0.5) {\tiny 2};
+        \draw[fill=nmusecondaryblue] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
+        \node[above, white] at (0.35, 0.1) {\tiny 1};
+        \node[below, white] at (0.7, 0.5) {\tiny 2};
     \end{tikzpicture}
 }
 
 \begin{document}
 
+% Title information
 \begin{center}
-
-\begin{tabularx}{\textwidth}{ XXXX }
+\begin{tabularx}{\textwidth}{ >{\color{nmuprimaryblue}\bfseries}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X >{\color{nmusecondaryblue}}X }
   \hline
-  \textbf{Subject:}  &  \multicolumn{3}{l}{MODULE NAME} \\
-  \textbf{Module Code:} & \multicolumn{3}{l}{MODULE CODE} \\
-  \textbf{Time Limit:} & \multicolumn{3}{l}{1 Hour} \\
-  \textbf{Marks:} & \multicolumn{3}{l}{\numpoints} \\
-  \textbf{Examiner:}  & \multicolumn{3}{l}{Dr SOMEONE} \\
+  Subject:  &  \multicolumn{3}{l}{Statistical Methods} \\
+  Module Code: & \multicolumn{3}{l}{STAT314} \\
+  Time Limit: & \multicolumn{3}{l}{2 Hours} \\
+  Marks: & \multicolumn{3}{l}{\numpoints} \\
+  Examiner:  & \multicolumn{3}{l}{Dr.~Smith} \\
   \hline
 \end{tabularx}
 \vspace{1cm}
 \end{center}
 
-  \noindent\fbox{
-    \begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}
-      \textbf{Special Instructions:}
-      \begin{itemize}
-        \item Answer all questions.
-        \item Use of calculator is permitted.
-        \item Show your workings.
-        \item Round off final answers to four decimal places.
-        \item If you choose to write your answers in pencil you then forfeit the right to question the examiners marking.
-      \end{itemize}
-    \end{minipage}}
-
+% Instructions
+      \input{/home/stefan/R/x86_64-pc-linux-gnu-library/4.3/rmdNMU/rmarkdown/templates/test/resources/instructions.tex}
+  
+% Points table
   \vspace{1cm}
   \begin{center}
     \pointtable[h][questions]
   \end{center}
   \newpage
 
+% Questions section
 \begin{questions}
   \setlength{\rightpointsmargin}{1in}
   \bracketedpoints
   \marksnotpoints
-  \totalformat{\fbox{Question \thequestion: \totalpoints}}
+  \totalformat{\fbox{\color{nmuprimaryblue}Question \thequestion: \totalpoints}}
 
   \question[1]What is this?
 
