@@ -10,30 +10,58 @@ $for(classoption)$
 $endfor$
 ]{$documentclass$}
 
+% Load basic packages first
 \usepackage{fontspec}
 \usepackage{amssymb}
 \usepackage{unicode-math}
 \usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{bookmark}
+\usepackage{xurl}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+
+% Basic setup
 \SetProtrusion
   [ name     = microtype-default,
     load     = microtype-default ]
   { }
   { }
 
-\defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Nunito Sans 10pt}[
-  UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic,
-  BoldItalicFont = *-BoldItalic
-]
-% \setmainfont[]{Nunito Sans}
+% Font configuration
+\defaultfontfeatures{
+    Ligatures=TeX,
+    UprightFeatures={Weight=400},  % Regular weight for normal text
+    BoldFeatures={Weight=700},     % Bold weight
+    ItalicFeatures={Weight=400},   % Regular weight for italics
+    BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+}
 
-% Basic formatting packages
-\usepackage{graphicx}
-\usepackage{fancyvrb}
-\usepackage{xcolor}
-\usepackage{bookmark}
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+    BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+    % Font Features section
+    UprightFeatures = {
+        Weight=450,  % Slightly heavier than regular for better readability
+        Scale=1.0
+    },
+    BoldFeatures = {
+        Weight=700  % Bold
+    },
+    ItalicFeatures = {
+        Weight=450  % Matching upright weight
+    },
+    BoldItalicFeatures = {
+        Weight=700  % Bold italic
+    }
+]
 
 % Code highlighting
 $highlighting-macros$
@@ -42,14 +70,11 @@ $highlighting-macros$
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% Page layout
-\usepackage[margin=1in]{geometry}
-\usepackage{setspace}
-\usepackage{parskip}
-
-% URLs
-\usepackage{xurl}
+% URL styling
 \urlstyle{same}
+
+% Load the preamble with custom environments and styles
+$header-includes$
 
 % PDF metadata
 \usepackage{hyperref}
@@ -60,13 +85,7 @@ $highlighting-macros$
   pdfcreator={LaTeX via pandoc}
 }
 
-$header-includes$
-
-% Title formatting
-\title{$title$}
-\author{$author$}
-\date{$date$}
-
+% Bibliography setup if needed
 $if(bibliography)$
 \usepackage[
    backend=biber,
@@ -86,8 +105,14 @@ $if(bibliography)$
 $endif$
 $endif$
 
+% Title information
+\title{$title$}
+\author{$author$}
+\date{$date$}
+
 \begin{document}
 \maketitle
+
 $body$
 
 $if(bibliography)$

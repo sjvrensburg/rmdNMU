@@ -15,6 +15,22 @@ short_notes <- function(..., keep_tex=TRUE) {
     "rmarkdown/templates/short_notes/resources/preamble.tex",
     package = "rmdNMU")
 
+  # Get the font directory path and escape spaces/special chars
+  font_dir <- gsub("\\", "/", system.file("fonts", "nunito-sans", package = "rmdNMU"), fixed = TRUE)
+
+  # Verify font files exist
+  font_files <- c(
+    #"NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf",
+    #"NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf",
+    "NunitoSans-Regular.ttf",
+    "NunitoSans-Italic.ttf"
+  )
+
+  missing_fonts <- !sapply(font_files, function(f) file.exists(file.path(font_dir, f)))
+  if (any(missing_fonts)) {
+    warning("Missing font files: ", paste(font_files[missing_fonts], collapse = ", "))
+  }
+
   box_filter <- system.file(
     "rmarkdown/templates/short_notes/resources/custom-boxes.lua",
     package = "rmdNMU")
@@ -28,13 +44,13 @@ short_notes <- function(..., keep_tex=TRUE) {
     template = template,
     latex_engine = "lualatex",
     keep_tex = keep_tex,
-    includes = list(in_header = preamble),
+    includes = list(
+      in_header = preamble
+    ),
     pandoc_args = c(
+      "--variable", sprintf("fontdir=%s", font_dir),
       "--lua-filter", box_filter,
-      "--lua-filter", crossref_filter,
-      "--number-sections",
-      "--preserve-tabs",
-      "--citeproc"
+      "--lua-filter", crossref_filter
     )
   )
   fmt

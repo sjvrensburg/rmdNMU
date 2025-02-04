@@ -13,3 +13,6 @@ Imports:
     rmarkdown,
     knitr,
     tinytex
+SystemRequirements: 
+    LuaTeX,
+    Nunito Sans fonts

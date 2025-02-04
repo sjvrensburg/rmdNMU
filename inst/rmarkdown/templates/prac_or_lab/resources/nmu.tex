@@ -3,7 +3,6 @@
 % Required packages
 \usepackage{parskip}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -35,9 +34,39 @@
 % Set page geometry
 \geometry{margin=1.25in}
 
-% Set fonts (approximating Nunito Sans and JetBrains Mono)
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+
+% Set Nunito Sans Variable Font as the main font
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    UprightFont = *-VariableFont_YTLC\,opsz\,wdth\,wght,
+    ItalicFont = *-Italic-VariableFont_YTLC\,opsz\,wdth\,wght,
+    FontFace = {l}{n}{wght=300}, % light
+    FontFace = {m}{n}{wght=400}, % regular
+    FontFace = {sb}{n}{wght=600}, % semibold
+    FontFace = {b}{n}{wght=700}, % bold
+    FontFace = {eb}{n}{wght=800}, % extrabold
+    FontFace = {k}{n}{wght=900}, % black
+    FontFace = {l}{it}{wght=300}, % light italic
+    FontFace = {m}{it}{wght=400}, % italic
+    FontFace = {sb}{it}{wght=600}, % semibold italic
+    FontFace = {b}{it}{wght=700}, % bold italic
+    FontFace = {eb}{it}{wght=800}, % extrabold italic
+    FontFace = {k}{it}{wght=900}, % black italic
+    UprightFeatures={Variable={wght=400}},
+    BoldFeatures={Variable={wght=700}},
+    SlantedFeatures={Variable={slnt=10}},
+    ItalicFeatures={Variable={wght=400}},
+    BoldItalicFeatures={Variable={wght=700}},
+    Scale = 1.0
+]
+
+% For monospace code blocks
+\setmonofont{JetBrains Mono}[
+    Scale = 0.9
+]
+
 \usepackage{inconsolata}
 
 % Customize hyperlinks

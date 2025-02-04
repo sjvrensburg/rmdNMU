@@ -3,30 +3,58 @@
   a4paper,
 ]{extarticle}
 
+% Load basic packages first
 \usepackage{fontspec}
 \usepackage{amssymb}
 \usepackage{unicode-math}
 \usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{bookmark}
+\usepackage{xurl}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{parskip}
+
+% Basic setup
 \SetProtrusion
   [ name     = microtype-default,
     load     = microtype-default ]
   { }
   { }
 
-\defaultfontfeatures{Ligatures=TeX}
-% \setmainfont{Nunito Sans 10pt}[
-%   UprightFont = *-Regular,
-%   BoldFont = *-Bold,
-%   ItalicFont = *-Italic,
-%   BoldItalicFont = *-BoldItalic
-% ]
-\setmainfont[]{Nunito Sans}
+% Font configuration
+\defaultfontfeatures{
+    Ligatures=TeX,
+    UprightFeatures={Weight=400},  % Regular weight for normal text
+    BoldFeatures={Weight=700},     % Bold weight
+    ItalicFeatures={Weight=400},   % Regular weight for italics
+    BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+}
 
-% Basic formatting packages
-\usepackage{graphicx}
-\usepackage{fancyvrb}
-\usepackage{xcolor}
-\usepackage{bookmark}
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = /home/stefan/R/x86_64-pc-linux-gnu-library/4.3/rmdNMU/fonts/nunito-sans/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+    BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+    % Font Features section
+    UprightFeatures = {
+        Weight=450,  % Slightly heavier than regular for better readability
+        Scale=1.0
+    },
+    BoldFeatures = {
+        Weight=700  % Bold
+    },
+    ItalicFeatures = {
+        Weight=450  % Matching upright weight
+    },
+    BoldItalicFeatures = {
+        Weight=700  % Bold italic
+    }
+]
 
 % Code highlighting
 \usepackage{color}
@@ -74,31 +102,18 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% Page layout
-\usepackage[margin=1in]{geometry}
-\usepackage{setspace}
-\usepackage{parskip}
-
-% URLs
-\usepackage{xurl}
+% URL styling
 \urlstyle{same}
 
-% PDF metadata
-\usepackage{hyperref}
-\hypersetup{
-  pdftitle={Short Notes Test Document},
-  pdfauthor={Your Name},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}
-}
-
-\usepackage{geometry}
+% Load the preamble with custom environments and styles
+% Additional required packages (not loaded in template)
 \usepackage{titlesec}
 \usepackage{amsthm}
 \usepackage{thmtools}
 \usepackage[most]{tcolorbox}
 \usepackage{emoji}
 \usepackage{amsfonts}
+\usepackage{cleveref}
 
 % Color definitions
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
@@ -118,46 +133,39 @@
 % Page setup
 \geometry{a4paper, margin=2.54cm}
 
-% Section formatting
-\titleformat{\section}{\Large\bfseries\color{nmuprimaryblue}}{\thesection}{1em}{}
-\titleformat{\subsection}{\large\bfseries\color{nmusecondaryblue}}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalsize\bfseries\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
+% Section formatting with heavier weights
+\titleformat{\section}{\Large\bfseries\addfontfeatures{Weight=800}\color{nmuprimaryblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
 
 % Default text color
 \color{nmuprimaryblue}
 
-% Font weights
-\newcommand{\nmulight}{\fontseries{l}\selectfont}
-\newcommand{\nmuregular}{\fontseries{m}\selectfont}
-\newcommand{\nmusemibold}{\fontseries{sb}\selectfont}
-\newcommand{\nmubold}{\fontseries{b}\selectfont}
-\newcommand{\nmuextrabold}{\fontseries{eb}\selectfont}
-\newcommand{\nmublack}{\fontseries{k}\selectfont}
-
-% Theorem styles
+% Theorem styles with proper weights
 \declaretheoremstyle[
-   headfont=\color{nmuprimaryblue}\nmusemibold,
-   bodyfont=\normalfont,
-   spaceabove=6pt,
-   spacebelow=6pt,
-   headpunct={.}
+   headfont=\color{nmusecondaryblue}\addfontfeatures{Weight=800}\bfseries,
+   bodyfont=\itshape,
+   spaceabove=10pt,
+   spacebelow=10pt,
+   headpunct={:}
 ]{nmustyle}
 
 \declaretheoremstyle[
-   headfont=\color{nmusecondaryblue}\nmusemibold,
-   bodyfont=\normalfont,
-   spaceabove=6pt,
-   spacebelow=6pt,
-   headpunct={.}
+   headfont=\color{nmusecondaryblue}\addfontfeatures{Weight=800}\bfseries,
+   bodyfont=\itshape,
+   spaceabove=10pt,
+   spacebelow=10pt,
+   headpunct={:}
 ]{nmudefinitionstyle}
 
 \declaretheoremstyle[
-   headfont=\color{nmugrey}\nmuregular\itshape,
-   bodyfont=\normalfont,
-   spaceabove=6pt,
-   spacebelow=6pt,
-   headpunct={.}
+   headfont=\color{nmusecondaryblue}\itshape\addfontfeatures{Weight=800}\bfseries,
+   bodyfont=\itshape,
+   spaceabove=10pt,
+   spacebelow=10pt,
+   headpunct={--}
 ]{nmuremarkstyle}
+
 
 % Section numbering
 \setcounter{secnumdepth}{3}
@@ -174,7 +182,7 @@
 
 % Proof environment
 \renewenvironment{proof}{%
-   \par\noindent{\color{nmuprimaryblue}\nmusemibold Proof:}\normalfont}{%
+   \par\noindent{\color{nmuprimaryblue}\addfontfeatures{Weight=700}Proof:}\normalfont}{%
    \hfill$\blacksquare$\par}
 
 % Custom box titles
@@ -195,7 +203,7 @@
    colframe=red!80!black,
    arc=0mm,
    title={\large\emoji{warning} #1},
-   fonttitle=\nmusemibold,
+   fonttitle=\fontseries{sb}\selectfont,
    left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
@@ -205,7 +213,7 @@
    colframe=nmusecondaryyellow,
    arc=0mm,
    title={\large\emoji{light-bulb}  #1},
-   fonttitle=\nmusemibold,
+   fonttitle=\fontseries{sb}\selectfont,
    left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
@@ -215,7 +223,7 @@
    colframe=nmuprimaryblue,
    arc=0mm,
    title={\large\emoji{memo}  #1},
-   fonttitle=\nmusemibold,
+   fonttitle=\fontseries{sb}\selectfont,
    left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
@@ -225,7 +233,7 @@
    colframe=nmuocean,
    arc=0mm,
    title={\large\emoji{thought-balloon} #1},
-   fonttitle=\nmusemibold,
+   fonttitle=\fontseries{sb}\selectfont,
    left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
@@ -235,7 +243,7 @@
    colframe=nmusciences,
    arc=0mm,
    title={\large\emoji{glowing-star} #1},
-   fonttitle=\nmusemibold,
+   fonttitle=\fontseries{sb}\selectfont,
    left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
@@ -245,14 +253,11 @@
    colframe=nmuengineering,
    arc=0mm,
    title={\large\emoji{bar-chart} #1},
-   fonttitle=\nmusemibold,
+   fonttitle=\fontseries{sb}\selectfont,
    left=5mm,right=5mm,top=5mm,bottom=5mm
 }
 
-% Cross-referencing
-\usepackage{hyperref}
-\usepackage{cleveref}
-
+% Cross-referencing setup
 \crefname{definition}{Definition}{Definitions}
 \crefname{theorem}{Theorem}{Theorems}
 \crefname{lemma}{Lemma}{Lemmas}
@@ -262,6 +267,7 @@
 \crefname{remark}{Remark}{Remarks}
 \crefname{note}{Note}{Notes}
 
+% Hyperref setup
 \hypersetup{
    colorlinks=true,
    linkcolor=nmuprimaryblue,
@@ -270,14 +276,25 @@
    citecolor=nmuprimaryblue
 }
 
-% Title formatting
+% PDF metadata
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Short Notes Test Document},
+  pdfauthor={Your Name},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}
+}
+
+% Bibliography setup if needed
+
+% Title information
 \title{Short Notes Test Document}
 \author{Your Name}
 \date{2025-02-04}
 
-
 \begin{document}
 \maketitle
+
 \section{Introduction}\label{introduction}
 
 This document tests all the custom features of the \textbf{Short Notes}

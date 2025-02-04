@@ -23,6 +23,20 @@ if (!requireNamespace("remotes", quietly = TRUE)) {
 remotes::install_github("sjvrensburg/rmdNMU")
 ```
 
+### Font Installation
+
+This package requires the Nunito Sans font family. To install the required fonts:
+
+```r
+# Install the package first
+remotes::install_github("sjvrensburg/rmdNMU")
+
+# Then install the fonts
+rmdNMU::install_fonts()
+```
+
+For PDF output, ensure you're using LuaLaTeX.
+
 ### Prerequisites
 
 To use PDF output formats, you need a working LaTeX installation. We recommend using TinyTeX, a lightweight LaTeX distribution designed for R Markdown:
