@@ -1,50 +1,65 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
 /* Define the primary and secondary colors */
 :root {
-    --color-primary-text: #061C2C;
+    --color-primary-text: #141C2B;
+    --color-secondary-text: #132E51;
     --color-background: #FFFFFF;
-    --color-link: #103A5C;
-    --color-link-hover: #0B2D47;
-    --color-highlight: #F9B42A;
-    --color-highlight-light: #FABE45;
-    --color-code-background: #e7e7e7;
+    --color-link: #132E51;
+    --color-link-hover: #141C2B;
+    --color-highlight: #FFCC00;
+    --color-highlight-light: #F9B22A;
+    --color-code-background: #f5f5f5;
 }
 
-/* Import the fonts */
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-
-/* General styles */
+/* Base styles */
 body {
     background-color: var(--color-background);
     color: var(--color-primary-text);
-    font-family: 'Noto Sans', sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
     line-height: 1.6;
+    margin: 0;
+    padding: 2em;
+    font-weight: 400;
 }
 
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--color-primary-text);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.3em; }
+
+/* Title block */
 .title {
     text-align: center;
-    font-size: 2em; /* Adjust the size as needed */
-    margin-top: 1em;
-    margin-bottom: 1em;
-    font-weight: bold;
     color: var(--color-primary-text);
+    font-size: 2.2em;
+    font-weight: 800;
+    margin-bottom: 0.2em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--color-primary-text);
-    font-weight: bold;
+.author, .date {
+    text-align: center;
+    color: var(--color-secondary-text);
+    font-size: 1.2em;
+    margin: 0.5em 0;
 }
 
-p {
-    margin: 0 0 1em;
-}
-
-/* Link styles */
+/* Links */
 a {
     color: var(--color-link);
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 a:hover {
@@ -52,53 +67,65 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Highlight styles */
-.highlight {
-    background-color: var(--color-highlight);
-    color: var(--color-background);
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-}
-
-.highlight-light {
-    background-color: var(--color-highlight-light);
-    color: var(--color-background);
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-}
-
-/* Monospaced font style */
-code, pre {
+/* Code blocks */
+pre, code {
     font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
     background-color: var(--color-code-background);
-    color: var(--color-primary-text);
-    padding: 0.2em 0.4em;
     border-radius: 4px;
 }
 
 pre {
-    overflow-x: auto;
     padding: 1em;
+    overflow-x: auto;
+    border: 1px solid #e1e1e8;
 }
 
-/* Additional elements and customization */
-button {
-    background-color: var(--color-highlight);
-    color: var(--color-background);
-    border: none;
-    padding: 0.6em 1em;
-    font-family: 'Noto Sans', sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
+code {
+    padding: 0.2em 0.4em;
 }
 
-button:hover {
-    background-color: var(--color-highlight-light);
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
 }
 
-input, textarea {
-    font-family: 'Noto Sans', sans-serif;
-    border: 1px solid var(--color-primary-text);
-    padding: 0.4em;
-    border-radius: 4px;
+th, td {
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-secondary-text);
+    color: white;
+    font-weight: 600;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Lists */
+ul, ol {
+    padding-left: 2em;
+    margin: 1em 0;
+}
+
+li {
+    margin: 0.5em 0;
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 1em 0;
+    padding-left: 1em;
+    border-left: 4px solid var(--color-highlight);
+    color: var(--color-secondary-text);
 }
