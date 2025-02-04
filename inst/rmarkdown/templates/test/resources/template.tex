@@ -68,6 +68,8 @@ $endif$
           Weight=700  % Bold italic
       }
   ]
+  \usepackage{unicode-math}
+  \usepackage{lete-sans-math}
 \fi
 
 % Define NMU colors
@@ -119,6 +121,36 @@ $endif$
 {\color{nmusecondaryblue}\textbf{$footer.running.left$}}%
 {\color{nmusecondaryblue}\textbf{$footer.running.center$}}%
 {\color{nmusecondaryblue}\textbf{$footer.running.right$}}
+
+\def\tick{
+  \begin{tikzpicture}[scale=0.3]
+    \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+    \node[above, white] at (0.35, 0.1) {\tiny 1};
+    \node[below, white] at (0.7, 0.5) {\tiny 2};
+  \end{tikzpicture}
+}
+
+\def\doubletick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+        \draw[fill=black] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
+        \node[above, white] at (0.35, 0.1) {\tiny 1};
+        \node[below, white] at (1.2, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\def\halftick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
+        \node[above] at (0.35, 0.1) {\tiny 1};
+        \node[below] at (0.7, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\renewcommand{\droptotalpoints}{
+  \hfill
+  \fbox{\textbf{Question \thequestion: \totalpoints}}
+}
 
 \begin{document}
 
