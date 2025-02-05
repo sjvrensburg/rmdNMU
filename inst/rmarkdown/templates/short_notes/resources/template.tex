@@ -24,6 +24,26 @@ $endfor$
 \usepackage{setspace}
 \usepackage{parskip}
 
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\usepackage{calc}  % For length calculations
+\makeatletter
+\def\real#1{\strip@pt\dimexpr #1pt\relax}
+\makeatother
+
+% Define column types for tables
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% Set default table formatting
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+
 % Basic setup
 \SetProtrusion
   [ name     = microtype-default,
