@@ -1,6 +1,6 @@
 Package: rmdNMU
 Title: Nelson Mandela University R Markdown Templates
-Version: 1.1.1.0000
+Version: 1.1.3.0000
 Authors@R: 
     person("Stéfan", "Janse van Rensburg", , "stefanj@mandala.ac.za", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0749-2277"))
