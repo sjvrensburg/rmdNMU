@@ -29,7 +29,9 @@ footer:
     center: ""
     right: ""
 fontsize: 14pt  # Can be any size supported by extsizes
-output: rmdNMU::tests
+output:
+  rmdNMU::tests:
+    keep_tex: true
 ---
 
 ```{r setup, include=FALSE}

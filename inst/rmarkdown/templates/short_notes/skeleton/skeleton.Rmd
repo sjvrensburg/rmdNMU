@@ -5,7 +5,9 @@ date: "`r Sys.Date()`"
 documentclass: extarticle
 fontsize: 14pt
 papersize: a4paper
-output: rmdNMU::short_notes
+output:
+  rmdNMU::short_notes:
+    keep_tex: true
 ---
 
 # \emoji{memo} **Introduction**  

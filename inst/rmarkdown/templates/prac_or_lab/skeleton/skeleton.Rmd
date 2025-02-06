@@ -18,7 +18,9 @@ papersize: a4paper
 # rmdNMU::html_prac
 # with 
 # rmdNMU::pdf_prac
-output: rmdNMU::pdf_prac
+output:
+  rmdNMU::pdf_prac:
+    keep_tex: true
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}

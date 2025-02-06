@@ -1,0 +1,82 @@
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(papersize)$
+  $papersize$,
+$endif$
+$for(classoption)$
+  $classoption$,
+$endfor$
+]{$documentclass$}
+
+% Load base template with common packages
+\input{$base_template$}
+
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,
+    BoldItalicFont = NunitoSans-Italic,
+    UprightFeatures = {Weight=450, Scale=1.0},
+    BoldFeatures = {Weight=700},
+    ItalicFeatures = {Weight=450},
+    BoldItalicFeatures = {Weight=700}
+]
+
+% Template-specific packages not in base
+% PDF metadata and hyperref setup (template-specific)
+\hypersetup{
+    colorlinks=true,
+    linkcolor=nmusecondaryblue,
+    filecolor=nmusecondaryblue,
+    urlcolor=nmusecondaryblue,
+    citecolor=nmusecondaryblue,
+    pdftitle={$title-meta$},
+    pdfauthor={$author-meta$},
+    pdfcreator={LaTeX via pandoc}
+}
+
+% Title information with defaults
+\title{$if(title)$$title$$else$\vspace{-3em}$endif$}
+\author{$if(author)$$author$$else$\vspace{-3em}$endif$}
+\date{$if(date)$$date$$else$\vspace{-3em}$endif$}
+
+% Custom title page
+\makeatletter
+\renewcommand{\maketitle}{%
+    \begin{center}
+        $if(title)$
+        {\huge\bfseries\color{nmuprimaryblue}\@title\par}
+        \vspace{0.5em}
+        $endif$
+        $if(author)$
+        {\large\color{nmusecondaryblue}\@author\par}
+        \vspace{0.5em}
+        $endif$
+        $if(date)$
+        {\large\color{nmusecondaryblue}\@date\par}
+        $endif$
+    \end{center}
+    \vspace{1em}
+}
+\makeatother
+
+% Code highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\begin{document}
+
+\maketitle
+
+$body$
+
+$if(bibliography)$
+\printbibliography
+$endif$
+
+\end{document}

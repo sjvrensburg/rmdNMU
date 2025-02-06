@@ -7,36 +7,14 @@
 #' @return R Markdown output format to pass to render
 #' @export
 tests <- function(..., keep_tex = TRUE) {
-  template <- system.file(
-    "rmarkdown", "templates", "test", "resources",
-    "template.tex", package = "rmdNMU")
-
-  instructions <- system.file(
-    "rmarkdown", "templates", "test", "resources",
-    "instructions.tex", package = "rmdNMU")
-
-  # Ensure fonts are installed and get the directory
-  font_dir <- ensure_fonts()
-  font_dir <- format_path_for_pandoc(font_dir)
-
-  base <- rmarkdown::pdf_document(
-    ...,
-    template = template,
+  includes <- get_latex_includes("test")
+  fmt <- create_base_pdf_format(
+    template = includes$template,
     keep_tex = keep_tex,
-    latex_engine = "lualatex",
-    includes = list(
-      in_header = NULL
-    ),
-    pandoc_args = c(
-      "--variable", paste0("fontdir=", font_dir),
-      "--variable", paste0("instructions=", instructions)
-    )
+    includes = list(in_header = includes$instructions),
+    ...
   )
-
-  base$inherits <- "pdf_document"
-  base$knitr$opts_chunk$prompt <- FALSE
-  base$knitr$opts_chunk$comment <- '# '
-  base$knitr$opts_chunk$highlight <- TRUE
-
-  return(base)
+  set_base_knitr_opts(fmt)
+  fmt$inherits <- "pdf_document"
+  fmt
 }
