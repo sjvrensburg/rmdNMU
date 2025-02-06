@@ -66,3 +66,26 @@ You just place the solution environment below the part.
 \end{solution}
 
 \end{parts}
+
+\question[10]
+Does code work in solution environments?
+
+\begin{solutioncode}
+Kinda... Use the custom `solutioncode` environment:
+```{r}
+A <- matrix(rnorm(10), ncol = 2)
+A
+```
+It's not pretty, but it works.
+\end{solutioncode}
+
+\question
+Not really a question, more of a comment. Code works in questions:
+```{r}
+A <- matrix(rnorm(10), ncol = 2)
+A
+```
+
+\begin{solution}
+\emoji{partying-face} And, yes, emojis also work.
+\end{solution}

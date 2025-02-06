@@ -92,6 +92,11 @@ $endif$
     \renewcommand{\mathbf}[1]{\symbfit{#1}}
 }
 
+\usepackage[scale=0.95]{FiraMono}
+
+% Emojis! What's a test without emojis?
+\usepackage{emoji}
+
 % Define NMU colors
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
 \definecolor{nmusecondaryblue}{HTML}{132E51}
@@ -112,6 +117,7 @@ $endif$
 % Code highlighting
 $if(highlighting-macros)$
 $highlighting-macros$
+\usepackage[verbatim]{lstfiracode}
 $endif$
 
 % Spacing
@@ -264,6 +270,34 @@ $endif$
 \renewcommand{\droptotalpoints}{
   \hfill
   \fbox{\textbf{Question \thequestion: \totalpoints}}
+}
+
+\usepackage{fancyvrb}
+\usepackage{upquote}
+\usepackage{fvextra}
+
+% Create a custom environment for code in solutions
+\makeatletter
+\newenvironment{solutioncode}{%
+  \VerbatimEnvironment
+  \begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\#=12},fontsize=\small]%
+}{%
+  \end{Verbatim}%
+}
+\makeatother
+
+% Redefine how code chunks are formatted
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{%
+    commandchars=\\\{\},
+    codes={\catcode`\#=12},
+    fontsize=\small,
+    frame=single,
+    rulecolor=\color{gray!30},
+    framerule=0.5pt,
+    framesep=3mm,
+    baselinestretch=1.2,
+    breaklines=true,
+    breakanywhere=true
 }
 
 \begin{document}
