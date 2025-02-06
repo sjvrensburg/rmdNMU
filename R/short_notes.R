@@ -6,7 +6,7 @@
 #'
 #' @return R Markdown output format to pass to render.
 #' @export
-short_notes <- function(..., keep_tex=TRUE) {
+short_notes <- function(..., keep_tex = TRUE) {
   template <- system.file(
     "rmarkdown/templates/short_notes/resources/template.tex",
     package = "rmdNMU")
@@ -15,21 +15,9 @@ short_notes <- function(..., keep_tex=TRUE) {
     "rmarkdown/templates/short_notes/resources/preamble.tex",
     package = "rmdNMU")
 
-  # Get the font directory path and escape spaces/special chars
-  font_dir <- gsub("\\", "/", system.file("fonts", "nunito-sans", package = "rmdNMU"), fixed = TRUE)
-
-  # Verify font files exist
-  font_files <- c(
-    #"NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf",
-    #"NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf",
-    "NunitoSans-Regular.ttf",
-    "NunitoSans-Italic.ttf"
-  )
-
-  missing_fonts <- !sapply(font_files, function(f) file.exists(file.path(font_dir, f)))
-  if (any(missing_fonts)) {
-    warning("Missing font files: ", paste(font_files[missing_fonts], collapse = ", "))
-  }
+  # Ensure fonts are installed and get the directory
+  font_dir <- ensure_fonts()
+  font_dir <- format_path_for_pandoc(font_dir)
 
   box_filter <- system.file(
     "rmarkdown/templates/short_notes/resources/custom-boxes.lua",
@@ -48,7 +36,7 @@ short_notes <- function(..., keep_tex=TRUE) {
       in_header = preamble
     ),
     pandoc_args = c(
-      "--variable", sprintf("fontdir=%s", font_dir),
+      "--variable", paste0("fontdir=", font_dir),
       "--lua-filter", box_filter,
       "--lua-filter", crossref_filter
     )

@@ -7,7 +7,6 @@
 #' @return R Markdown output format to pass to render
 #' @export
 tests <- function(..., keep_tex = TRUE) {
-  # Get template and instructions paths
   template <- system.file(
     "rmarkdown", "templates", "test", "resources",
     "template.tex", package = "rmdNMU")
@@ -16,23 +15,9 @@ tests <- function(..., keep_tex = TRUE) {
     "rmarkdown", "templates", "test", "resources",
     "instructions.tex", package = "rmdNMU")
 
-  # Get the font directory path and escape spaces/special chars
-  font_dir <- gsub("\\", "/",
-                   system.file("fonts", "nunito-sans", package = "rmdNMU"),
-                   fixed = TRUE)
-
-  # Verify font files exist
-  font_files <- c(
-    "NunitoSans-Regular.ttf",
-    "NunitoSans-Italic.ttf"
-  )
-
-  missing_fonts <- !sapply(font_files, function(f)
-    file.exists(file.path(font_dir, f)))
-  if (any(missing_fonts)) {
-    warning("Missing font files: ",
-            paste(font_files[missing_fonts], collapse = ", "))
-  }
+  # Ensure fonts are installed and get the directory
+  font_dir <- ensure_fonts()
+  font_dir <- format_path_for_pandoc(font_dir)
 
   base <- rmarkdown::pdf_document(
     ...,
