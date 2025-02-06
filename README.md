@@ -19,12 +19,9 @@ Beautiful R Markdown templates for Nelson Mandela University, styled with 💙 a
 ```r
 # Install package
 remotes::install_github("sjvrensburg/rmdnmu")
-
-# Get those beautiful fonts
-rmdNMU::install_fonts()
 ```
 
-> 💡 **Requirements**: You'll need LuaTeX and we'll handle the Nunito Sans fonts for you!
+> 💡 **Requirements**: Just make sure you have LuaTeX installed - we'll handle the fonts automatically!
 
 ![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
