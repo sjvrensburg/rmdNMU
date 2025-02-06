@@ -5,7 +5,7 @@
 #' @return R Markdown output format to pass to render.
 #' @export
 html_prac <- function(toc = FALSE) {
-  css <- system.file("rmarkdown/templates/prac_or_lab/resources/nmu.css",
+  css <- system.file("rmarkdown/templates/prac_or_lab/resources/template.css",
                      package = "rmdNMU")
 
   # call the base html_document function
@@ -28,35 +28,7 @@ html_prac <- function(toc = FALSE) {
 #' @return R Markdown output format to pass to render.
 #' @export
 pdf_prac <- function(..., keep_tex = FALSE) {
-  template <- system.file(
-    "rmarkdown/templates/prac_or_lab/resources/nmu.tex",
-    package = "rmdNMU")
-
-  # Ensure fonts are installed and get the directory
-  font_dir <- ensure_fonts()
-  font_dir <- format_path_for_pandoc(font_dir)
-
-  # Create format with font directory variable
-  fmt <- rmarkdown::pdf_document(
-    ...,
-    template = template,
-    latex_engine = "lualatex",
-    keep_tex = keep_tex,
-    pandoc_args = c(
-      "--variable", paste0("fontdir=", font_dir)
-    )
-  )
-
-  fmt$knitr$opts_chunk$prompt <- FALSE
-  fmt$knitr$opts_chunk$comment <- '# '
-  fmt$knitr$opts_chunk$highlight <- TRUE
-
-  return(fmt)
-}
-
-# Helper function to inherit from pdf_document
-inherit_pdf_document <- function(...) {
-  fmt <- rmarkdown::pdf_document(...)
-  fmt$inherits <- "pdf_document"
-  return(fmt)
+  includes <- get_latex_includes("prac_or_lab")
+  fmt <- create_base_pdf_format(includes$template, keep_tex, ...)
+  set_base_knitr_opts(fmt)
 }

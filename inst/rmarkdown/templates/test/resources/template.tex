@@ -7,122 +7,24 @@ $endif$
 % Handle font size with extsizes
 \usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
 
-% Load basic packages first
-\usepackage{fontspec}
-\usepackage{amssymb}
-\usepackage{unicode-math}
-\usepackage{microtype}
-\usepackage{graphicx}
-
-% Image handling settings
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-
-\usepackage[hidelinks]{hyperref}
-\usepackage{enumitem}
-\usepackage{xcolor}
-\usepackage{siunitx}
-\usepackage{soul}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage{multirow}
-
-\usepackage{calc}  % For length calculations
-\makeatletter
-\def\real#1{\strip@pt\dimexpr #1pt\relax}
-\makeatother
-
-% Define column types for tables
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
-
-% Set default table formatting
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.2}
-
-% Font configuration
-\defaultfontfeatures{
-    Ligatures=TeX,
-    UprightFeatures={Weight=400},  % Regular weight for normal text
-    BoldFeatures={Weight=700},     % Bold weight
-    ItalicFeatures={Weight=400},   % Regular weight for italics
-    BoldItalicFeatures={Weight=700} % Bold weight for bold italics
-}
+% Load base template with common packages
+\input{$base_template$}
 
 \setmainfont{Nunito Sans}[
     Extension = .ttf,
     Path = $fontdir$/,
     UprightFont = NunitoSans-Regular,
     ItalicFont = NunitoSans-Italic,
-    BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
-    BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
-    % Font Features section
-    UprightFeatures = {
-        Weight=450,  % Slightly heavier than regular for better readability
-        Scale=1.0
-    },
-    BoldFeatures = {
-        Weight=700  % Bold
-    },
-    ItalicFeatures = {
-        Weight=450  % Matching upright weight
-    },
-    BoldItalicFeatures = {
-        Weight=700  % Bold italic
-    }
+    BoldFont = NunitoSans-Regular,
+    BoldItalicFont = NunitoSans-Italic,
+    UprightFeatures = {Weight=450, Scale=1.0},
+    BoldFeatures = {Weight=700},
+    ItalicFeatures = {Weight=450},
+    BoldItalicFeatures = {Weight=700}
 ]
 
-\setmathfont{KpMath-Sans}[
-    Scale=MatchUppercase,
-    StylisticSet=1
-]
+\usepackage{soul}
 
-% For bold math symbols
-\AtBeginDocument{
-    \let\origbold\mathbf
-    \renewcommand{\mathbf}[1]{\symbfit{#1}}
-}
-
-\usepackage[scale=0.95]{FiraMono}
-
-% Emojis! What's a test without emojis?
-\usepackage{emoji}
-
-% Define NMU colors
-\definecolor{nmuprimaryblue}{HTML}{141C2B}
-\definecolor{nmusecondaryblue}{HTML}{132E51}
-\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
-\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
-
-% Configure siunitx
-\sisetup{
-  group-separator = {\,},
-  group-minimum-digits = 4
-}
-
-% Tightlist environment
-\setlength{\emergencystretch}{3em}
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Code highlighting
-$if(highlighting-macros)$
-$highlighting-macros$
-\usepackage[verbatim]{lstfiracode}
-$endif$
-
-% Spacing
-\usepackage{setspace}
-\onehalfspacing
 \marksnotpoints
 
 % Style exam pages
@@ -147,100 +49,6 @@ $endif$
 {\color{nmusecondaryblue}\textbf{$footer.running.left$}}%
 {\color{nmusecondaryblue}\textbf{$footer.running.center$}}%
 {\color{nmusecondaryblue}\textbf{$footer.running.right$}}
-
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-
-% Essential TikZ libraries
-\usetikzlibrary{
-    % Core functionality
-    arrows.meta,          % Enhanced arrow tips
-    calc,                % Coordinate calculations
-    intersections,       % Find intersections of paths
-    % Mathematical constructs
-    angles,              % Draw and mark angles
-    quotes,              % Easy angle labeling
-    patterns,            % Fill patterns
-    decorations.markings,% Path markers and decorations
-    % Plotting and graphs
-    plotmarks,           % Special markers for plots
-    positioning,         % Relative positioning
-    fit,                % Fit shapes to sets of coordinates
-    % Shapes and nodes
-    shapes.geometric,    % Basic geometric shapes
-    shapes.arrows,       % Arrow shapes
-    shapes.symbols,      % Mathematical symbols
-    shapes.misc,        % Miscellaneous shapes
-    % Specialized features
-    matrix,             % Matrix arrangements
-    automata,           % State machines and graphs
-    bending,            % Path bending
-    backgrounds,        % Background layers
-    chains,             % Linked nodes
-    % Scientific/Mathematical
-    circuits.ee.IEC,    % Electrical circuits
-    datavisualization,  % Advanced data plotting
-    math,               % Mathematical symbols and notation
-    trees               % Tree structures
-}
-
-% PGFPlots styles and configuration
-\pgfplotsset{
-    % Default options for plots
-    every axis/.append style={
-        % Lines and ticks
-        axis lines=middle,
-        tick align=outside,
-        % Labels
-        xlabel near ticks,
-        ylabel near ticks,
-        % Grid
-        grid=major,
-        grid style={gray!30},
-        % Size
-        width=0.8\textwidth,
-        height=0.6\textwidth,
-        % Tick label style
-        tick label style={font=\small},
-        % Legend
-        legend style={
-            font=\small,
-            cells={anchor=west}
-        }
-    }
-}
-
-% Custom TikZ styles for common elements
-\tikzset{
-    % Node styles
-    important node/.style={
-        rectangle,
-        rounded corners,
-        draw=nmuprimaryblue,
-        fill=white,
-        thick,
-        inner sep=5pt
-    },
-    % Arrow styles
-    math arrow/.style={
-        ->,
-        >=latex,
-        thick
-    },
-    % Connection styles
-    connection/.style={
-        draw,
-        -latex,
-        thick
-    },
-    % Custom coordinate system for plots
-    coords/.style={
-        color=nmuprimaryblue,
-        mark=*,
-        thick
-    }
-}
 
 \def\tick{
   \begin{tikzpicture}[scale=0.3]
@@ -272,10 +80,6 @@ $endif$
   \fbox{\textbf{Question \thequestion: \totalpoints}}
 }
 
-\usepackage{fancyvrb}
-\usepackage{upquote}
-\usepackage{fvextra}
-
 % Create a custom environment for code in solutions
 \makeatletter
 \newenvironment{solutioncode}{%
@@ -299,6 +103,11 @@ $endif$
     breaklines=true,
     breakanywhere=true
 }
+
+% Code highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
 
 \begin{document}
 

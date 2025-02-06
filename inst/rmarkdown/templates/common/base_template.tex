@@ -1,0 +1,229 @@
+% Essential Packages (load order optimized for dependencies)
+\usepackage{fontspec}        % Font management
+\usepackage[a4paper, margin=2.54cm]{geometry}        % Page layout
+\usepackage{xcolor}         % Color support
+\usepackage{graphicx}       % Graphics
+\usepackage{microtype}      % Typography enhancements
+
+% Math and Symbols
+\usepackage{amsmath}        % Core math
+\usepackage{amssymb}        % Math symbols
+\usepackage{unicode-math}   % Unicode math support
+\usepackage{amsfonts}       % Additional math fonts
+
+% Tables and Lists
+\usepackage{array}          % Enhanced table support
+\usepackage{booktabs}       % Professional tables
+\usepackage{longtable}      % Multi-page tables
+\usepackage{multirow}       % Complex table layouts
+\usepackage{enumitem}       % List customization
+
+% Links and References
+\usepackage{hyperref}       % Load late for compatibility
+\usepackage{bookmark}       % PDF bookmarks
+\usepackage{cleveref}       % Smart cross-references
+\usepackage{xurl}          % URL handling
+
+% Code and Verbatim
+\usepackage{fancyvrb}      % Verbatim text
+\usepackage{fvextra}       % Extended verbatim
+\usepackage{upquote}       % Proper quotes in verbatim
+\usepackage[scale=0.95]{FiraMono}
+\usepackage[verbatim]{lstfiracode}  % Code listings
+
+\usepackage{emoji}
+
+% Layout and Spacing
+\usepackage{setspace}      % Line spacing
+\usepackage{parskip}       % Paragraph spacing
+\usepackage{titlesec}      % Section formatting
+
+% Core font setup
+\defaultfontfeatures{
+    Ligatures=TeX,
+    UprightFeatures={Weight=400},
+    BoldFeatures={Weight=700},
+    ItalicFeatures={Weight=400},
+    BoldItalicFeatures={Weight=700}
+}
+
+\setmathfont{KpMath-Sans}[
+    Scale=MatchUppercase,
+    StylisticSet=1
+]
+
+% Section formatting with heavier weights
+\titleformat{\section}{\Large\bfseries\addfontfeatures{Weight=800}\color{nmuprimaryblue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
+
+% Bold math symbols fix
+\AtBeginDocument{
+    \let\origbold\mathbf
+    \renewcommand{\mathbf}[1]{\symbfit{#1}}
+}
+
+% Common configurations
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Font configuration
+\defaultfontfeatures{
+    Ligatures=TeX,
+    UprightFeatures={Weight=400},
+    BoldFeatures={Weight=700},
+    ItalicFeatures={Weight=400},
+    BoldItalicFeatures={Weight=700}
+}
+
+% Line spacing
+\onehalfspacing
+
+% NMU Colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmugrey}{HTML}{999999}
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+% Essential TikZ libraries
+\usetikzlibrary{
+    % Core functionality
+    arrows.meta,          % Enhanced arrow tips
+    calc,                % Coordinate calculations
+    intersections,       % Find intersections of paths
+    % Mathematical constructs
+    angles,              % Draw and mark angles
+    quotes,              % Easy angle labeling
+    patterns,            % Fill patterns
+    decorations.markings,% Path markers and decorations
+    % Plotting and graphs
+    plotmarks,           % Special markers for plots
+    positioning,         % Relative positioning
+    fit,                % Fit shapes to sets of coordinates
+    % Shapes and nodes
+    shapes.geometric,    % Basic geometric shapes
+    shapes.arrows,       % Arrow shapes
+    shapes.symbols,      % Mathematical symbols
+    shapes.misc,        % Miscellaneous shapes
+    % Specialized features
+    matrix,             % Matrix arrangements
+    automata,           % State machines and graphs
+    bending,            % Path bending
+    backgrounds,        % Background layers
+    chains,             % Linked nodes
+    % Scientific/Mathematical
+    circuits.ee.IEC,    % Electrical circuits
+    datavisualization,  % Advanced data plotting
+    math,               % Mathematical symbols and notation
+    trees               % Tree structures
+}
+
+% PGFPlots styles and configuration
+\pgfplotsset{
+    % Default options for plots
+    every axis/.append style={
+        % Lines and ticks
+        axis lines=middle,
+        tick align=outside,
+        % Labels
+        xlabel near ticks,
+        ylabel near ticks,
+        % Grid
+        grid=major,
+        grid style={gray!30},
+        % Size
+        width=0.8\textwidth,
+        height=0.6\textwidth,
+        % Tick label style
+        tick label style={font=\small},
+        % Legend
+        legend style={
+            font=\small,
+            cells={anchor=west}
+        }
+    }
+}
+
+% Custom TikZ styles for common elements
+\tikzset{
+    % Node styles
+    important node/.style={
+        rectangle,
+        rounded corners,
+        draw=nmuprimaryblue,
+        fill=white,
+        thick,
+        inner sep=5pt
+    },
+    % Arrow styles
+    math arrow/.style={
+        ->,
+        >=latex,
+        thick
+    },
+    % Connection styles
+    connection/.style={
+        draw,
+        -latex,
+        thick
+    },
+    % Custom coordinate system for plots
+    coords/.style={
+        color=nmuprimaryblue,
+        mark=*,
+        thick
+    }
+}
+
+% Image handling settings
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+
+\usepackage{siunitx}
+
+% Configure siunitx
+\sisetup{
+  group-separator = {\,},
+  group-minimum-digits = 4
+}
+
+\usepackage{calc}
+
+\makeatletter
+\def\real#1{\strip@pt\dimexpr #1pt\relax}
+\makeatother
+
+\usepackage{tabularx}
+
+% Define column types for tables
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% Set default table formatting
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.2}
+
+% Default text color
+\color{nmuprimaryblue}
