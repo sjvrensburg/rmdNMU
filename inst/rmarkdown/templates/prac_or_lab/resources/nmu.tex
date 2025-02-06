@@ -1,4 +1,14 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(papersize)$
+  $papersize$,
+$endif$
+$for(classoption)$
+  $classoption$,
+$endfor$
+]{$documentclass$}
 
 % Load essential packages first
 \usepackage{fontspec}
@@ -95,6 +105,17 @@
         Weight=700
     }
 ]
+
+\setmathfont{KpMath-Sans}[
+    Scale=MatchUppercase,
+    StylisticSet=1
+]
+
+% For bold math symbols
+\AtBeginDocument{
+    \let\origbold\mathbf
+    \renewcommand{\mathbf}[1]{\symbfit{#1}}
+}
 
 % Code highlighting from pandoc
 $highlighting-macros$

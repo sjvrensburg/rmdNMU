@@ -7,10 +7,11 @@ $endif$
 % Handle font size with extsizes
 \usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
 
-% Required packages
-\usepackage{amsmath}
+% Load basic packages first
+\usepackage{fontspec}
 \usepackage{amssymb}
-\usepackage{xifthen}
+\usepackage{unicode-math}
+\usepackage{microtype}
 \usepackage{graphicx}
 
 % Image handling settings
@@ -51,55 +52,48 @@ $endif$
 \setlength{\tabcolsep}{6pt}
 \renewcommand{\arraystretch}{1.2}
 
-% Try to use Nunito Sans if available (needs XeLaTeX or LuaLaTeX)
-\usepackage{ifxetex,ifluatex}
-\newif\ifxetexorluatex
-\ifxetex
-  \xetexorluatextrue
-\else
-  \ifluatex
-    \xetexorluatextrue
-  \else
-    \xetexorluatexfalse
-  \fi
-\fi
+% Font configuration
+\defaultfontfeatures{
+    Ligatures=TeX,
+    UprightFeatures={Weight=400},  % Regular weight for normal text
+    BoldFeatures={Weight=700},     % Bold weight
+    ItalicFeatures={Weight=400},   % Regular weight for italics
+    BoldItalicFeatures={Weight=700} % Bold weight for bold italics
+}
 
-\ifxetexorluatex
-  \usepackage{fontspec}
-  % Font configuration
-  \defaultfontfeatures{
-      Ligatures=TeX,
-      UprightFeatures={Weight=400},  % Regular weight for normal text
-      BoldFeatures={Weight=700},     % Bold weight
-      ItalicFeatures={Weight=400},   % Regular weight for italics
-      BoldItalicFeatures={Weight=700} % Bold weight for bold italics
-  }
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
+    BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
+    % Font Features section
+    UprightFeatures = {
+        Weight=450,  % Slightly heavier than regular for better readability
+        Scale=1.0
+    },
+    BoldFeatures = {
+        Weight=700  % Bold
+    },
+    ItalicFeatures = {
+        Weight=450  % Matching upright weight
+    },
+    BoldItalicFeatures = {
+        Weight=700  % Bold italic
+    }
+]
 
-  \setmainfont{Nunito Sans}[
-      Extension = .ttf,
-      Path = $fontdir$/,
-      UprightFont = NunitoSans-Regular,
-      ItalicFont = NunitoSans-Italic,
-      BoldFont = NunitoSans-Regular,   % Using Regular font with weight variation
-      BoldItalicFont = NunitoSans-Italic,  % Using Italic font with weight variation
-      % Font Features section
-      UprightFeatures = {
-          Weight=450,  % Slightly heavier than regular for better readability
-          Scale=1.0
-      },
-      BoldFeatures = {
-          Weight=700  % Bold
-      },
-      ItalicFeatures = {
-          Weight=450  % Matching upright weight
-      },
-      BoldItalicFeatures = {
-          Weight=700  % Bold italic
-      }
-  ]
-  \usepackage{unicode-math}
-  \usepackage{lete-sans-math}
-\fi
+\setmathfont{KpMath-Sans}[
+    Scale=MatchUppercase,
+    StylisticSet=1
+]
+
+% For bold math symbols
+\AtBeginDocument{
+    \let\origbold\mathbf
+    \renewcommand{\mathbf}[1]{\symbfit{#1}}
+}
 
 % Define NMU colors
 \definecolor{nmuprimaryblue}{HTML}{141C2B}

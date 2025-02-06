@@ -94,6 +94,17 @@ $endfor$
     }
 ]
 
+\setmathfont{KpMath-Sans}[
+    Scale=MatchUppercase,
+    StylisticSet=1
+]
+
+% For bold math symbols
+\AtBeginDocument{
+    \let\origbold\mathbf
+    \renewcommand{\mathbf}[1]{\symbfit{#1}}
+}
+
 % Code highlighting
 $highlighting-macros$
 
