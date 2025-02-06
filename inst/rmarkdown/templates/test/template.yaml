@@ -1,4 +1,5 @@
-name: test
+name: Test Template
 description: >
-   Template for larger tests.
-create_dir: TRUE
+   Template for tests. Also useful for assignments
+create_dir: FALSE
+create_rproj: FALSE

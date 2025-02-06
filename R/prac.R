@@ -32,8 +32,9 @@ pdf_prac <- function(..., keep_tex = FALSE) {
     "rmarkdown/templates/prac_or_lab/resources/nmu.tex",
     package = "rmdNMU")
 
-  # Get the font directory path and escape spaces/special chars
-  font_dir <- gsub("\\", "/", system.file("fonts", "nunito-sans", package = "rmdNMU"), fixed = TRUE)
+  # Ensure fonts are installed and get the directory
+  font_dir <- ensure_fonts()
+  font_dir <- format_path_for_pandoc(font_dir)
 
   # Create format with font directory variable
   fmt <- rmarkdown::pdf_document(
@@ -42,11 +43,10 @@ pdf_prac <- function(..., keep_tex = FALSE) {
     latex_engine = "lualatex",
     keep_tex = keep_tex,
     pandoc_args = c(
-      "--variable", sprintf("fontdir=%s", font_dir)
+      "--variable", paste0("fontdir=", font_dir)
     )
   )
 
-  # Set chunk options
   fmt$knitr$opts_chunk$prompt <- FALSE
   fmt$knitr$opts_chunk$comment <- '# '
   fmt$knitr$opts_chunk$highlight <- TRUE
