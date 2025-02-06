@@ -1,88 +1,137 @@
-### **📘 rmdNMU: R Markdown Templates for Nelson Mandela University**  
+# 📚 rmdNMU: R Markdown Templates for NMU
 
-[![Lifecycle: Experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)  
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)  
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Made for NMU](https://img.shields.io/badge/Made%20for-NMU-yellow.svg)](https://www.mandela.ac.za)
 
-#### **📌 Overview**  
-**`rmdNMU`** provides **custom R Markdown templates** tailored for **Nelson Mandela University**. These templates incorporate NMU’s branding guidelines, fonts, and formatting for professional-looking documents.  
+Beautiful R Markdown templates for Nelson Mandela University, styled with 💙 and LaTeX magic ✨
 
----
+![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### **📥 Installation**  
-#### **1️⃣ Install from GitHub**  
+## 🎯 What's Inside?
+
+- 📊 **Practical Templates** - For labs and assignments
+- 📝 **Short Notes** - With theorem environments and custom boxes
+- 📋 **Test Templates** - Complete with solutions and marking support
+- 🎨 **Brand-Aligned** - Uses NMU's official colors and styling
+
+## ⚡ Quick Start
+
 ```r
-# Install remotes if needed
-if (!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+# Install package
+remotes::install_github("sjvrensburg/rmdnmu")
 
-# Install rmdNMU
-remotes::install_github("sjvrensburg/rmdNMU")
-```
-
-#### **2️⃣ Install Required Fonts**  
-```r
+# Get those beautiful fonts
 rmdNMU::install_fonts()
 ```
-> ⚠️ **Ensure that LuaLaTeX is installed** for proper PDF rendering.
 
-#### **3️⃣ Install TinyTeX (if needed)**  
+> 💡 **Requirements**: You'll need LuaTeX and we'll handle the Nunito Sans fonts for you!
+
+![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🛠️ Templates
+
+### 🧪 Practicals
+
+Perfect for computer labs and assignments:
+
 ```r
-install.packages("tinytex")
-tinytex::install_tinytex()
-```
-> 🛠 TinyTeX is a lightweight LaTeX distribution recommended for R Markdown users.
-
 ---
+title: "STAT312: Practical 1"
+author: "Future Statistician"
+output: 
+  rmdNMU::pdf_prac: # or html_prac for web output!
+    keep_tex: true
+---
+```
 
-### **📄 Available Templates**  
-| 📌 Template | 📄 Purpose | 🖥️ Output Formats |
-|------------|-----------|----------------|
-| **Practical/Lab** | Assignments & lab exercises | PDF, HTML |
-| **Short Notes** | Lecture notes & handouts | PDF |
-| **Test** | Examinations & tests | PDF |
+### 📓 Short Notes
 
-#### **🔹 Usage Example**  
-In your RMarkdown document’s YAML header, specify the desired template:  
-```yaml
+Create beautiful lecture notes with math support:
+
+```r
+---
+title: "Statistical Magic"
+author: "Professor Awesome"
 output: rmdNMU::short_notes
+---
 ```
 
-#### **📝 Custom Options** (Example for `prac_or_lab`)  
-```yaml
-student_number: "123456789"
-name: "John"
-surname: "Doe"
-module: "STAT312"
-type: "Practical"
-number: 1
+#### ✨ Cool Features
+
+- 📐 Theorem & proof environments
+- 📦 Custom info boxes
+- 🔗 Smart cross-referencing
+- 📊 TikZ diagrams support
+
+### 📝 Tests
+
+Make professional tests and assignments:
+
+```r
+---
+params:
+  subject: "Statistical Methods"
+  code: "STAT314"
+  test: "The Big One"
+  solutions: true
+output: rmdNMU::tests
+---
 ```
+
+#### 🎁 Special Features
+
+- ✓ Custom marking symbols (✓, ✓✓, ½✓)
+- 📊 Point tracking
+- 💻 Code-friendly solutions
+- 🎯 Auto-grading support
+
+![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 📖 Example Snippets
+
+### 🧮 Mathematical Beauty
+
+```markdown
+::: {.theorem #pythagoras name="Pythagoras' Theorem"}
+For a right triangle with sides $a$, $b$, and $c$:
+$$a^2 + b^2 = c^2$$
+:::
+
+::: {.proof}
+Magic happens here... ✨
+:::
+```
+
+### 📋 Test Questions
+
+```markdown
+\question[5]
+What makes statistics awesome?
+
+\begin{solution}
+Everything! \tick
+\end{solution}
+```
+
+![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🔧 System Requirements
+
+- R (>= 4.0.0)
+- LuaTeX
+- Required packages: rmarkdown, knitr, tinytex
+
+## 📜 License
+
+GPL (>= 3) - Feel free to use and improve!
 
 ---
 
-### **🎨 NMU Branding & Colors**  
-The templates **use official NMU colors** for consistency. You can apply these colors in LaTeX documents:  
+<div align="center">
+  
+### Made with 💙 for Nelson Mandela University
 
-```latex
-\color{nmuprimaryblue}{Primary Blue}
-\color{nmusecondaryyellow}{Secondary Yellow}
-```
-> 🎨 **Custom faculty-specific colors** are also available!
+*"Education is the most powerful weapon which you can use to change the world."*  
+— Nelson Mandela
 
----
-
-### **💡 Features & Highlights**
-✅ **NNMU-like Branding**  
-✅ **Built-in Theorem & Example Boxes**  
-✅ **Cross-referencing & Citations**  
-✅ **Support for Math & Code Blocks**
-
----
-
-### **🛠️ Development & Contribution**
-Want to improve `rmdNMU`? 🚀 Feel free to:  
-- **Submit issues & feature requests**  
-- **Create pull requests**  
-
-📧 **Author**: Stéfan Janse van Rensburg  
-📜 **License**: GPL-3  
-
-> 💬 *Questions? Suggestions? Let’s make academic documents look amazing together!* 🎓  
+</div>
