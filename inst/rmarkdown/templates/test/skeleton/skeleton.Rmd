@@ -6,7 +6,7 @@ params:
   examiner: "Dr. Smith"
   timelimit: "2 Hours"
   date: "`r format(Sys.Date(), '%d %B %Y')`"
-  solutions: false
+  solutions: true
   instructions: false
   #instructions_file: "my_custom_instructions.tex"  # Optional: path to custom instructions
   pointtable: false
@@ -49,7 +49,14 @@ Suppose that we want to split a question into multiple parts.
 \part[1]
 Is this possible?
 \begin{solution}[1cm]
-Yes!
+Yes! By the way, you can include tick marks.\halftick \tick \doubletick
+
+These also work in maths environments:
+\[
+\sqrt{x+y} \ne \sqrt{x} + \sqrt{y} \tick
+\]
+
+
 \end{solution}
 
 \part[1]

@@ -68,6 +68,32 @@ Thus, the theorem holds.
 
 ---
 
+# \emoji{crayon} **TikZ Diagrams**
+
+This template loads essential TikZ libraries, so you can create diagrams like the following:
+
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel=$x$,
+    ylabel=$f(x)$,
+    title={Quadratic Function}
+]
+\addplot[thick, nmuprimaryblue] {x^2};
+\addplot[dashed, nmusecondaryyellow] {2*x};
+\legend{$f(x)=x^2$, $g(x)=2x$}
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\draw[thick] (0,0) circle (2cm);
+\draw[math arrow] (-2,0) -- (2,0) node[right] {$x$};
+\draw[math arrow] (0,-2) -- (0,2) node[above] {$y$};
+\node[important node] at (45.5:2.5) {$P$};
+\draw[connection] (0,0) -- (45:2);
+\end{tikzpicture}
+
+---
+
 # \emoji{package} **Custom Boxes**  
 
 Different types of **callout boxes** highlight important information.  
@@ -116,6 +142,3 @@ This **Short Notes template** makes it easy to create well-structured, professio
 
 ---
 
-# \emoji{pushpin} **Final Thoughts**
-
-This skeleton is **beginner-friendly** while still showcasing all key features of the **Short Notes** template. Let me know if you'd like any refinements! \emoji{rocket}
