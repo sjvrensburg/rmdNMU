@@ -77,32 +77,21 @@ $endif$
 
 \renewcommand{\droptotalpoints}{
   \hfill
-  \fbox{\textbf{Question \thequestion: \totalpoints}}
+  \fbox{\textbf{Total Marks For Question \thequestion: \totalpoints}}
 }
 
 % Create a custom environment for code in solutions
+\usepackage{alltt}
 \makeatletter
 \newenvironment{solutioncode}{%
-  \VerbatimEnvironment
-  \begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\#=12},fontsize=\small]%
+  \begin{solution}
+  \begin{alltt}
+  \color{nmuprimaryblue}
 }{%
-  \end{Verbatim}%
+  \end{alltt}
+  \end{solution}
 }
 \makeatother
-
-% Redefine how code chunks are formatted
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{%
-    commandchars=\\\{\},
-    codes={\catcode`\#=12},
-    fontsize=\small,
-    frame=single,
-    rulecolor=\color{gray!30},
-    framerule=0.5pt,
-    framesep=3mm,
-    baselinestretch=1.2,
-    breaklines=true,
-    breakanywhere=true
-}
 
 % Code highlighting
 $if(highlighting-macros)$
@@ -112,17 +101,20 @@ $endif$
 \begin{document}
 
 % Title section
+{   % Use braces to keep the arraystretch change local
+\renewcommand{\arraystretch}{0.8}
 \begin{center}
 \begin{tabular}{@{} p{4cm} @{} p{10cm} @{}}
   \toprule
-  \textbf{Subject:} & $params.subject$ \\[0.5em]
-  \textbf{Module Code:} & $params.code$ \\[0.5em]
-  \textbf{Time Limit:} & $params.timelimit$ \\[0.5em]
-  \textbf{Marks:} & \numpoints \\[0.5em]
+  \textbf{Subject:} & $params.subject$ \\[0.3em]
+  \textbf{Module Code:} & $params.code$ \\[0.3em]
+  \textbf{Time Limit:} & $params.timelimit$ \\[0.3em]
+  \textbf{Marks:} & \numpoints \\[0.3em]
   \textbf{Examiner:} & $params.examiner$ \\
   \bottomrule
 \end{tabular}
 \end{center}
+}
 
 \vspace{1cm}
 

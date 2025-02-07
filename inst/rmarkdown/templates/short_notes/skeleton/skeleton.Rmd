@@ -3,11 +3,18 @@ title: "Short Notes Test Document"
 author: "Your Name"
 date: "`r Sys.Date()`"
 documentclass: extarticle
+# The extarticle document class supports the following font sizes:
+# 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, and 20pt
 fontsize: 14pt
 papersize: a4paper
 output:
   rmdNMU::short_notes:
-    keep_tex: true
+    # set keep_tex to true to retain the generated LaTeX code
+    keep_tex: false
+    # Available themes:
+    #   pygments, tango, espresso, zenburn,
+    #   kate, monochrome, breezedark, haddock
+    highlight: "tango"
 ---
 
 # \emoji{memo} **Introduction**  
@@ -18,7 +25,7 @@ This is an example of a **Short Notes document** using the NMU template. It demo
 
 # \emoji{pushpin} **Basic Formatting**  
 
-## \emoji{small-blue-diamond} **Lists**  
+## **Lists**  
 
 - Bullet points are useful for key ideas.  
 - Numbered lists help organize steps:  
@@ -27,7 +34,7 @@ This is an example of a **Short Notes document** using the NMU template. It demo
 2. Second item  
 3. Third item  
 
-## \emoji{small-blue-diamond} **Text Formatting**  
+## **Text Formatting**  
 
 - **Bold Text**  
 - *Italic Text*  
