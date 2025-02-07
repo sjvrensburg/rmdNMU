@@ -25,6 +25,21 @@ remotes::install_github("sjvrensburg/rmdnmu")
 
 ![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
+## 📝 Creating Your First Document
+
+After installation, creating a new document with these templates is super easy in RStudio:
+
+1. Click `File > New File > R Markdown...`
+2. In the dialog that appears, click on "From Template"
+3. You'll see several NMU templates listed - choose the one you need:
+   - "NMU Practical Document"
+   - "NMU Short Notes"
+   - "NMU Test Template"
+4. Give your document a name and select where to save it
+5. Click "OK", and RStudio will create a new directory with your document, ready to use! 
+
+> 💡 **Pro tip**: The new document has example content to help you get started. Feel free to modify or delete it as needed!
+
 ## 🛠️ Templates
 
 ### 🧪 Practicals
