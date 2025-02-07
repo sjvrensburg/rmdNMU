@@ -1,110 +1,111 @@
-# 📚 rmdNMU: R Markdown Templates for NMU
+# rmdNMU: R Markdown Templates for NMU
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Made for NMU](https://img.shields.io/badge/Made%20for-NMU-yellow.svg)](https://www.mandela.ac.za)
 
-Beautiful R Markdown templates for Nelson Mandela University, styled with 💙 and LaTeX magic ✨
+Professional R Markdown templates for Nelson Mandela University, featuring comprehensive LaTeX integration and institutional styling.
 
-![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+---
 
-## 🎯 What's Inside?
+## Features
 
-- 📊 **Practical Templates** - For labs and assignments
-- 📝 **Short Notes** - With theorem environments and custom boxes
-- 📋 **Test Templates** - Complete with solutions and marking support
-- 🎨 **Brand-Aligned** - Uses NMU's official colours and styling
+- **Practical Templates** - For laboratory assignments and coursework
+- **Short Notes** - Including theorem environments and specialized formatting
+- **Test Templates** - With integrated solutions and assessment tools
+- **Brand Compliance** - Largely follows NMU's official design guidelines
 
-## ⚡ Quick Start
+## Installation
 
 ```r
 # Install package
 remotes::install_github("sjvrensburg/rmdnmu")
-# Optional, install the firamath LaTeX package
-# for better math typography.
+
+# OPTIONAL BUT RECOMMENDED
+# Install firamath LaTeX package for enhanced math typography
 tinytex::tlmgr_install("firamath")
 ```
 
-> 💡 **Requirements**: Just make sure you have LuaTeX installed - we'll handle the fonts automatically!
+**Note**: Requires LuaTeX installation - all other dependencies are handled automatically.
 
-![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+---
 
-## 📝 Creating Your First Document
+## Usage Instructions
 
-After installation, creating a new document with these templates is super easy in RStudio:
+Creating documents with these templates in RStudio:
 
-1. Click `File > New File > R Markdown...`
-2. In the dialogue that appears, click on "From Template"
-3. You'll see several NMU templates listed - choose the one you need:
+1. Navigate to `File > New File > R Markdown...`
+2. Select "From Template"
+3. Choose from available NMU templates:
    - "NMU Practical Document"
    - "NMU Short Notes"
    - "NMU Test Template"
-4. Give your document a name and select where to save it
-5. Click "OK", and RStudio will create a new directory with your document, ready to use! 
+4. Specify document name and location
+5. Click "OK" to generate the template
 
-> 💡 **Pro tip**: The new document has example content to help you get started. Feel free to modify or delete it as needed!
+**Note**: Each template includes comprehensive example content for reference.
 
-## 🛠️ Templates
+## Template Documentation
 
-### 🧪 Practicals
+### Practical Documents
 
-Perfect for computer labs and assignments:
+Designed for laboratory work and assignments:
 
 ```r
 ---
 title: "STAT312: Practical 1"
-author: "Future Statistician"
+author: "Student Name"
 output: 
-  rmdNMU::pdf_prac: # or html_prac for web output!
+  rmdNMU::pdf_prac: # Alternative: html_prac for web format
     keep_tex: true
 ---
 ```
 
-### 📓 Short Notes
+### Short Notes
 
-Create beautiful lecture notes with math support:
+Designed for lecture notes with mathematical typesetting:
 
 ```r
 ---
-title: "Statistical Magic"
-author: "Professor Awesome"
+title: "Statistical Theory"
+author: "Instructor Name"
 output: rmdNMU::short_notes
 ---
 ```
 
-#### ✨ Cool Features
+#### Features
 
-- 📐 Theorem & proof environments
-- 📦 Custom info boxes
-- 🔗 Smart cross-referencing
-- 📊 TikZ diagrams support
+- Theorem and proof environments
+- Information boxes
+- Cross-referencing system
+- TikZ diagram support
 
-### 📝 Tests
+### Test Documents
 
-Make professional tests and assignments:
+Designed for pen-and-paper tests and assignments:
 
 ```r
 ---
 params:
   subject: "Statistical Methods"
   code: "STAT314"
-  test: "The Big One"
+  test: "Assessment 1"
   solutions: true
 output: rmdNMU::tests
 ---
 ```
 
-#### 🎁 Special Features
+#### Capabilities
 
-- ✓ Custom marking symbols (✓, ✓✓, ½✓)
-- 📊 Point tracking
-- 💻 Code-friendly solutions
-- 🎯 Auto-grading support
+- Assessment marking symbols
+- Point calculation
+- Solution formatting
+- Automated grading support
 
-![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+---
 
-## 📖 Example Snippets
+## Implementation Examples
 
-### 🧮 Mathematical Beauty
+### Mathematical Typesetting
 
 ```markdown
 ::: {.theorem #pythagoras name="Pythagoras' Theorem"}
@@ -113,40 +114,37 @@ $$a^2 + b^2 = c^2$$
 :::
 
 ::: {.proof}
-Magic happens here... ✨
+Proof details...
 :::
 ```
 
-### 📋 Test Questions
+### Assessment Format
 
 ```markdown
 \question[5]
-What makes statistics awesome?
+Explain the central limit theorem.
 
 \begin{solution}
-Everything! \tick
+Detailed solution... \tick
 \end{solution}
 ```
 
-![Divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+---
 
-## 🔧 System Requirements
+## Technical Requirements
 
 - R (>= 4.0.0)
 - LuaTeX
-- Required packages: rmarkdown, knitr, tinytex
+- Dependencies: rmarkdown, knitr, tinytex
 
-## 📜 License
+## License
 
-GPL (>= 3) - Feel free to use and improve!
+GPL (>= 3) - Available for use and modification under license terms.
 
 ---
 
 <div align="center">
-  
-### Made with 💙 for Nelson Mandela University
 
-*"Education is the most powerful weapon which you can use to change the world."*  
-— Nelson Mandela
+**Let's make academic documents great again!**
 
 </div>
