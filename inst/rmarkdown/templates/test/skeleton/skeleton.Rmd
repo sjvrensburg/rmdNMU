@@ -28,10 +28,18 @@ footer:
     left: ""
     center: ""
     right: ""
-fontsize: 14pt  # Can be any size supported by extsizes
+# The LaTeX template uses the extsizes package, which
+# supports the following font sizes:
+# 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, and 20pt
+fontsize: 14pt
 output:
   rmdNMU::tests:
-    keep_tex: true
+    # set keep_tex to true to retain the generated LaTeX code
+    keep_tex: false
+    # Available themes:
+    #   pygments, tango, espresso, zenburn,
+    #   kate, monochrome, breezedark, haddock
+    highlight: "monochrome" # Use monochrome for printed documents
 ---
 
 ```{r setup, include=FALSE}

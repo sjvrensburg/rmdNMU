@@ -8,19 +8,26 @@ module: "STAT312"
 type: "Practical"
 number: 1
 date: "`r format(Sys.Date(), '%d %B %Y')`"
-# Do not edit the following...
+# Students should not edit the following...
 title: "`r sprintf('%s: %s %02d', rmarkdown::metadata$module, rmarkdown::metadata$type, rmarkdown::metadata$number)`"
 author: "`r rmarkdown::metadata$surname`, `r rmarkdown::metadata$name` (`r rmarkdown::metadata$student_number`)"
 documentclass: extarticle
+# The extarticle document class supports the following font sizes:
+# 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, and 20pt
 fontsize: 12pt
 papersize: a4paper
-# If you want to knit to PDF, replace
-# rmdNMU::html_prac
-# with 
-# rmdNMU::pdf_prac
 output:
-  rmdNMU::pdf_prac:
-    keep_tex: true
+  # If you want to knit to PDF, replace
+  # rmdNMU::html_prac
+  # with 
+  # rmdNMU::pdf_prac
+  rmdNMU::html_prac:
+    # set keep_tex to true to retain the generated LaTeX code
+    keep_tex: false
+    # Available themes:
+    #   pygments, tango, espresso, zenburn,
+    #   kate, monochrome, breezedark, haddock
+    highlight: "tango"
 ---
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}

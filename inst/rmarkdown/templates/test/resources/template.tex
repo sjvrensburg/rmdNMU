@@ -84,25 +84,11 @@ $endif$
 \makeatletter
 \newenvironment{solutioncode}{%
   \VerbatimEnvironment
-  \begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\#=12},fontsize=\small]%
+  \begin{Highlighting}% Use Highlighting instead of Verbatim
 }{%
-  \end{Verbatim}%
+  \end{Highlighting}%
 }
 \makeatother
-
-% Redefine how code chunks are formatted
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{%
-    commandchars=\\\{\},
-    codes={\catcode`\#=12},
-    fontsize=\small,
-    frame=single,
-    rulecolor=\color{gray!30},
-    framerule=0.5pt,
-    framesep=3mm,
-    baselinestretch=1.2,
-    breaklines=true,
-    breakanywhere=true
-}
 
 % Code highlighting
 $if(highlighting-macros)$
