@@ -51,8 +51,13 @@
 \IfFileExists{firamath.sty}{
     \setmathfont{Fira Math}[
         Scale=MatchUppercase,
-        BoldFont=Fira Math Bold
+        BoldFont=Fira Math Ultra,
+        BoldFeatures={Weight=950}
     ]
+    \AtBeginDocument{
+        \let\origbold\mathbf
+        \renewcommand{\mathbf}[1]{\mathversion{Ultra}#1}
+    }
 }{
     \setmathfont{KpMath-Sans}[
         Scale=MatchUppercase,
@@ -68,24 +73,9 @@
 \titleformat{\subsection}{\large\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
 
-% Bold math symbols fix
-\AtBeginDocument{
-    \let\origbold\mathbf
-    \renewcommand{\mathbf}[1]{\symbf{#1}}
-}
-
 % Common configurations
 \providecommand{\tightlist}{
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Font configuration
-\defaultfontfeatures{
-    Ligatures=TeX,
-    UprightFeatures={Weight=400},
-    BoldFeatures={Weight=700},
-    ItalicFeatures={Weight=400},
-    BoldItalicFeatures={Weight=700}
-}
 
 % Line spacing
 \onehalfspacing
