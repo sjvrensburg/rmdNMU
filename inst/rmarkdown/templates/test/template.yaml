@@ -1,4 +1,4 @@
-name: Test Template
+name: "NMU Test Template"
 description: >
    Template for tests. Also useful for assignments
 create_dir: FALSE

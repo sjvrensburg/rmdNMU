@@ -1,5 +1,5 @@
-name: "Computer Lab or Practical Exercises"
+name: "NMU Practical Document"
 description: >
-   A template for practicals or lab assignments.
+   A template for computer practicals or lab assignments.
 create_dir: FALSE
 create_rproj: FALSE
