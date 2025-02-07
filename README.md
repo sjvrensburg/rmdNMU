@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Made for NMU](https://img.shields.io/badge/Made%20for-NMU-yellow.svg)](https://www.mandela.ac.za)
 
-Professional R Markdown templates for Nelson Mandela University, featuring comprehensive LaTeX integration and institutional styling.
+R Markdown templates for Nelson Mandela University, featuring comprehensive LaTeX integration and institutional styling.
 
 ---
 
