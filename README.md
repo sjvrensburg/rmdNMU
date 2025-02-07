@@ -12,13 +12,16 @@ Beautiful R Markdown templates for Nelson Mandela University, styled with 💙 a
 - 📊 **Practical Templates** - For labs and assignments
 - 📝 **Short Notes** - With theorem environments and custom boxes
 - 📋 **Test Templates** - Complete with solutions and marking support
-- 🎨 **Brand-Aligned** - Uses NMU's official colors and styling
+- 🎨 **Brand-Aligned** - Uses NMU's official colours and styling
 
 ## ⚡ Quick Start
 
 ```r
 # Install package
 remotes::install_github("sjvrensburg/rmdnmu")
+# Optional, install the firamath LaTeX package
+# for better math typography.
+tinytex::tlmgr_install("firamath")
 ```
 
 > 💡 **Requirements**: Just make sure you have LuaTeX installed - we'll handle the fonts automatically!
@@ -30,7 +33,7 @@ remotes::install_github("sjvrensburg/rmdnmu")
 After installation, creating a new document with these templates is super easy in RStudio:
 
 1. Click `File > New File > R Markdown...`
-2. In the dialog that appears, click on "From Template"
+2. In the dialogue that appears, click on "From Template"
 3. You'll see several NMU templates listed - choose the one you need:
    - "NMU Practical Document"
    - "NMU Short Notes"
