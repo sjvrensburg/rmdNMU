@@ -4,13 +4,15 @@
 \alias{tests}
 \title{Create a test document with NMU styling}
 \usage{
-tests(..., keep_tex = TRUE)
+tests(..., keep_tex = TRUE, highlight = "monochrome")
 }
 \arguments{
 \item{...}{Additional arguments to \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document()}}}
 
 \item{keep_tex}{A boolean toggle to select whether intermediate
 LaTeX files are to be kept, defaults to \code{TRUE}}
+
+\item{highlight}{Syntax highlighting style, defaults to "monochrome"}
 }
 \value{
 R Markdown output format to pass to render

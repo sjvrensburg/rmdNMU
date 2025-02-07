@@ -77,16 +77,19 @@ $endif$
 
 \renewcommand{\droptotalpoints}{
   \hfill
-  \fbox{\textbf{Question \thequestion: \totalpoints}}
+  \fbox{\textbf{Total Marks For Question \thequestion: \totalpoints}}
 }
 
 % Create a custom environment for code in solutions
+\usepackage{alltt}
 \makeatletter
 \newenvironment{solutioncode}{%
-  \VerbatimEnvironment
-  \begin{Highlighting}% Use Highlighting instead of Verbatim
+  \begin{solution}
+  \begin{alltt}
+  \color{nmuprimaryblue}
 }{%
-  \end{Highlighting}%
+  \end{alltt}
+  \end{solution}
 }
 \makeatother
 
@@ -98,17 +101,20 @@ $endif$
 \begin{document}
 
 % Title section
+{   % Use braces to keep the arraystretch change local
+\renewcommand{\arraystretch}{0.8}
 \begin{center}
 \begin{tabular}{@{} p{4cm} @{} p{10cm} @{}}
   \toprule
-  \textbf{Subject:} & $params.subject$ \\[0.5em]
-  \textbf{Module Code:} & $params.code$ \\[0.5em]
-  \textbf{Time Limit:} & $params.timelimit$ \\[0.5em]
-  \textbf{Marks:} & \numpoints \\[0.5em]
+  \textbf{Subject:} & $params.subject$ \\[0.3em]
+  \textbf{Module Code:} & $params.code$ \\[0.3em]
+  \textbf{Time Limit:} & $params.timelimit$ \\[0.3em]
+  \textbf{Marks:} & \numpoints \\[0.3em]
   \textbf{Examiner:} & $params.examiner$ \\
   \bottomrule
 \end{tabular}
 \end{center}
+}
 
 \vspace{1cm}
 
