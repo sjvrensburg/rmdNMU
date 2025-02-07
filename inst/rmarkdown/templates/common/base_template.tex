@@ -1,4 +1,5 @@
 % Essential Packages (load order optimized for dependencies)
+\usepackage{iftex}
 \usepackage{fontspec}        % Font management
 \usepackage[a4paper, margin=2.54cm]{geometry}        % Page layout
 \usepackage{xcolor}         % Color support
@@ -47,34 +48,34 @@
     BoldItalicFeatures={Weight=700}
 }
 
-\setmathfont{KpMath-Sans}[
-    Scale=MatchUppercase,
-    StylisticSet=1
-]
+\IfFileExists{firamath.sty}{
+    \setmathfont{Fira Math}[
+        Scale=MatchUppercase,
+        BoldFont=Fira Math Ultra,
+        BoldFeatures={Weight=950}
+    ]
+    \AtBeginDocument{
+        \let\origbold\mathbf
+        \renewcommand{\mathbf}[1]{\mathversion{Ultra}#1}
+    }
+}{
+    \setmathfont{KpMath-Sans}[
+        Scale=MatchUppercase,
+        StylisticSet=1
+    ]
+    \PackageWarning{rmdNMU}{Fira Math not found. Using KpMath-Sans as fallback.
+        For better math typography, install Fira Math using:
+        tinytex::tlmgr_install("firamath")}
+}
 
 % Section formatting with heavier weights
 \titleformat{\section}{\Large\bfseries\addfontfeatures{Weight=800}\color{nmuprimaryblue}}{\thesection}{1em}{}
 \titleformat{\subsection}{\large\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries\addfontfeatures{Weight=700}\color{nmusecondaryblue}}{\thesubsubsection}{1em}{}
 
-% Bold math symbols fix
-\AtBeginDocument{
-    \let\origbold\mathbf
-    \renewcommand{\mathbf}[1]{\symbfit{#1}}
-}
-
 % Common configurations
 \providecommand{\tightlist}{
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Font configuration
-\defaultfontfeatures{
-    Ligatures=TeX,
-    UprightFeatures={Weight=400},
-    BoldFeatures={Weight=700},
-    ItalicFeatures={Weight=400},
-    BoldItalicFeatures={Weight=700}
-}
 
 % Line spacing
 \onehalfspacing
