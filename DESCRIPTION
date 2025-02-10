@@ -10,10 +10,13 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:
-    xaringan,
     rmarkdown,
     knitr,
+    quarto,
     tinytex
 SystemRequirements: 
     LuaTeX,
     Nunito Sans fonts
+Suggests:
+    rstudioapi
+Config/Needs/RStudio: rstudioapi

@@ -1,0 +1,152 @@
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{beamer}
+
+% Beamer Theme Configuration
+\usetheme{Madrid}
+\useinnertheme{rectangles}
+\useoutertheme{miniframes}
+
+% NMU Color Definitions
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+% Font and Language Support
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+% Font Setup
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,
+    BoldItalicFont = NunitoSans-Italic,
+    UprightFeatures = {Weight=450, Scale=1.0},
+    BoldFeatures = {Weight=700},
+    ItalicFeatures = {Weight=450},
+    BoldItalicFeatures = {Weight=700}
+]
+
+% Theme Color Selection
+\definecolor{current@themecolor}{named}{nmu$nmu_theme$}
+
+% Inner theme customization for faculty colors
+\setbeamercolor{block title}{bg=current@themecolor,fg=white}
+\setbeamercolor{block body}{bg=current@themecolor!10,fg=black}
+\setbeamercolor{normal text}{fg=nmuprimaryblue}
+\setbeamercolor{alerted text}{fg=current@themecolor}
+\setbeamercolor{example text}{fg=current@themecolor}
+
+% Color and Style Configuration
+\setbeamercolor{palette primary}{bg=current@themecolor,fg=white}
+\setbeamercolor{palette secondary}{bg=current@themecolor!70,fg=white}
+\setbeamercolor{palette tertiary}{bg=current@themecolor!60,fg=white}
+\setbeamercolor{frametitle}{fg=current@themecolor,bg=white}
+\setbeamercolor{title}{fg=current@themecolor,bg=white}
+\setbeamercolor{itemize item}{fg=current@themecolor}
+\setbeamercolor{itemize subitem}{fg=current@themecolor!70}
+\setbeamercolor{item projected}{bg=current@themecolor}
+\setbeamercolor{section in head/foot}{fg=white,bg=current@themecolor}
+
+% Navigation and Frame Style
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamertemplate{caption}[numbered]
+
+% Title Page Customization
+\setbeamertemplate{title page}{
+  \vbox{}
+  \vfill
+  \begingroup
+    \centering
+    \begin{minipage}{\textwidth}
+      \centerline{\includegraphics[width=0.6\textwidth]{$logo$}}\par % Centered logo
+      \vspace{2em}
+      {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle\par}
+      \vspace{0.5em}
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}
+      \vspace{1.5em}
+      {\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par}
+      \vspace{0.5em}
+      {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute\par}
+      \vspace{0.5em}
+      {\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\par}
+    \end{minipage}
+  \endgroup
+  \vfill
+}
+
+% Frame Title Style
+\setbeamertemplate{frametitle}{
+  \vspace{0.5em}
+  \insertframetitle
+  \vspace{0.5em}
+  \hrule height 0.5pt
+}
+
+% Footer Style
+\setbeamertemplate{footline}{
+  \leavevmode
+  \hbox{
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,left]{}\hspace*{2em}
+      \insertshortauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{}
+      \insertshorttitle
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,right]{}
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2em}
+    \end{beamercolorbox}
+  }
+}
+
+% Additional Packages
+\usepackage{amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{tikz}
+
+% Common configurations
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\title{$if(title)$$title$$else$NMU Presentation$endif$}
+\subtitle{$if(subtitle)$$subtitle$$else$$endif$}
+\author{$if(author)$$author$$else$NMU Presenter$endif$}
+\institute{$if(institute)$$institute$$else$Nelson Mandela University$endif$}
+\date{$if(date)$$date$$else$\today$endif$}
+
+% Code Highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\begin{document}
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+$if(toc)$
+\begin{frame}[allowframebreaks]{Table of Contents}
+\tableofcontents
+\end{frame}
+$endif$
+
+$body$
+
+\end{document}
