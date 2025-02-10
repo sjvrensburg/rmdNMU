@@ -1,0 +1,28 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Add faculty class to body
+  document.body.classList.add('$faculty$');
+
+  // Add logo to all slides
+  var slides = document.querySelectorAll('.reveal .slides section');
+  slides.forEach(function(slide) {
+    if (!slide.querySelector('.slide-logo')) {
+      var logo = document.createElement('img');
+      logo.src = '$logo$';
+      logo.classList.add('slide-logo');
+      slide.appendChild(logo);
+    }
+  });
+
+  // Special handling for title slide
+  var titleSlide = document.querySelector('.reveal .slides section:first-child');
+  if (titleSlide) {
+    titleSlide.classList.add('title-slide');
+    var titleLogo = document.createElement('img');
+    titleLogo.src = '$logo$';
+    titleLogo.style.width = '60%';
+    titleLogo.style.maxWidth = '600px';
+    titleLogo.style.marginBottom = '2em';
+    titleSlide.insertBefore(titleLogo, titleSlide.firstChild);
+  }
+});</script>

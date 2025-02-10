@@ -1,0 +1,95 @@
+---
+title: "Presentation Title"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output:
+  rmdNMU::html_slides:
+    # Choose your faculty theme:
+    # humanities, education, business, sciences,
+    # health, engineering, law, ocean
+    faculty: "sciences"
+    # Code highlighting style
+    highlight: "tango"
+    # Additional reveal.js options
+    reveal_options:
+      slideNumber: true
+      hash: true
+      controls: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,          # Show code
+  warning = FALSE,      # Hide warnings
+  message = FALSE,      # Hide messages
+  fig.width = 8,        # Figure width
+  fig.height = 5,       # Figure height
+  fig.align = 'center', # Center figures
+  out.width = '80%'     # Output width
+)
+```
+
+# Introduction {data-background-color="#f7f7f7"}
+
+## Welcome
+
+- This is a template for NMU-styled presentations
+- It uses reveal.js for modern HTML slides
+- Features faculty-specific color themes
+- Includes the NMU logo on all slides
+
+## Code Example
+
+```{r}
+# Example R code
+data <- data.frame(
+  x = 1:10,
+  y = rnorm(10)
+)
+head(data)
+```
+
+## Plot Example
+
+```{r}
+plot(data$x, data$y, 
+     type = "b",
+     main = "Sample Plot",
+     xlab = "X values",
+     ylab = "Y values")
+```
+
+## Mathematical Content
+
+You can include equations:
+
+$$
+\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i
+$$
+
+## Tables
+
+Create formatted tables:
+
+```{r}
+knitr::kable(head(mtcars[,1:4]))
+```
+
+## Columns
+
+::: {.columns}
+::: {.column width="50%"}
+Left column content
+- Point 1
+- Point 2
+:::
+::: {.column width="50%"}
+Right column content
+1. Item 1
+2. Item 2
+:::
+:::
+
+## Thank You {data-background-color="#f7f7f7"}
+
+Questions?
