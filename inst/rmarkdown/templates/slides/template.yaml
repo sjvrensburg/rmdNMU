@@ -1,0 +1,5 @@
+name: "NMU Slides"
+description: >
+   Template for slides
+create_dir: FALSE
+create_rproj: FALSE

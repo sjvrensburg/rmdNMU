@@ -1,44 +1,58 @@
 ---
 title: "Presentation Title"
+subtitle: "Subtitle (if any)"
 author: "Your Name"
+institute: "Nelson Mandela University"
 date: "`r Sys.Date()`"
 output:
   rmdNMU::html_slides:
-    # Choose your faculty theme:
-    # humanities, education, business, sciences,
-    # health, engineering, law, ocean
     faculty: "sciences"
-    # Code highlighting style
-    highlight: "tango"
-    # Additional reveal.js options
-    reveal_options:
-      slideNumber: true
-      hash: true
-      controls: true
+    highlight: "github"
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
 ---
 
 ```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
 knitr::opts_chunk$set(
-  echo = TRUE,          # Show code
-  warning = FALSE,      # Hide warnings
-  message = FALSE,      # Hide messages
-  fig.width = 8,        # Figure width
-  fig.height = 5,       # Figure height
-  fig.align = 'center', # Center figures
-  out.width = '80%'     # Output width
+  fig.width = 8,
+  fig.height = 5,
+  fig.retina = 3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE,
+  fig.align = 'center'
 )
 ```
 
-# Introduction {data-background-color="#f7f7f7"}
+name: inverse
+layout: true
+class: center, middle, inverse
+---
 
-## Welcome
+# Section Title
+
+---
+layout: false
+
+# Welcome
 
 - This is a template for NMU-styled presentations
-- It uses reveal.js for modern HTML slides
+- Uses xaringan for modern HTML slides
 - Features faculty-specific color themes
 - Includes the NMU logo on all slides
 
-## Code Example
+.footnote[Use footnotes for additional information]
+
+---
+
+# Code Example
 
 ```{r}
 # Example R code
@@ -49,47 +63,56 @@ data <- data.frame(
 head(data)
 ```
 
-## Plot Example
+---
 
-```{r}
+# Plot Example
+
+.pull-left[
+```{r, fig.height=5}
 plot(data$x, data$y, 
      type = "b",
      main = "Sample Plot",
      xlab = "X values",
      ylab = "Y values")
 ```
+]
 
-## Mathematical Content
+.pull-right[
+### Key Points
+- Demonstrates data visualization
+- Shows plot customization
+- Illustrates two-column layout
+]
 
-You can include equations:
+---
+
+# Mathematical Content
+
+You can include beautiful equations:
 
 $$
-\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i
+\begin{aligned}
+\bar{x} &= \frac{1}{n}\sum_{i=1}^n x_i \\
+s^2 &= \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2
+\end{aligned}
 $$
 
-## Tables
+> Use blockquotes for important notes or quotes
 
-Create formatted tables:
+---
+
+# Professional Tables
 
 ```{r}
-knitr::kable(head(mtcars[,1:4]))
+options(knitr.kable.NA = '')
+knitr::kable(head(mtcars[,1:4]), 
+             format = 'html',
+             caption = "Sample Data from mtcars")
 ```
 
-## Columns
+---
+template: inverse
 
-::: {.columns}
-::: {.column width="50%"}
-Left column content
-- Point 1
-- Point 2
-:::
-::: {.column width="50%"}
-Right column content
-1. Item 1
-2. Item 2
-:::
-:::
+# Thank You
 
-## Thank You {data-background-color="#f7f7f7"}
-
-Questions?
+## Questions?
