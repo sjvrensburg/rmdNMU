@@ -29,15 +29,14 @@ The package provides three main templates:
 The templates use the following fonts:
 \itemize{
 \item Nunito Sans (included in package)
-\item Fira Math (recommended for optimal math typography)
+\item Fira Math (installed automatically if needed via TinyTeX)
 }
 
-To install Fira Math, run:
+The required LaTeX packages will be installed automatically when needed.
+If not install Fira Math, run:
 
-\if{html}{\out{<div class="sourceCode r">}}\preformatted{tinytex::tlmgr_install("firamath")
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{tinytex::tlmgr_install(c("firamath", "firamath-otf"))
 }\if{html}{\out{</div>}}
-
-If Fira Math is not available, the package will fall back to KpMath-Sans.
 }
 
 \section{Usage}{

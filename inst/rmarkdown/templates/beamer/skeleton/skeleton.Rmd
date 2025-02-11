@@ -7,7 +7,7 @@ date: "`r format(Sys.Date(), '%d %B %Y')`"
 output: 
   rmdNMU::nmu_beamer:
     theme: "business"  # Options: humanities, education, business, sciences, health, engineering, law, ocean
-    keep_tex: true
+    keep_tex: false
 ---
 
 # First Section

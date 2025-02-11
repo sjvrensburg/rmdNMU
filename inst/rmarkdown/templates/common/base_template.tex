@@ -11,6 +11,7 @@
 \usepackage{amssymb}        % Math symbols
 \usepackage{unicode-math}   % Unicode math support
 \usepackage{amsfonts}       % Additional math fonts
+\usepackage[Scale=0.98,math-style=french]{lete-sans-math}
 
 % Tables and Lists
 \usepackage{array}          % Enhanced table support
@@ -46,26 +47,6 @@
     BoldFeatures={Weight=700},
     ItalicFeatures={Weight=400},
     BoldItalicFeatures={Weight=700}
-}
-
-\IfFileExists{firamath.sty}{
-    \setmathfont{Fira Math}[
-        Scale=MatchUppercase,
-        BoldFont=Fira Math Ultra,
-        BoldFeatures={Weight=950}
-    ]
-    \AtBeginDocument{
-        \let\origbold\mathbf
-        \renewcommand{\mathbf}[1]{\mathversion{Ultra}#1}
-    }
-}{
-    \setmathfont{KpMath-Sans}[
-        Scale=MatchUppercase,
-        StylisticSet=1
-    ]
-    \PackageWarning{rmdNMU}{Fira Math not found. Using KpMath-Sans as fallback.
-        For better math typography, install Fira Math using:
-        tinytex::tlmgr_install("firamath")}
 }
 
 % Section formatting with heavier weights

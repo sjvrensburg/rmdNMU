@@ -1,5 +1,5 @@
 name: "NMU Test Template"
 description: >
-   Template for tests. Also useful for assignments
+   Template for tests.
 create_dir: FALSE
 create_rproj: FALSE
