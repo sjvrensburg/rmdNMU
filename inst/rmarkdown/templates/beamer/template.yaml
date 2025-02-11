@@ -1,0 +1,4 @@
+name: "NMU Beamer Presentation"
+description: >
+   A template for creating presentations using NMU's style
+create_dir: FALSE

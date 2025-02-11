@@ -1,0 +1,108 @@
+$if(params.solutions)$
+\documentclass[answers, addpoints]{exam}
+$else$
+\documentclass[addpoints]{exam}
+$endif$
+
+% Handle font size with extsizes
+\usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
+
+% Load base template with common packages
+\input{$base_template$}
+
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,
+    BoldItalicFont = NunitoSans-Italic,
+    UprightFeatures = {Weight=450, Scale=1.0},
+    BoldFeatures = {Weight=700},
+    ItalicFeatures = {Weight=450},
+    BoldItalicFeatures = {Weight=700}
+]
+
+\usepackage{soul}
+
+\marksnotpoints
+
+% Style exam pages
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader%
+{\color{nmuprimaryblue}\large \textbf{$header.front.left$}}%
+{\color{nmuprimaryblue}\large \textbf{$header.front.center$}}%
+{\color{nmuprimaryblue}\large \textbf{$header.front.right$}}
+
+\runningheader%
+{\color{nmusecondaryblue}\textbf{$header.running.left$}}%
+{\color{nmusecondaryblue}\textbf{$header.running.center$}}%
+{\color{nmusecondaryblue}\textbf{$header.running.right$}}
+
+\firstpagefooter%
+{\color{nmusecondaryblue}\textbf{$footer.front.left$}}%
+{\color{nmusecondaryblue}\textbf{$footer.front.center$}}%
+{\color{nmusecondaryblue}\textbf{$footer.front.right$}}
+
+\runningfooter%
+{\color{nmusecondaryblue}\textbf{$footer.running.left$}}%
+{\color{nmusecondaryblue}\textbf{$footer.running.center$}}%
+{\color{nmusecondaryblue}\textbf{$footer.running.right$}}
+
+\def\tick{
+  \begin{tikzpicture}[scale=0.3]
+    \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+    \node[above, white] at (0.35, 0.1) {\tiny 1};
+    \node[below, white] at (0.7, 0.5) {\tiny 2};
+  \end{tikzpicture}
+}
+
+\def\doubletick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25, .175) -- cycle;
+        \draw[fill=black] (0.5,.35) -- (.75,0) -- (1.5,.7) -- (.75, .175) -- cycle;
+        \node[above, white] at (0.35, 0.1) {\tiny 1};
+        \node[below, white] at (1.2, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\def\halftick{
+    \begin{tikzpicture}[scale=0.3]
+        \draw[fill=black] (0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle (0.75,0.2) -- (0.77,0.2)  -- (0.6,0.7) -- cycle;
+        \node[above] at (0.35, 0.1) {\tiny 1};
+        \node[below] at (0.7, 0.5) {\tiny 2};
+    \end{tikzpicture}
+}
+
+\renewcommand{\droptotalpoints}{
+  \hfill
+  \fbox{\textbf{Total Marks For Question \thequestion: \totalpoints}}
+}
+
+% Create a custom environment for code in solutions
+\usepackage{alltt}
+\makeatletter
+\newenvironment{solutioncode}{%
+  \begin{solution}
+  \begin{alltt}
+  \color{nmuprimaryblue}
+}{%
+  \end{alltt}
+  \end{solution}
+}
+\makeatother
+
+% Code highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+\begin{document}
+
+% Questions section
+\begin{questions}
+  $body$
+\end{questions}
+
+\end{document}

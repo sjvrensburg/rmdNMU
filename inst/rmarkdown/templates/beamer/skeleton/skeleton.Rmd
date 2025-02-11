@@ -1,0 +1,54 @@
+---
+title: "Presentation Title"
+subtitle: "Optional Comprehensive Subtitle"
+author: "Your Name"
+institute: "Department of Statistics\\\\Nelson Mandela University"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output: 
+  rmdNMU::nmu_beamer:
+    theme: "business"  # Options: humanities, education, business, sciences, health, engineering, law, ocean
+    keep_tex: false
+---
+
+# First Section
+
+## First Slide with Image
+
+<!-- ![NMU Logo](/path/to/optional/logo){width=50%} -->
+
+- Key point one
+- Key point two
+
+## Code Slide
+
+```{r example-code, echo=TRUE}
+# Simple R code example
+x <- 1:10
+mean(x)
+```
+
+## Math Slide
+
+Inline math: $E = mc^2$
+
+Display math:
+\[
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+\]
+
+## Two-Column Slide
+
+\begin{columns}
+\column{0.5\textwidth}
+Left column content
+\column{0.5\textwidth}
+Right column content
+\end{columns}
+
+# Conclusion
+
+## Key Takeaways
+
+- Highlight first key point
+- Emphasize second key point
+- Final memorable conclusion

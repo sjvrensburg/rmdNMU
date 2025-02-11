@@ -16,13 +16,13 @@
 #' @section Font Requirements:
 #' The templates use the following fonts:
 #' * Nunito Sans (included in package)
-#' * Fira Math (recommended for optimal math typography)
+#' * Fira Math (installed automatically if needed via TinyTeX)
 #'
-#' To install Fira Math, run:
+#' The required LaTeX packages will be installed automatically when needed.
+#' If not install Fira Math, run:
 #' ```r
-#' tinytex::tlmgr_install("firamath")
+#' tinytex::tlmgr_install(c("firamath", "firamath-otf"))
 #' ```
-#' If Fira Math is not available, the package will fall back to KpMath-Sans.
 #'
 #' @section Usage:
 #' After installation, the templates will be available in RStudio's

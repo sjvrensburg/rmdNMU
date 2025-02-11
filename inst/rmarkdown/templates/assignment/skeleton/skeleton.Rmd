@@ -1,23 +1,15 @@
 ---
 params:
-  subject: "Statistical Methods"
   code: "STAT314"
-  test: "Test 1"
-  examiner: "Dr. Smith"
-  timelimit: "2 Hours"
-  date: "`r format(Sys.Date(), '%d %B %Y')`"
+  description: "Assignment 1"
   solutions: true     # Set to false to hide solutions
-  instructions: false # Set to false to hide standard instructions
-  # Optional: path to custom instructions:
-  # instructions_file: "my_custom_instructions.tex"  
-  pointtable: false   # Set to true to show points table on first page
 header:
   front:
     left: ""
-    center: "\\Large Test 1 -- STAT314"
+    center: "`r sprintf(r'(\\Large %s -- %s)', params$description, params$code)`"
     right: ""
   running:
-    left: "STAT314"
+    left: "`r params$code`"
     center: ""
     right: "Page \\thepage\\ of \\numpages"
 footer:
@@ -34,7 +26,7 @@ footer:
 # 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, and 20pt
 fontsize: 14pt
 output:
-  rmdNMU::tests:
+  rmdNMU::assignments:
     # set keep_tex to true to retain the generated LaTeX code
     keep_tex: false
 ---
