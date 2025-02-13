@@ -60,6 +60,7 @@
 \setbeamercolor{itemize subitem}{fg=current@themecolor!70}
 \setbeamercolor{item projected}{bg=current@themecolor}
 \setbeamercolor{section in head/foot}{fg=white,bg=current@themecolor}
+\setbeamercolor{description item}{fg=current@themecolor}
 
 % Navigation and Frame Style
 \setbeamertemplate{navigation symbols}{}
@@ -114,6 +115,8 @@
   }
 }
 
+\setbeamerfont{description item}{series=\bfseries}
+
 % Additional Packages
 \usepackage{amssymb,amsmath}
 \usepackage{graphicx}
@@ -121,6 +124,7 @@
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage{emoji}
 
 % Common configurations
 \providecommand{\tightlist}{
@@ -130,7 +134,7 @@
 \subtitle{$if(subtitle)$$subtitle$$else$$endif$}
 \author{$if(author)$$author$$else$NMU Presenter$endif$}
 \institute{$if(institute)$$institute$$else$Nelson Mandela University$endif$}
-\date{$if(date)$$date$$else$\today$endif$}
+\date{$if(date)$$date$$else$$endif$}
 
 % Code Highlighting
 $if(highlighting-macros)$
