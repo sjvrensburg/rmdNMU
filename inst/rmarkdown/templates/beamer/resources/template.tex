@@ -136,6 +136,108 @@
 \institute{$if(institute)$$institute$$else$Nelson Mandela University$endif$}
 \date{$if(date)$$date$$else$$endif$}
 
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+% Essential TikZ libraries
+\usetikzlibrary{
+    % Core functionality
+    arrows.meta,          % Enhanced arrow tips
+    calc,                % Coordinate calculations
+    intersections,       % Find intersections of paths
+    % Mathematical constructs
+    angles,              % Draw and mark angles
+    quotes,              % Easy angle labeling
+    patterns,            % Fill patterns
+    decorations.markings,% Path markers and decorations
+    % Plotting and graphs
+    plotmarks,           % Special markers for plots
+    positioning,         % Relative positioning
+    fit,                % Fit shapes to sets of coordinates
+    % Shapes and nodes
+    shapes.geometric,    % Basic geometric shapes
+    shapes.arrows,       % Arrow shapes
+    shapes.symbols,      % Mathematical symbols
+    shapes.misc,        % Miscellaneous shapes
+    % Specialized features
+    matrix,             % Matrix arrangements
+    automata,           % State machines and graphs
+    bending,            % Path bending
+    backgrounds,        % Background layers
+    chains,             % Linked nodes
+    % Scientific/Mathematical
+    circuits.ee.IEC,    % Electrical circuits
+    datavisualization,  % Advanced data plotting
+    math,               % Mathematical symbols and notation
+    trees               % Tree structures
+}
+
+% PGFPlots styles and configuration
+\pgfplotsset{
+    % Default options for plots
+    every axis/.append style={
+        % Lines and ticks
+        axis lines=middle,
+        tick align=outside,
+        % Labels
+        xlabel near ticks,
+        ylabel near ticks,
+        % Grid
+        grid=major,
+        grid style={gray!30},
+        % Size
+        width=0.8\textwidth,
+        height=0.6\textwidth,
+        % Tick label style
+        tick label style={font=\small},
+        % Legend
+        legend style={
+            font=\small,
+            cells={anchor=west}
+        }
+    }
+}
+
+% Custom TikZ styles for common elements
+\tikzset{
+    % Node styles
+    important node/.style={
+        rectangle,
+        rounded corners,
+        draw=nmuprimaryblue,
+        fill=white,
+        thick,
+        inner sep=5pt
+    },
+    % Arrow styles
+    math arrow/.style={
+        ->,
+        >=latex,
+        thick
+    },
+    % Connection styles
+    connection/.style={
+        draw,
+        -latex,
+        thick
+    },
+    % Custom coordinate system for plots
+    coords/.style={
+        color=nmuprimaryblue,
+        mark=*,
+        thick
+    }
+}
+
+\newcommand{\myrule} [3] [] {
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[#2-#3, thick, #1] (0, 0) to (0.9\linewidth, 0);
+    \end{tikzpicture}
+  \end{center}
+}
+
 % Code Highlighting
 $if(highlighting-macros)$
 $highlighting-macros$
