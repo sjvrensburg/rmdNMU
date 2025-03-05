@@ -61,7 +61,7 @@
 % Line spacing
 \onehalfspacing
 
-% NMU Colors
+% NMU Colours
 \definecolor{nmuprimaryblue}{HTML}{141C2B}
 \definecolor{nmusecondaryblue}{HTML}{132E51}
 \definecolor{nmuprimaryyellow}{HTML}{FFCC00}
@@ -76,8 +76,16 @@
 \definecolor{nmulaw}{HTML}{5E6EBA}
 \definecolor{nmuocean}{HTML}{00AFAA}
 
+% Additional colours for diagrams
+\definecolor{vector1color}{RGB}{41, 128, 185} % Blue (colorblind friendly)
+\definecolor{vector2color}{RGB}{241, 196, 15}  % Gold / Deep Yellow (colorblind friendly)
+\definecolor{planecolor}{RGB}{210, 210, 210}   % Light Gray (neutral plane)
+\definecolor{residualcolor}{RGB}{230, 126, 34} % Orange (colorblind friendly)
+
 
 \usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{tkz-euclide}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 
@@ -96,6 +104,7 @@
     plotmarks,           % Special markers for plots
     positioning,         % Relative positioning
     fit,                % Fit shapes to sets of coordinates
+    3d,                 % 3D plots
     % Shapes and nodes
     shapes.geometric,    % Basic geometric shapes
     shapes.arrows,       % Arrow shapes
