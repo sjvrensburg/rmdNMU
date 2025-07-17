@@ -4,7 +4,7 @@
 \usepackage[a4paper, margin=2.54cm]{geometry}        % Page layout
 \usepackage{xcolor}         % Color support
 \usepackage{graphicx}       % Graphics
-\usepackage{microtype}      % Typography enhancements
+\usepackage[protrusion=true]{microtype}
 
 % Math and Symbols
 \usepackage{amsmath}        % Core math
@@ -49,6 +49,64 @@
     ItalicFeatures={Weight=400},
     BoldItalicFeatures={Weight=700}
 }
+
+% Unicode fallback without affecting main branding
+\newfontfamily\unicodeext{DejaVu Serif}[
+  Scale=MatchLowercase,
+  Range={0250-02AF}  % IPA Extensions only
+]
+\usepackage{newunicodechar}
+% Lowercase Greek letters
+\newunicodechar{α}{{\unicodeext α}}  % Alpha - significance level, learning rate
+\newunicodechar{β}{{\unicodeext β}}  % Beta - regression coefficients, Type II error
+\newunicodechar{γ}{{\unicodeext γ}}  % Gamma - gamma function, regularisation parameter
+\newunicodechar{δ}{{\unicodeext δ}}  % Delta - small change, Kronecker delta
+\newunicodechar{ε}{{\unicodeext ε}}  % Epsilon - error term, small positive number
+\newunicodechar{ζ}{{\unicodeext ζ}}  % Zeta - Riemann zeta function
+\newunicodechar{η}{{\unicodeext η}}  % Eta - learning rate, efficiency
+\newunicodechar{θ}{{\unicodeext θ}}  % Theta - angle, parameter vector
+\newunicodechar{ι}{{\unicodeext ι}}  % Iota - inclusion operator
+\newunicodechar{κ}{{\unicodeext κ}}  % Kappa - curvature, condition number
+\newunicodechar{λ}{{\unicodeext λ}}  % Lambda - eigenvalue, regularisation parameter
+\newunicodechar{μ}{{\unicodeext μ}}  % Mu - population mean, measure
+\newunicodechar{ν}{{\unicodeext ν}}  % Nu - degrees of freedom, frequency
+\newunicodechar{ξ}{{\unicodeext ξ}}  % Xi - random variable
+\newunicodechar{π}{{\unicodeext π}}  % Pi - 3.14159..., probability
+\newunicodechar{ρ}{{\unicodeext ρ}}  % Rho - correlation coefficient, density
+\newunicodechar{σ}{{\unicodeext σ}}  % Sigma - standard deviation, summation
+\newunicodechar{τ}{{\unicodeext τ}}  % Tau - time constant, 2π
+\newunicodechar{υ}{{\unicodeext υ}}  % Upsilon - degrees of freedom
+\newunicodechar{φ}{{\unicodeext φ}}  % Phi - golden ratio, normal distribution
+\newunicodechar{χ}{{\unicodeext χ}}  % Chi - chi-squared distribution
+\newunicodechar{ψ}{{\unicodeext ψ}}  % Psi - wave function, polygamma function
+\newunicodechar{ω}{{\unicodeext ω}}  % Omega - angular frequency, sample space
+
+% Uppercase Greek letters
+\newunicodechar{Γ}{{\unicodeext Γ}}  % Gamma - gamma function
+\newunicodechar{Δ}{{\unicodeext Δ}}  % Delta - change, difference operator
+\newunicodechar{Θ}{{\unicodeext Θ}}  % Theta - parameter space
+\newunicodechar{Λ}{{\unicodeext Λ}}  % Lambda - likelihood function
+\newunicodechar{Ξ}{{\unicodeext Ξ}}  % Xi
+\newunicodechar{Π}{{\unicodeext Π}}  % Pi - product operator
+\newunicodechar{Σ}{{\unicodeext Σ}}  % Sigma - summation operator
+\newunicodechar{Υ}{{\unicodeext Υ}}  % Upsilon
+\newunicodechar{Φ}{{\unicodeext Φ}}  % Phi - cumulative distribution function
+\newunicodechar{Χ}{{\unicodeext Χ}}  % Chi
+\newunicodechar{Ψ}{{\unicodeext Ψ}}  % Psi
+\newunicodechar{Ω}{{\unicodeext Ω}}  % Omega - sample space, resistance
+
+% Arithmetic and algebra
+\newunicodechar{±}{{\unicodeext ±}}  % Plus-minus
+\newunicodechar{×}{{\unicodeext ×}}  % Multiplication sign
+\newunicodechar{÷}{{\unicodeext ÷}}  % Division sign
+\newunicodechar{∞}{{\unicodeext ∞}}  % Infinity
+
+% Comparison and equivalence
+\newunicodechar{≠}{{\unicodeext ≠}}  % Not equal to
+\newunicodechar{≈}{{\unicodeext ≈}}  % Approximately equal to
+\newunicodechar{≡}{{\unicodeext ≡}}  % Identical to
+\newunicodechar{≤}{{\unicodeext ≤}}  % Less than or equal to
+\newunicodechar{≥}{{\unicodeext ≥}}  % Greater than or equal to
 
 % Section formatting with heavier weights
 \titleformat{\section}{\Large\bfseries\addfontfeatures{Weight=800}\color{nmuprimaryblue}}{\thesection}{1em}{}
