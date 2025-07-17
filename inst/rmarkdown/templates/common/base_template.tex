@@ -9,6 +9,7 @@
 % Math and Symbols
 \usepackage{amsmath}        % Core math
 \usepackage{amssymb}        % Math symbols
+\usepackage{mathtools}
 \usepackage{unicode-math}   % Unicode math support
 \usepackage{amsfonts}       % Additional math fonts
 \usepackage[Scale=0.98,math-style=french]{lete-sans-math}
@@ -192,7 +193,6 @@
 
 
 \usepackage{siunitx}
-\usepackage{mathtools}
 
 % Configure siunitx
 \sisetup{
@@ -226,3 +226,6 @@
 % Define argmin and argmax operators
 \newcommand{\argmin}[1]{\underset{#1}{\operatorname{argmin}} \,}
 \newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}} \,}
+
+% Define command for the compatibility with new Pandoc
+\providecommand{\pandocbounded}[1]{#1}
