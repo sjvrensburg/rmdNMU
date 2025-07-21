@@ -1,5 +1,16 @@
 % Beamer slides template
 % ./inst/rmarkdown/templates/beamer/resources/template.tex
+%
+% ARCHITECTURE NOTES:
+% This template now inherits from base_template.tex for Pandoc compatibility.
+% - Base template handles conditional loading to avoid Beamer conflicts
+% - Universal command definitions prevent redefinition errors
+% - Beamer-specific styling and configuration remain in this file
+%
+% COMPATIBILITY:
+% - Inherits universal Pandoc compatibility from base_template.tex
+% - Maintains NMU branding and Beamer-specific features
+% - TikZ and PGFPlots configurations for mathematical presentations
 
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{beamer}
 
@@ -129,34 +140,8 @@
 \usepackage{tikz}
 \usepackage{emoji}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Pandoc Compatibility for Beamer
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Core Pandoc boundary and image commands
-\providecommand{\pandocbounded}[1]{#1}
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-
-% Beamer-specific image scaling
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-
-% Text formatting compatibility
-\providecommand{\textbf}[1]{\textbf{#1}}
-\providecommand{\textit}[1]{\textit{#1}}
-\providecommand{\texttt}[1]{\texttt{#1}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% End Pandoc Compatibility
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Common configurations
-\providecommand{\tightlist}{
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% Load base template for Pandoc compatibility
+\input{$base_template$}
 
 \title{$if(title)$$title$$else$NMU Presentation$endif$}
 \subtitle{$if(subtitle)$$subtitle$$else$$endif$}
