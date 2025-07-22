@@ -10,11 +10,22 @@ $for(classoption)$
 $endfor$
 ]{$documentclass$}
 
-% Load Pandoc compatibility layer first
-\makeatletter
-\def\resourcepath{$resourcepath$}
-\makeatother
-\input{$resourcepath$/common/pandoc-compat.tex}
+% Pandoc compatibility and conflict prevention
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Prevent command redefinition errors
+\providecommand{\VerbBar}{|}
+\providecommand{\VERB}{}
+\providecommand{\Coloneqq}{\coloneqq}
+
+% Conditional theorem environments
+\@ifundefined{definition}{\newtheorem{definition}{Definition}}{}
+\@ifundefined{theorem}{\newtheorem{theorem}{Theorem}}{}
+\@ifundefined{lemma}{\newtheorem{lemma}{Lemma}}{}
+\@ifundefined{example}{\newtheorem{example}{Example}}{}
+\@ifundefined{remark}{\newtheorem{remark}{Remark}}{}
+\@ifundefined{note}{\newtheorem{note}{Note}}{}
 
 % Load base template with common packages
 \input{$base_template$}
