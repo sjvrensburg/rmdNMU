@@ -1,0 +1,57 @@
+---
+title: "Test Short Notes"
+author: "Test Author"
+date: "`r Sys.Date()`"
+documentclass: "article"
+output: 
+  rmdNMU::short_notes:
+    toc: true
+header-includes:
+  - \input{inst/rmarkdown/templates/short_notes/resources/preamble.tex}
+---
+
+# Introduction
+
+This document tests the short notes template with theorem environments.
+
+## Test Lists
+
+Testing the `\tightlist` command:
+
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+
+## Test Theorem Environments
+
+::: {.definition}
+**Test Definition**: This is a test definition to ensure the `definition` environment works without conflicts.
+:::
+
+::: {.theorem}
+**Test Theorem**: This is a test theorem to ensure the `theorem` environment works.
+:::
+
+::: {.example}
+**Test Example**: This is a test example.
+:::
+
+## Test Code Blocks
+
+```r
+# Test code with VerbBar
+x <- c(1, 2, 3)
+y <- x | length(x)  # This uses the | operator
+```
+
+## Test Verbatim
+
+The `\VerbBar` command: |test|
+
+Some inline code: `x <- 1:10`
+
+# Conclusion
+
+All theorem environments and commands should work without "already defined" errors.

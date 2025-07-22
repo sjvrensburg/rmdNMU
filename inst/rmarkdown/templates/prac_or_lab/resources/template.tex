@@ -13,6 +13,12 @@ $for(classoption)$
 $endfor$
 ]{$documentclass$}
 
+% Load Pandoc compatibility layer first
+\makeatletter
+\def\resourcepath{$resourcepath$}
+\makeatother
+\input{$resourcepath$/common/pandoc-compat.tex}
+
 % Load base template with common packages
 \input{$base_template$}
 

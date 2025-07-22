@@ -14,6 +14,12 @@
 
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{beamer}
 
+% Load Pandoc compatibility layer first
+\makeatletter
+\def\resourcepath{$resourcepath$}
+\makeatother
+\input{$resourcepath$/common/pandoc-compat.tex}
+
 % Beamer Theme Configuration
 \usetheme{Madrid}
 \useinnertheme{rectangles}

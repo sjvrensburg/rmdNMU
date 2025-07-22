@@ -1,0 +1,45 @@
+---
+title: "Test Beamer Presentation"
+author: "Test Author"
+date: "`r Sys.Date()`"
+output: 
+  rmdNMU::beamer_presentation:
+    theme: "Madrid"
+---
+
+# Introduction
+
+## Test Slide with Lists
+
+This slide tests the `\tightlist` command:
+
+- First item
+- Second item
+  - Nested item
+  - Another nested item
+- Third item
+
+## Test Slide with Code
+
+```r
+# Test code block
+x <- 1:10
+y <- x^2
+plot(x, y)
+```
+
+## Test Slide with Math
+
+Some mathematical notation:
+
+$$\sum_{i=1}^{n} x_i = \bar{x} \cdot n$$
+
+The `\VerbBar` command should work: |test|
+
+# Conclusion
+
+## Summary
+
+- All commands should work without errors
+- No "already defined" warnings
+- Proper rendering of all elements

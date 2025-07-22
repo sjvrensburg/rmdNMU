@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pandoc Compatibility and Conflict Prevention Layer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This file prevents common LaTeX compilation errors by:
+% 1. Providing safe command definitions using \providecommand
+% 2. Preventing package conflicts with conditional loading
+% 3. Handling theorem environment conflicts
+% 4. Managing verbatim and special character conflicts
+%
+% Usage: Include this file AFTER \documentclass but BEFORE other packages
+% \input{$resourcepath$/common/pandoc-compat.tex}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Core Pandoc Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Essential list formatting command
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Pandoc boundary command
+\providecommand{\pandocbounded}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Verbatim and Special Character Conflicts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Common verbatim conflicts from fancyvrb and other packages
+\providecommand{\VerbBar}{|}
+\providecommand{\VERB}{\Verb[commandchars=\\\{\}]}
+
+% Mathematical symbols that may conflict
+\providecommand{\Coloneqq}{\coloneqq}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Theorem Environment Conflict Prevention
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Defer theorem environment definitions until document begins
+% This allows other packages (like thmtools) to be loaded first
+\AtBeginDocument{%
+  % Only define basic theorem environments if:
+  % 1. amsthm is loaded, AND
+  % 2. thmtools is NOT loaded (thmtools provides more sophisticated handling), AND  
+  % 3. The environments don't already exist
+  \@ifpackageloaded{amsthm}{%
+    \@ifpackageloaded{thmtools}{%
+      % thmtools is loaded - don't define basic environments
+      % thmtools will handle theorem definitions via \declaretheorem
+    }{%
+      % amsthm is loaded but thmtools is not - define basic environments
+      \@ifundefined{definition}{%
+        \newtheorem{definition}{Definition}%
+      }{}
+      \@ifundefined{theorem}{%
+        \newtheorem{theorem}{Theorem}%
+      }{}
+      \@ifundefined{lemma}{%
+        \newtheorem{lemma}{Lemma}%
+      }{}
+      \@ifundefined{example}{%
+        \newtheorem{example}{Example}%
+      }{}
+      \@ifundefined{remark}{%
+        \newtheorem{remark}{Remark}%
+      }{}
+      \@ifundefined{note}{%
+        \newtheorem{note}{Note}%
+      }{}
+      \@ifundefined{proposition}{%
+        \newtheorem{proposition}{Proposition}%
+      }{}
+      \@ifundefined{corollary}{%
+        \newtheorem{corollary}{Corollary}%
+      }{}
+    }%
+  }{}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Package Conflict Prevention
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Prevent duplicate package loading
+\@ifpackageloaded{fancyvrb}{}{%
+  \@ifclassloaded{beamer}{}{%
+    \usepackage{fancyvrb}%
+  }%
+}
+
+\@ifpackageloaded{longtable}{}{%
+  \@ifclassloaded{beamer}{}{%
+    \usepackage{longtable}%
+  }%
+}
+
+% Prevent amsthm conflicts with thmtools
+\@ifpackageloaded{thmtools}{}{%
+  \@ifpackageloaded{amsthm}{}{%
+    \@ifclassloaded{beamer}{}{%
+      \usepackage{amsthm}%
+    }%
+  }%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Text Formatting Safety
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Ensure basic text formatting commands exist
+\providecommand{\textbf}[1]{\textbf{#1}}
+\providecommand{\textit}[1]{\textit{#1}}
+\providecommand{\texttt}[1]{\texttt{#1}}
+\providecommand{\textem}[1]{\emph{#1}}
+\providecommand{\sout}[1]{\sout{#1}}
+\providecommand{\textsuperscript}[1]{\textsuperscript{#1}}
+\providecommand{\textsubscript}[1]{\textsubscript{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Image Scaling Compatibility
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Universal image scaling that works in all document classes
+\providecommand{\maxwidth}{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\providecommand{\maxheight}{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+
+% Apply scaling globally if graphicx is loaded
+\@ifpackageloaded{graphicx}{%
+  \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}%
+}{}
+
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End Pandoc Compatibility Layer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -9,6 +9,12 @@ $endif$
 % Handle font size with extsizes
 \usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
 
+% Load Pandoc compatibility layer first
+\makeatletter
+\def\resourcepath{$resourcepath$}
+\makeatother
+\input{$resourcepath$/common/pandoc-compat.tex}
+
 % Load base template with common packages
 \input{$base_template$}
 

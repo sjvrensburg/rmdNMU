@@ -1,0 +1,44 @@
+---
+title: "Test Assignment"
+author: "Test Author"
+date: "`r Sys.Date()`"
+params:
+  solutions: false
+output: 
+  rmdNMU::assignment:
+    solutions: !r params$solutions
+---
+
+# Test Assignment
+
+## Question 1
+
+This tests basic functionality:
+
+- List item 1
+- List item 2
+- List item 3
+
+Write some code:
+
+```r
+# Test code block
+x <- 1:10
+mean(x)
+```
+
+## Question 2
+
+Test verbatim and special characters:
+
+The `\VerbBar` command should work: |test|
+
+Some math: $x = \frac{a}{b}$
+
+## Question 3
+
+Test that no "already defined" errors occur with:
+
+- `\tightlist` in lists
+- `\VerbBar` in verbatim
+- Standard LaTeX commands

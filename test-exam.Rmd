@@ -1,0 +1,45 @@
+---
+title: "Test Exam"
+author: "Test Author"
+date: "`r Sys.Date()`"
+params:
+  solutions: false
+output: 
+  rmdNMU::test:
+    solutions: !r params$solutions
+---
+
+# Test Exam
+
+## Question 1 [10 points]
+
+This tests the exam template:
+
+- Test list with `\tightlist`
+- Another item
+- Third item
+
+```r
+# Test code block
+data <- c(1, 2, 3, 4, 5)
+summary(data)
+```
+
+## Question 2 [15 points]
+
+Test special characters and verbatim:
+
+The `\VerbBar` command: |test|
+
+Some inline code: `x <- mean(data)`
+
+Mathematical notation: $\sum_{i=1}^{n} x_i$
+
+## Question 3 [25 points]
+
+Ensure no compilation errors with:
+
+- Lists using `\tightlist`
+- Verbatim text with `\VerbBar`
+- Code highlighting
+- Mathematical expressions
