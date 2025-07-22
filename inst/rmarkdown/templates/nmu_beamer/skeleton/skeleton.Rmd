@@ -1,0 +1,53 @@
+---
+title: "Presentation Title"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: 
+  rmdNMU::nmu_beamer:
+    theme: "sciences"  # Options: sciences, business, humanities, education, health, engineering, law, ocean
+---
+
+# Introduction
+
+## Overview
+
+This is an NMU Beamer presentation template featuring:
+
+- Clean, professional design
+- NMU faculty color themes
+- Mathematical notation support
+- Code highlighting
+
+## Mathematical Content
+
+The sample mean is calculated as:
+
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+
+# Main Content
+
+## Code Example
+
+```{r}
+# Sample R code
+data <- rnorm(100)
+hist(data, main = "Sample Histogram")
+```
+
+## Key Points
+
+- Point one with **emphasis**
+- Point two with *italics*
+- Point three with `code`
+
+# Conclusion
+
+## Summary
+
+- Professional NMU branding
+- Faculty-specific color themes
+- Full LaTeX and R integration
+
+## Thank You
+
+Questions?

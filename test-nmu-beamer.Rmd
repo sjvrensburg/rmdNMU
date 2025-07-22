@@ -1,0 +1,32 @@
+---
+title: "Test Presentation"
+author: "Test Presenter"
+date: "`r Sys.Date()`"
+output: 
+  rmdNMU::nmu_beamer:
+    theme: "sciences"
+---
+
+# Introduction
+
+## Overview
+
+This is a test presentation using the NMU Beamer template.
+
+# Main Content
+
+## Mathematical Example
+
+$$E[X] = \mu$$
+
+## Code Example
+
+```{r}
+plot(1:10)
+```
+
+# Conclusion
+
+## Summary
+
+The template provides professional NMU branding.

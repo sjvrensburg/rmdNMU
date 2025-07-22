@@ -1,0 +1,5 @@
+name: NMU Beamer Presentation
+description: >
+  Template for NMU presentations using Beamer. Features NMU branding,
+  faculty color themes, and mathematical notation support.
+create_dir: false

@@ -1,0 +1,5 @@
+name: NMU Assessment
+description: >
+  Template for NMU assessments including tests, assignments, and exams.
+  Supports solutions mode, point allocation, and academic formatting.
+create_dir: false

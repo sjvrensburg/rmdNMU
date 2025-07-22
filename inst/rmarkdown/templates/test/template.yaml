@@ -1,5 +1,0 @@
-name: "NMU Test Template"
-description: >
-   Template for tests.
-create_dir: FALSE
-create_rproj: FALSE

@@ -1,0 +1,30 @@
+---
+title: "Test NMU Document"
+author: "Test Author"
+date: "`r Sys.Date()`"
+output: 
+  rmdNMU::nmu_document:
+    toc: true
+    number_sections: true
+---
+
+# Introduction
+
+This is a test of the new consolidated NMU document template.
+
+## Mathematical Content
+
+Here's an equation:
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+
+## Code Example
+
+```{r}
+# Sample R code
+data <- c(1, 2, 3, 4, 5)
+mean(data)
+```
+
+# Conclusion
+
+The template works correctly with self-contained LaTeX code.

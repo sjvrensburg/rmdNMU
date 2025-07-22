@@ -28,83 +28,11 @@ ensure_fonts <- function() {
       if (file.exists(src_path)) {
         file.copy(src_path, dest_path, overwrite = TRUE)
       } else {
-        stop("Required font file not found in package: ", font)
+        warning("Font file not found: ", src_path)
       }
     }
+    message("Fonts installed to: ", local_font_dir)
   }
 
-  # Return the local font directory path
-  normalizePath(local_font_dir)
-}
-
-#' Format path for Pandoc
-#' @keywords internal
-format_path_for_pandoc <- function(path) {
-  # Convert backslashes to forward slashes
-  path <- gsub("\\\\", "/", path)
-  # Escape spaces and special characters
-  path <- gsub(" ", "\\ ", path)
-  path
-}
-
-#' Base PDF format creator
-#' @keywords internal
-create_base_pdf_format <- function(template_path, keep_tex = TRUE, includes = NULL, pandoc_args = NULL, ...) {
-  # Get paths
-  base_template <- system.file(
-    "rmarkdown/templates/common/base_template.tex",
-    package = "rmdNMU"
-  )
-  font_dir <- format_path_for_pandoc(ensure_fonts())
-
-  # Combine default and additional pandoc args
-  default_args <- c(
-    "--variable", paste0("fontdir=", font_dir),
-    "--variable", paste0("base_template=", base_template)
-  )
-  all_args <- c(default_args, pandoc_args)
-
-  # Create format with explicit includes handling
-  args <- list(
-    template = template_path,
-    latex_engine = "lualatex",
-    keep_tex = keep_tex,
-    pandoc_args = all_args
-  )
-
-  # Add includes if provided
-  if (!is.null(includes)) {
-    args$includes <- includes
-  }
-
-  # Add additional arguments
-  args <- c(args, list(...))
-
-  do.call(rmarkdown::pdf_document, args)
-}
-
-#' Base knitr options setter
-#' @keywords internal
-set_base_knitr_opts <- function(fmt) {
-  fmt$knitr$opts_chunk$prompt <- FALSE
-  fmt$knitr$opts_chunk$comment <- '# '
-  fmt$knitr$opts_chunk$highlight <- TRUE
-  fmt
-}
-
-#' Shared font configuration
-#' @keywords internal
-configure_fonts <- function() {
-  font_dir <- ensure_fonts()
-  format_path_for_pandoc(font_dir)
-}
-
-#' Common LaTeX includes
-#' @keywords internal
-get_latex_includes <- function(type) {
-  base_path <- system.file("rmarkdown/templates", type, "resources", package = "rmdNMU")
-  list(
-    template = file.path(base_path, "template.tex"),
-    preamble = file.path(base_path, "preamble.tex")
-  )
+  return(local_font_dir)
 }

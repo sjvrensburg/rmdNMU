@@ -1,0 +1,6 @@
+name: NMU Document
+description: >
+  A comprehensive template for NMU academic documents including short notes, 
+  practicals, and lab reports. Features NMU branding, theorem environments,
+  and statistical notation support.
+create_dir: false

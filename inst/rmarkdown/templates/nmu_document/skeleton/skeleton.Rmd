@@ -1,0 +1,46 @@
+---
+title: "NMU Document Title"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: 
+  rmdNMU::nmu_document:
+    toc: true
+    number_sections: true
+---
+
+# Introduction
+
+This is an NMU document template that supports:
+
+- Academic writing with proper formatting
+- Mathematical notation and equations
+- Code blocks and statistical output
+- Theorem environments
+
+## Mathematical Content
+
+Here's an equation:
+
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$$
+
+## Code Example
+
+```{r}
+# Sample R code
+data <- c(1, 2, 3, 4, 5)
+mean(data)
+```
+
+## Theorem Environments
+
+::: {.definition}
+**Definition**: A sample definition to demonstrate the environment.
+:::
+
+::: {.theorem}
+**Theorem**: A sample theorem statement.
+:::
+
+# Conclusion
+
+This template provides a clean, professional format for NMU academic documents.

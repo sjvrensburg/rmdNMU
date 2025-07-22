@@ -1,0 +1,133 @@
+$if(params.solutions)$
+\documentclass[answers, addpoints]{exam}
+$else$
+\documentclass[addpoints]{exam}
+$endif$
+
+% Handle font size
+\usepackage[$if(fontsize)$$fontsize$$else$12pt$endif$]{extsizes}
+
+% Pandoc compatibility
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\VerbBar}{|}
+\providecommand{\VERB}{}
+
+% Essential packages
+\usepackage{iftex}
+\usepackage{fontspec}
+\usepackage[a4paper, margin=2.54cm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[protrusion=true]{microtype}
+
+% Math and symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\usepackage{amsfonts}
+
+% Tables and lists
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{longtable}
+
+% Text formatting
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{caption}
+
+% Links and references
+\usepackage{hyperref}
+\usepackage{url}
+
+% Code highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% NMU Colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmugrey}{HTML}{999999}
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+% Font setup
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,
+    BoldItalicFont = NunitoSans-Italic,
+    UprightFeatures = {Weight=450, Scale=1.0},
+    BoldFeatures = {Weight=700},
+    ItalicFeatures = {Weight=450},
+    BoldItalicFeatures = {Weight=700}
+]
+
+\usepackage[Scale=0.98,math-style=french]{lete-sans-math}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=nmusecondaryblue,
+    filecolor=nmuprimaryblue,
+    urlcolor=nmusecondaryblue,
+    citecolor=nmuprimaryblue,
+}
+
+% List formatting
+\setlistdepth{20}
+\renewlist{itemize}{itemize}{20}
+\renewlist{enumerate}{enumerate}{20}
+\setlist[itemize]{noitemsep}
+\setlist[enumerate]{noitemsep}
+
+% Mathematical operators
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{argmin}} \,}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}} \,}
+
+% Default text color
+\color{nmuprimaryblue}
+
+% Exam class customization
+\pointsinrightmargin
+\bracketedpoints
+\pointsdroppedatright
+\pointformat{[\thepoints]}
+
+% Header and footer
+\pagestyle{headandfoot}
+\runningheadrule
+\firstpageheader{$if(title)$$title$$endif$}{}{$if(date)$$date$$endif$}
+\runningheader{$if(title)$$title$$endif$}{}{Page \thepage\ of \numpages}
+\firstpagefooter{}{}{$if(author)$$author$$endif$}
+\runningfooter{}{}{$if(author)$$author$$endif$}
+
+\begin{document}
+
+$if(title)$
+\begin{center}
+\textbf{\Large $title$}\\[0.5em]
+$if(author)$\textit{$author$}\\[0.3em]$endif$
+$if(date)$$date$$endif$
+\end{center}
+\vspace{1em}
+$endif$
+
+$body$
+
+\end{document}

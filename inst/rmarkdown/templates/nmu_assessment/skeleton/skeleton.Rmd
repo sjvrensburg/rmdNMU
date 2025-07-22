@@ -1,0 +1,46 @@
+---
+title: "Assessment Title"
+author: "Instructor Name"
+date: "`r Sys.Date()`"
+params:
+  solutions: false
+output: 
+  rmdNMU::nmu_assessment:
+    solutions: !r params$solutions
+---
+
+# Instructions
+
+Please answer all questions clearly and show your working.
+
+## Question 1 [10 marks]
+
+Solve the following equation:
+
+$$x^2 + 5x + 6 = 0$$
+
+```{r, echo=params$solutions, eval=params$solutions}
+# Solution code (only shown when solutions = TRUE)
+# Using quadratic formula: x = (-b ± √(b²-4ac)) / 2a
+a <- 1; b <- 5; c <- 6
+discriminant <- b^2 - 4*a*c
+x1 <- (-b + sqrt(discriminant)) / (2*a)
+x2 <- (-b - sqrt(discriminant)) / (2*a)
+cat("Solutions: x =", x1, "or x =", x2)
+```
+
+$if(params.solutions)$
+**Solution**: The solutions are x = -2 and x = -3.
+$endif$
+
+## Question 2 [15 marks]
+
+Explain the concept of statistical significance.
+
+$if(params.solutions)$
+**Solution**: Statistical significance refers to the likelihood that a result occurred by chance. A result is typically considered statistically significant if the p-value is less than 0.05, meaning there's less than a 5% probability the result occurred by random chance alone.
+$endif$
+
+---
+
+**Total: 25 marks**

@@ -1,0 +1,104 @@
+\documentclass[ignorenonframetext,]{beamer}
+
+% Pandoc compatibility
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\providecommand{\VerbBar}{|}
+\providecommand{\VERB}{}
+
+% Beamer theme configuration
+\usetheme{Madrid}
+\useinnertheme{rectangles}
+\useoutertheme{miniframes}
+
+% Essential packages
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+% Math support
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+
+% Graphics and colors
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+% Code highlighting
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
+% NMU Colors
+\definecolor{nmuprimaryblue}{HTML}{141C2B}
+\definecolor{nmusecondaryblue}{HTML}{132E51}
+\definecolor{nmuprimaryyellow}{HTML}{FFCC00}
+\definecolor{nmusecondaryyellow}{HTML}{F9B22A}
+\definecolor{nmuhumanities}{HTML}{FFB51B}
+\definecolor{nmueducation}{HTML}{F14F13}
+\definecolor{nmubusiness}{HTML}{6C284F}
+\definecolor{nmusciences}{HTML}{006B34}
+\definecolor{nmuhealth}{HTML}{82B74A}
+\definecolor{nmuengineering}{HTML}{57BCE9}
+\definecolor{nmulaw}{HTML}{5E6EBA}
+\definecolor{nmuocean}{HTML}{00AFAA}
+
+% Font setup
+\setmainfont{Nunito Sans}[
+    Extension = .ttf,
+    Path = $fontdir$/,
+    UprightFont = NunitoSans-Regular,
+    ItalicFont = NunitoSans-Italic,
+    BoldFont = NunitoSans-Regular,
+    BoldItalicFont = NunitoSans-Italic,
+    UprightFeatures = {Weight=450, Scale=1.0},
+    BoldFeatures = {Weight=700},
+    ItalicFeatures = {Weight=450},
+    BoldItalicFeatures = {Weight=700}
+]
+
+\usepackage[Scale=0.98,math-style=french]{lete-sans-math}
+
+% Theme color selection (default to sciences if not specified)
+$if(nmu_theme)$
+\definecolor{current@themecolor}{named}{nmu$nmu_theme$}
+$else$
+\definecolor{current@themecolor}{named}{nmusciences}
+$endif$
+
+% Beamer color customization
+\setbeamercolor{structure}{fg=nmuprimaryblue}
+\setbeamercolor{frametitle}{fg=nmuprimaryblue,bg=white}
+\setbeamercolor{title}{fg=nmuprimaryblue}
+\setbeamercolor{block title}{bg=current@themecolor,fg=white}
+\setbeamercolor{block body}{bg=current@themecolor!10,fg=black}
+\setbeamercolor{normal text}{fg=nmuprimaryblue}
+\setbeamercolor{item}{fg=current@themecolor}
+\setbeamercolor{subitem}{fg=current@themecolor}
+\setbeamercolor{subsubitem}{fg=current@themecolor}
+
+% Mathematical operators
+\newcommand{\argmin}[1]{\underset{#1}{\operatorname{argmin}} \,}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{argmax}} \,}
+
+% Title page information
+$if(title)$
+\title{$title$}
+$endif$
+$if(author)$
+\author{$author$}
+$endif$
+$if(date)$
+\date{$date$}
+$endif$
+
+\begin{document}
+
+$if(title)$
+\frame{\titlepage}
+$endif$
+
+$body$
+
+\end{document}

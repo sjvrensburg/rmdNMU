@@ -1,0 +1,30 @@
+---
+title: "Test Assessment"
+author: "Test Instructor"
+date: "`r Sys.Date()`"
+params:
+  solutions: false
+output: 
+  rmdNMU::nmu_assessment:
+    solutions: !r params$solutions
+---
+
+# Instructions
+
+Please answer all questions.
+
+## Question 1 [10 marks]
+
+What is 2 + 2?
+
+$if(params.solutions)$
+**Solution**: 4
+$endif$
+
+## Question 2 [15 marks]
+
+Explain statistical significance.
+
+$if(params.solutions)$
+**Solution**: Statistical significance indicates the likelihood that a result occurred by chance.
+$endif$
