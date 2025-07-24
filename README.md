@@ -6,6 +6,8 @@
 A comprehensive R package providing institutional R Markdown templates for Nelson Mandela University's Statistics Department, featuring advanced LaTeX integration, mathematical typesetting, and brand-compliant formatting.
 
 ---
+**NOTE:** The rmdNMU package is currently broken. For similar functionality, please consider using [rmdNMUsimple](https://github.com/sjvrensburg/rmdNMUsimple), which is simpler and more robust.
+---
 
 ## Template Portfolio
 
